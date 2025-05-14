@@ -18,6 +18,60 @@
     --body-size: clamp(1rem, 3vw, 1.2rem);
 }
 
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes headingEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(70vh) rotateX(-15deg);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateY(-3%) rotateX(0deg);
+    }
+    85% {
+        opacity: 0.95;
+        transform: translateY(0%) rotateX(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes socialIconsStagger {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 /* Page Layout */
 body {
     background: linear-gradient(135deg, #0a0a15 0%, #0d1225 100%);
@@ -58,8 +112,8 @@ body {
 /* Satellite Animation */
 .satellite-orbit {
     position: absolute;
-    width: 800px;
-    height: 800px;
+    width: 1000px;
+    height: 1000px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -121,6 +175,16 @@ body {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    .container,
+    .logo,
+    .coming-soon,
+    .description,
+    .social-links a {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 
     .satellite-orbit,
@@ -198,6 +262,8 @@ body {
     text-transform: uppercase;
     letter-spacing: 3px;
     gap: 0.2em;
+    animation: headingEntrance 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    perspective: 1000px;
 }
 
 .logo:hover {
@@ -223,6 +289,7 @@ body {
     margin-bottom: 2rem;
     color: #ffffff;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeIn 1s ease-out 2s both;
 }
 
 .coming-soon:hover {
@@ -236,6 +303,7 @@ body {
     color: #ffffff;
     padding: 0 20px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeIn 1s ease-out 3.3s both;
 }
 
 .description:hover {
@@ -243,38 +311,50 @@ body {
     cursor: default;
 }
 
+/* Container Animation */
 .container {
     max-width: 800px;
     margin: 0 auto;
     position: relative;
     z-index: 3;
+    opacity: 1;
 }
 
+/* Social Links Animation */
 .social-links {
     display: flex;
-    gap: 20px;
     justify-content: center;
+    gap: 30px;
     margin-top: 2rem;
 }
 
 .social-links a {
     color: #ffffff;
-    font-size: 1.5rem;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 2rem;
     text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: socialIconsStagger 0.5s ease-out forwards;
+}
+
+.social-links a:nth-child(1) {
+    animation-delay: 3.6s;
+}
+
+.social-links a:nth-child(2) {
+    animation-delay: 3.7s;
+}
+
+.social-links a:nth-child(3) {
+    animation-delay: 3.8s;
+}
+
+.social-links a:nth-child(4) {
+    animation-delay: 3.9s;
 }
 
 .social-links a:hover {
     color: #4a9eff;
-    text-shadow: 0 0 20px rgba(74, 158, 255, 0.7);
-    transform: scale(1.1);
-}
-
-.social-links a:focus {
-    outline: none;
-    color: #4a9eff;
-    text-shadow: 0 0 20px rgba(74, 158, 255, 0.7);
-    transform: scale(1.1);
 }
 
 /* Focus styles for better keyboard navigation */
