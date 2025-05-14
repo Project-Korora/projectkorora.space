@@ -1,0 +1,285 @@
+/**
+ * Project Kororā - Main Styles
+ * Core styles for the landing page and interactive elements
+ */
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+/* Typography Variables */
+:root {
+    --min-text-size: 16px;
+    --heading-size: clamp(1.5rem, 5vw, 2.5rem);
+    --body-size: clamp(1rem, 3vw, 1.2rem);
+}
+
+/* Page Layout */
+body {
+    background: linear-gradient(135deg, #0a0a15 0%, #0d1225 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    font-size: var(--min-text-size);
+    line-height: 1.5;
+}
+
+/* Interactive Background Elements */
+.star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+/* Star Animation */
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Satellite Animation */
+.satellite-orbit {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.satellite {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 50%;
+    transform-origin: 50% 430px;
+    animation: orbit 40s linear infinite;
+}
+
+.satellite img {
+    width: 500%;
+    height: 500%;
+    object-fit: contain;
+    transform-origin: center;
+    animation: counter-rotate 40s linear infinite;
+}
+
+/* Orbit Animations */
+@keyframes orbit {
+    from {
+        transform: rotate(-90deg) translateX(0) translateZ(0);
+    }
+    to {
+        transform: rotate(270deg) translateX(0) translateZ(0);
+    }
+}
+
+@keyframes counter-rotate {
+    from {
+        transform: rotate(120deg) translateZ(0);
+    }
+    to {
+        transform: rotate(120deg) translateZ(0);
+    }
+}
+
+/* Performance Optimizations */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .star {
+        animation-duration: 6s;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .satellite-orbit,
+    .satellite,
+    .star {
+        display: none;
+    }
+}
+
+/* High Contrast Support */
+@media (forced-colors: active) {
+    .highlight {
+        color: Highlight;
+    }
+
+    a:focus {
+        outline: 3px solid ButtonText;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .logo,
+    .highlight {
+        font-size: clamp(2rem, 5vw, 2.5rem);
+    }
+
+    .description {
+        font-size: var(--body-size);
+        padding: 0 15px;
+        margin-bottom: 1.5rem;
+    }
+
+    .coming-soon {
+        font-size: calc(var(--body-size) * 1.2);
+    }
+
+    .social-links {
+        gap: 25px;
+    }
+
+    .social-links a {
+        padding: 10px;
+        font-size: 1.8rem;
+    }
+
+    .satellite-orbit {
+        width: 400px;
+        height: 400px;
+    }
+
+    .satellite {
+        transform-origin: 50% 230px;
+    }
+}
+
+/* Logo and highlight shared properties */
+.logo,
+.highlight {
+    transition: all 0.3s ease-out;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+/* Logo styles */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    gap: 0.2em;
+}
+
+.logo:hover {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    cursor: default;
+}
+
+.highlight {
+    color: #4a9eff;
+    text-shadow: 0 0 15px rgba(74, 158, 255, 0.4);
+    display: inline-block;
+}
+
+.logo:hover .highlight {
+    color: #6ab2ff;
+    text-shadow: 0 0 20px rgba(74, 158, 255, 0.7);
+}
+
+/* Other styles */
+.coming-soon {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.coming-soon:hover {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    cursor: default;
+}
+
+.description {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: #ffffff;
+    padding: 0 20px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.description:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    cursor: default;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #4a9eff;
+    text-shadow: 0 0 20px rgba(74, 158, 255, 0.7);
+    transform: scale(1.1);
+}
+
+.social-links a:focus {
+    outline: none;
+    color: #4a9eff;
+    text-shadow: 0 0 20px rgba(74, 158, 255, 0.7);
+    transform: scale(1.1);
+}
+
+/* Focus styles for better keyboard navigation */
+a:focus,
+button:focus {
+    outline: 3px solid #4a9eff;
+    outline-offset: 3px;
+}
