@@ -128,8 +128,8 @@ body {
     height: 60px;
     top: -30px;
     left: 50%;
-    transform-origin: 50% 430px;
-    animation: orbit 40s linear infinite;
+    transform-origin: 50% 530px;
+    animation: orbit 30s linear infinite;
 }
 
 .satellite img {
@@ -137,7 +137,7 @@ body {
     height: 500%;
     object-fit: contain;
     transform-origin: center;
-    animation: counter-rotate 40s linear infinite;
+    animation: counter-rotate 60s linear infinite;
 }
 
 /* Orbit Animations */
@@ -232,12 +232,23 @@ body {
     }
 
     .satellite-orbit {
-        width: 400px;
-        height: 400px;
+        width: 800px;
+        height: 800px;
     }
 
     .satellite {
-        transform-origin: 50% 230px;
+        transform-origin: 50% 430px;
+    }
+}
+
+@media (max-width: 480px) {
+    .satellite-orbit {
+        width: 600px;
+        height: 600px;
+    }
+
+    .satellite {
+        transform-origin: 50% 330px;
     }
 }
 
