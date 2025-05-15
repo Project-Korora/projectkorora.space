@@ -118,29 +118,40 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    pointer-events: none;
     z-index: 2;
 }
 
 .satellite {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    top: -30px;
+    width: 40px;
+    height: 40px;
+
     left: 50%;
-    transform-origin: 50% 530px;
-    animation: orbit 30s linear infinite;
+    transform-origin: 50% 500px;
+    animation: orbit 15s linear infinite;
+    cursor: pointer;
+}
+
+.satellite-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.satellite:hover .satellite-wrapper {
+    transform: scale(1.1);
 }
 
 .satellite img {
+    position: relative;
     width: 500%;
     height: 500%;
     object-fit: contain;
-    transform-origin: center;
     animation: counter-rotate 60s linear infinite;
+    transition: filter 0.3s ease;
 }
 
-/* Orbit Animations */
 @keyframes orbit {
     from {
         transform: rotate(-90deg) translateX(0) translateZ(0);
@@ -253,6 +264,15 @@ body {
 }
 
 /* Logo and highlight shared properties */
+.logo-wrapper {
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.logo-wrapper:hover {
+    transform: scale(1.1);
+}
+
 .logo,
 .highlight {
     transition: all 0.3s ease-out;
@@ -268,19 +288,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 3px;
     gap: 0.2em;
     animation: headingEntrance 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    perspective: 1000px;
-}
-
-.logo:hover {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
-    cursor: default;
 }
 
 .highlight {
@@ -289,23 +301,35 @@ body {
     display: inline-block;
 }
 
-.logo:hover .highlight {
+.logo-wrapper:hover .highlight {
     color: #6ab2ff;
-    text-shadow: 0 0 20px rgba(74, 158, 255, 0.7);
+    text-shadow: 0 0 30px rgba(74, 158, 255, 2);
 }
 
-/* Other styles */
+.logo-wrapper:hover .logo {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+/* Coming Soon styles */
+.coming-soon-wrapper {
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.coming-soon-wrapper:hover {
+    transform: scale(1.1);
+    cursor: default;
+}
+
 .coming-soon {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
     color: #ffffff;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     animation: fadeIn 0.4s ease-out 0.9s both;
 }
 
-.coming-soon:hover {
+.coming-soon-wrapper:hover .coming-soon {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    cursor: default;
 }
 
 .description {
@@ -314,7 +338,7 @@ body {
     color: #ffffff;
     padding: 0 20px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeIn 2s ease-out 1.5s both;
+    animation: fadeIn 1.5s ease-out 1.5s both;
 }
 
 .description:hover {
@@ -340,14 +364,36 @@ body {
 }
 
 .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: #ffffff;
     font-size: 2rem;
     text-decoration: none;
-    transition: all 0.1s ease;
+    padding: 10px;
     opacity: 0;
     animation: socialIconsStagger 0.5s ease-out forwards;
 }
 
+.social-links a i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover i {
+    color: #4a9eff;
+    transform: scale(1.2);
+    text-shadow: 0 0 30px rgba(74, 158, 255, 2);
+}
+
+.social-links a:focus {
+    outline: none;
+}
+
+.social-links a:focus i {
+    color: #4a9eff;
+}
+
+/* Animation delays for social icons */
 .social-links a:nth-child(1) {
     animation-delay: 2s;
 }
@@ -363,14 +409,6 @@ body {
 .social-links a:nth-child(4) {
     animation-delay: 2.6s;
 }
-
 .social-links a:hover {
     color: #4a9eff;
-}
-
-/* Focus styles for better keyboard navigation */
-a:focus,
-button:focus {
-    outline: 3px solid #4a9eff;
-    outline-offset: 3px;
 }
