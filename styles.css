@@ -300,7 +300,7 @@ body {
     margin-bottom: 2rem;
     color: #ffffff;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeIn 1s ease-out 2s both;
+    animation: fadeIn 0.4s ease-out 0.9s both;
 }
 
 .coming-soon:hover {
@@ -314,7 +314,7 @@ body {
     color: #ffffff;
     padding: 0 20px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeIn 1s ease-out 3.3s both;
+    animation: fadeIn 2s ease-out 1.5s both;
 }
 
 .description:hover {
@@ -343,25 +343,25 @@ body {
     color: #ffffff;
     font-size: 2rem;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
     opacity: 0;
     animation: socialIconsStagger 0.5s ease-out forwards;
 }
 
 .social-links a:nth-child(1) {
-    animation-delay: 3.6s;
+    animation-delay: 2s;
 }
 
 .social-links a:nth-child(2) {
-    animation-delay: 3.7s;
+    animation-delay: 2.2s;
 }
 
 .social-links a:nth-child(3) {
-    animation-delay: 3.8s;
+    animation-delay: 2.4s;
 }
 
 .social-links a:nth-child(4) {
-    animation-delay: 3.9s;
+    animation-delay: 2.6s;
 }
 
 .social-links a:hover {
