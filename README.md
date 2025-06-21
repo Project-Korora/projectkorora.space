@@ -44,6 +44,16 @@ To set up the project locally:
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Project Structure
+
+A brief overview of the key directories in this project:
+
+- `src/app/`: Contains the core application files, including pages and layouts.
+- `src/app/page.tsx`: The main page of the application.
+- `src/app/globals.css`: Global styles for the application.
+- `public/`: Static assets like images and fonts.
+- `legacy_site/`: Contains the files from the previous version of the website.
+
 ## Tech Stack
 
 - **[Next.js](https://nextjs.org/docs)**: A React framework that enables server-side rendering and static site generation.
@@ -80,31 +90,54 @@ This workflow helps keep our `main` branch clean and allows for effective collab
 
 ## Commit Messages
 
-This project adheres to the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/). This standard provides a set of rules for creating an explicit commit history, which makes it easier to automate changelogs and manage versioning.
+This project adheres to the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/). All commits must follow this standard to maintain a clear and explicit commit history.
 
-All commit messages should be structured as follows:
-
-```
-<type>(optional scope): <description>
-```
-
-**Common types include:**
-
-- `feat`: A new feature for the user.
-- `fix`: A bug fix for the user.
-- `docs`: Documentation only changes.
-- `style`: Code style changes (e.g., semi-colons, white-space).
-- `refactor`: Refactoring production code.
-- `test`: Adding or refactoring tests.
-- `chore`: Updating build tasks, package manager configs, etc.
-
-**Example:**
+The commit message should be structured as follows:
 
 ```
-feat(exploded_satalite): implement a exploded view of the cubesat
+<type>[optional scope]: <description>
 ```
 
-For more details, please review the [full specification](https://www.conventionalcommits.org/en/v1.0.0/).
+### Commit Types
+
+- **`feat`**: Introduces a new feature to the codebase.
+- **`fix`**: Patches a bug in the codebase.
+- **Other Allowed Types**: `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, and others are also permitted.
+
+### Scope
+
+A scope provides additional contextual information and is contained within parentheses.
+
+```
+feat(parser): add ability to parse arrays
+```
+
+### Breaking Changes
+
+A breaking change is any modification that requires other developers to change their code. Clearly flagging these is critical for communication and versioning.
+
+To indicate a breaking API change, either append a `!` after the type/scope or include a `BREAKING CHANGE:` footer in the commit body. This automatically signals a `MAJOR` version bump in semantic versioning.
+
+**Example with `!`:**
+
+```
+# Renaming a function requires a breaking change notification
+feat(api)!: rename getUser to fetchUser for clarity
+```
+
+**Example with footer:**
+
+```
+refactor: simplify user authentication logic
+
+BREAKING CHANGE: The `authenticate` function now returns a Promise instead of a callback.
+```
+
+A breaking change can be part of any commit type. For more details, please review the [full specification](https://www.conventionalcommits.org/en/v1.0.0/).
+
+## Testing
+
+_(Coming Soon)_ All new features and bug fixes should be accompanied by tests. This section will be updated with guidelines for writing and running tests.
 
 ## License
 
