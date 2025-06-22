@@ -9,6 +9,8 @@ import Particles from "./components/Particles";
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
     display: "swap", // Improves loading performance
     weight: ["400", "500", "600", "700"], // Specify weights you'll use
 });
@@ -28,6 +30,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+    title: "Project Kororā",
+    description:
+        "Project Kororā aims to develop New Zealand's space economy by creating an accessible initiative for students at Te Herenga Waka. Our mission is to design and develop a CubeSat capable of being launched into space, featuring an innovative electric propulsion (EP) thruster.",
     title: {
         default: "Project Kororā",
         template: "%s | Project Kororā",
@@ -56,6 +61,15 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    return (
+        <html lang="en">
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            >
+                {children}
+            </body>
+        </html>
+    );
     return (
         <html lang="en">
             <head>
