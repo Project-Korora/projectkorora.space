@@ -27,17 +27,16 @@ To set up the project locally:
    ```
 
 2. Navigate to the new website's directory:
-3. Navigate to the new website's directory:
    ```bash
    cd projectkorora.space
    ```
-4. Install the dependencies:
+3. Install the dependencies:
 
    ```bash
    npm install
    ```
 
-5. Run the development server:
+4. Run the development server:
    ```bash
    npm run dev
    ```
