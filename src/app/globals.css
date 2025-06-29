@@ -27,5 +27,51 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@layer utilities {
+    /* Typography utilities */
+    .page-title {
+        @apply text-4xl font-bold mb-4 text-white;
+    }
+
+    .page-description {
+        @apply text-xl text-white/80 max-w-5xl mx-auto;
+    }
+
+    .card-title {
+        @apply text-xl font-bold mb-2 text-white;
+    }
+
+    .card-subtitle {
+        @apply text-blue-300 font-medium mb-1;
+    }
+
+    .card-text {
+        @apply text-gray-200 leading-relaxed;
+    }
+
+    /* Component utilities */
+    .glass-card {
+        @apply bg-black/50 backdrop-blur-lg border border-white/10 rounded-lg;
+    }
+
+    .glass-card-hover {
+        @apply hover:border-white/20 hover:scale-101 hover:shadow-lg transition-all duration-300 hover:bg-black/60;
+    }
+
+    /* Navigation utilities */
+    .nav-link {
+        @apply px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-white/80 hover:text-white hover:bg-white/10;
+    }
+
+    .nav-link[data-active="true"] {
+        @apply bg-white/20 text-white;
+    }
+
+    /* Layout utilities */
+    .content-container {
+        @apply max-w-7xl mx-auto;
+    }
 }
