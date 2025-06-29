@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Particles from "./components/Particles";
 
@@ -9,6 +10,8 @@ import Particles from "./components/Particles";
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
+    display: "swap", // Improves loading performance
+    weight: ["400", "500", "600", "700"], // Specify weights you'll use
     variable: "--font-geist-sans",
     subsets: ["latin"],
     display: "swap", // Improves loading performance
@@ -30,9 +33,27 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-    title: "Project Kororā",
+    title: {
+        default: "Project Kororā",
+        template: "%s | Project Kororā",
+    },
     description:
         "Project Kororā aims to develop New Zealand's space economy by creating an accessible initiative for students at Te Herenga Waka. Our mission is to design and develop a CubeSat capable of being launched into space, featuring an innovative electric propulsion (EP) thruster.",
+    keywords: [
+        "CubeSat",
+        "space technology",
+        "New Zealand",
+        "electric propulsion",
+        "satellite",
+        "university project",
+    ],
+    authors: [{ name: "Project Kororā Team" }],
+    creator: "Te Herenga Waka Victoria University of Wellington",
+    openGraph: {
+        title: "Project Kororā",
+        description: "Advancing New Zealand's Space Economy Through Innovation",
+        type: "website",
+    },
     title: {
         default: "Project Kororā",
         template: "%s | Project Kororā",
@@ -64,7 +85,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
             >
                 {children}
             </body>
