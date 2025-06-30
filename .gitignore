@@ -13,6 +13,7 @@ node_modules
 
 # Cursor
 .cursor
+cursor
 
 # dependencies
 /node_modules
@@ -59,3 +60,5 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+

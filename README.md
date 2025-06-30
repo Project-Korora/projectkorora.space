@@ -26,18 +26,17 @@ To set up the project locally:
    git clone https://github.com/Project-Korora/projectkorora.space.git
    ```
 
-2. Navigate to the new website's directory:
-3. Navigate to the new website's directory:
+2. Navigate to the website's directory:
    ```bash
    cd projectkorora.space
    ```
-4. Install the dependencies:
+3. Install the dependencies:
 
    ```bash
    npm install
    ```
 
-5. Run the development server:
+4. Run the development server:
    ```bash
    npm run dev
    ```
@@ -52,9 +51,12 @@ We welcome contributions! Please see our [Contributing Guidelines](.github/CONTR
 
 A brief overview of the key directories in this project:
 
-- `src/app/`: Contains the core application files, including pages and layouts.
-- `src/app/page.tsx`: The main page of the application.
+- `src/app/`: Contains the core application files, including layouts and components.
+- `src/app/(pages)/`: Route group containing all main pages.
+- `src/app/(pages)/page.tsx`: The main homepage of the application.
+- `src/app/components/`: Component library.
 - `src/app/globals.css`: Global styles for the application.
+- `src/app/layout.tsx`: Root layout component that defines the overall structure
 - `public/`: Static assets like images and fonts.
 - `legacy_site/`: Contains the files from the previous version of the website.
 
@@ -68,4 +70,3 @@ A brief overview of the key directories in this project:
 ## License
 
 This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
-
