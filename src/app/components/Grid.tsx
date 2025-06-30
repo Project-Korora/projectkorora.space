@@ -10,7 +10,7 @@ interface GridProps {
 export default function Grid({
     children,
     cols = 2,
-    gap = 4,
+    gap = 3,
     className = "",
 }: GridProps) {
     return (

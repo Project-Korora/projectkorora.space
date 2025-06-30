@@ -1,6 +1,5 @@
-import PageContainer from "../components/PageContainer";
-import PageHeader from "../components/PageHeader";
-import Card from "../components/Card";
+import PageContainer from "../../components/PageContainer";
+import PageHeader from "../../components/PageHeader";
 
 export default function ContactPage() {
     return (

@@ -1,77 +1,44 @@
 @import "tailwindcss";
 
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
-}
-
-@theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
+html {
+    /* Ensure smooth scrolling */
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
 }
 
 body {
-    background: var(--background);
+    background: #0a0a0a;
+    color: #ffffff;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    /* Ensure no overflow issues */
+    overflow-x: hidden;
+    overscroll-behavior: none;
+}
+
+/* Fixed background using pseudo-element - works on mobile */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: var(--foreground);
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    background-attachment: scroll;
+    z-index: -1;
 }
 
-@layer utilities {
-    /* Typography utilities */
-    .page-title {
-        @apply text-4xl font-bold mb-4 text-white;
-    }
-
-    .page-description {
-        @apply text-xl text-white/80 max-w-5xl mx-auto;
-    }
-
-    .card-title {
-        @apply text-xl font-bold mb-2 text-white;
-    }
-
-    .card-subtitle {
-        @apply text-blue-300 font-medium mb-1;
-    }
-
-    .card-text {
-        @apply text-gray-200 leading-relaxed;
-    }
-
-    /* Component utilities */
-    .glass-card {
-        @apply bg-black/50 backdrop-blur-lg border border-white/10 rounded-lg;
-    }
-
-    .glass-card-hover {
-        @apply hover:border-white/20 hover:scale-101 hover:shadow-lg transition-all duration-300 hover:bg-black/60;
-    }
-
-    /* Navigation utilities */
-    .nav-link {
-        @apply px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-white/80 hover:text-white hover:bg-white/10;
-    }
-
-    .nav-link[data-active="true"] {
-        @apply bg-white/20 text-white;
-    }
-
-    /* Layout utilities */
-    .content-container {
-        @apply max-w-7xl mx-auto;
+/* Additional mobile optimization */
+@media (max-width: 768px) {
+    body::before {
+        background-attachment: scroll;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
     }
 }

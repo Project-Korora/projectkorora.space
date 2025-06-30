@@ -10,12 +10,16 @@ export default function MobileMenuButton({
     return (
         <button
             onClick={onClick}
-            className="text-white hover:text-white/80 focus:outline-none focus:ring-2 focus:ring-white/20 p-2"
+            className={`${
+                isOpen
+                    ? "text-blue-400 font-bold"
+                    : "text-white hover:text-white/80"
+            } focus:outline-none focus:ring-2 focus:ring-white/20 p-2`}
             aria-expanded={isOpen}
             aria-label="Toggle navigation menu"
         >
             <svg
-                className="h-6 w-6"
+                className="h-10 w-10" //Controls the size of the hamburger menu button
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

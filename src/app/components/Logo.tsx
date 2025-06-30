@@ -9,7 +9,7 @@ export default function Logo() {
         >
             <Image
                 src="/logo.png"
-                alt="Project Kororā Logo"
+                alt="Logo"
                 width={50}
                 height={50}
                 className="rounded-full"

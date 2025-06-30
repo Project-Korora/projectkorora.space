@@ -10,8 +10,8 @@ export default function PageContainer({
     className = "",
 }: PageContainerProps) {
     return (
-        <div className={`min-h-screen p-6 ${className}`}>
-            <div className="max-w-7xl mx-auto">{children}</div>
+        <div className={`min-h-screen p-3 ${className}`}>
+            <div className="max-w-5xl mx-auto">{children}</div>
         </div>
     );
 }

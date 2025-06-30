@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
+import Particles from "./components/Particles";
 
 // Configure Geist Sans with optimization
 const geistSans = Geist({
@@ -56,11 +58,53 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <link
+                    rel="icon"
+                    href="/favicon-16x16.png"
+                    sizes="16x16"
+                    type="image/png"
+                />
+                <link
+                    rel="icon"
+                    href="/favicon-32x32.png"
+                    sizes="32x32"
+                    type="image/png"
+                />
+                <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+                <link rel="manifest" href="/site.webmanifest" />
+            </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}
             >
+                {/* Particles background covering the whole screen */}
+                <div
+                    style={{
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100vh",
+                        zIndex: -1,
+                    }}
+                >
+                    <Particles
+                        particleColors={["#ffffff", "#ffffff"]}
+                        particleCount={500}
+                        particleSpread={10}
+                        speed={0.03}
+                        particleBaseSize={100}
+                        sizeRandomness={0}
+                        cameraDistance={10}
+                        moveParticlesOnHover={false}
+                        alphaParticles={true}
+                        disableRotation={false}
+                    />
+                </div>
                 <Navigation />
-                <main>{children}</main>
+                <main className="flex-1 pt-16">{children}</main>
+                <Footer />
             </body>
         </html>
     );

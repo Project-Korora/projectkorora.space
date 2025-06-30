@@ -8,6 +8,7 @@ interface NavLinkProps {
     children: React.ReactNode;
     onClick?: () => void;
     className?: string;
+    role?: string;
 }
 
 export default function NavLink({
@@ -15,6 +16,7 @@ export default function NavLink({
     children,
     onClick,
     className = "",
+    role,
 }: NavLinkProps) {
     const pathname = usePathname();
 
@@ -23,7 +25,8 @@ export default function NavLink({
             href={href}
             onClick={onClick}
             data-active={pathname === href}
-            className={`nav-link ${className}`}
+            className={`py-2 px-4 text-lg font-small transition-colors duration-200 text-white/80 hover:text-white hover: data-[active=true]:text-blue-300 ${className}`}
+            role={role}
         >
             {children}
         </Link>

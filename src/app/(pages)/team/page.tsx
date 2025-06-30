@@ -1,7 +1,7 @@
-import TeamCard from "../components/TeamCard";
-import PageContainer from "../components/PageContainer";
-import PageHeader from "../components/PageHeader";
-import Grid from "../components/Grid";
+import PageContainer from "../../components/PageContainer";
+import PageHeader from "../../components/PageHeader";
+import Grid from "../../components/Grid";
+import TeamCard from "../../components/TeamCard";
 
 export default function TeamPage() {
     const teamMembers = [
@@ -64,7 +64,7 @@ export default function TeamPage() {
                 description="Meet the dedicated teams and students working to get Project Kororā off the ground"
             />
 
-            <Grid cols={2} gap={4}>
+            <Grid cols={2}>
                 {teamMembers.map((member, index) => (
                     <TeamCard
                         key={index}
