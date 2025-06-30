@@ -85,8 +85,32 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}
             >
+                {/* Particles background covering the whole screen */}
+                <div
+                    style={{
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100vh",
+                        zIndex: -1,
+                    }}
+                >
+                    <Particles
+                        particleColors={["#ffffff", "#ffffff"]}
+                        particleCount={500}
+                        particleSpread={10}
+                        speed={0.03}
+                        particleBaseSize={100}
+                        sizeRandomness={0}
+                        cameraDistance={10}
+                        moveParticlesOnHover={false}
+                        alphaParticles={true}
+                        disableRotation={false}
+                    />
+                </div>
                 {children}
             </body>
         </html>

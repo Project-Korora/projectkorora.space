@@ -13,10 +13,6 @@ const config: Config = {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "Consolas", "monospace"],
       },
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
       scale: {
         '101': '1.01',
       },
