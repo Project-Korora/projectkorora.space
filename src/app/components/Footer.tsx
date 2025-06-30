@@ -2,10 +2,11 @@ import Logo from "./Logo";
 
 export default function Footer() {
     return (
-        <footer className="bg-black/80 backdrop-blur-lg border-t border-white/10 mt-auto">
+        <footer className="bg-black/80 backdrop-blur-lg border-t border-white/10 mt-25">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     {/* Brand Section */}
+
                     <div>
                         <Logo />
                         <p className="mt-2 text-sm text-white/60">
