@@ -145,7 +145,7 @@ export default function StatsSection() {
 
                 {/* Additional Info */}
                 <div className="mt-16 grid md:grid-cols-3 gap-8">
-                    <Card color="blue" className="text-center">
+                    <Card color="cyan" className="text-center">
                         <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faAward}
@@ -162,7 +162,7 @@ export default function StatsSection() {
                         </p>
                     </Card>
 
-                    <Card color="purple" className="text-center">
+                    <Card color="cyan" className="text-center">
                         <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-500/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faCog}
