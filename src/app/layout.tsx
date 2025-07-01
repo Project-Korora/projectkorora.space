@@ -1,10 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Particles from "./components/Particles";
+import AnimatedOverlay from "./components/AnimatedOverlay";
+
+// Font Awesome configuration
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
 // Configure Geist Sans with optimization
 const geistSans = Geist({
@@ -161,6 +168,10 @@ export default function RootLayout({
                         disableRotation={false}
                     />
                 </div>
+
+                {/* Animated dark overlay that fades in on page load */}
+                <AnimatedOverlay />
+
                 <Navigation />
                 <main className="flex-1 pt-16">{children}</main>
                 <Footer />
