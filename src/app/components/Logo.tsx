@@ -15,7 +15,10 @@ export default function Logo() {
                 className="rounded-full"
                 priority
             />
-            <span>Project Kororā</span>
+            <span>Project</span>
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                Kororā
+            </span>
         </Link>
     );
 }
