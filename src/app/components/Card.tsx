@@ -90,16 +90,7 @@ export default function Card({
             }}
             onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow = `
-                    0 8px 32px -4px ${
-                        colorClasses.shadow.includes("shadow-")
-                            ? "rgba(0, 0, 0, 0.5)"
-                            : "rgba(0, 0, 0, 0.5)"
-                    },
-                    0 4px 16px -2px ${
-                        colorClasses.shadow.includes("shadow-")
-                            ? "rgba(0, 0, 0, 0.4)"
-                            : "rgba(0, 0, 0, 0.4)"
-                    },
+                    
                     0 0 24px ${
                         colorClasses.glow.includes("blue")
                             ? "rgba(59, 130, 246, 0.3)"
