@@ -7,6 +7,15 @@ import {
     faHandshake,
 } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * The features section for the homepage.
+ *
+ * This component displays the key features of the project in a grid of cards,
+ * highlighting aspects like electric propulsion, the CubeSat platform,
+ * educational impact, and industry collaboration.
+ *
+ * @returns {JSX.Element} The rendered features section.
+ */
 export default function FeaturesSection() {
     const features = [
         {
@@ -14,28 +23,28 @@ export default function FeaturesSection() {
             title: "Electric Propulsion",
             description:
                 "Revolutionary EP thruster technology enabling precise orbital maneuvers and extended mission duration for small satellites.",
-            color: "from-blue-500 to-cyan-500",
+            color: "from-primary to-secondary",
         },
         {
             icon: faCube,
             title: "3U CubeSat Platform",
             description:
                 "Compact, standardized satellite architecture maximizing functionality while maintaining cost-effectiveness and launch compatibility.",
-            color: "from-purple-500 to-pink-500",
+            color: "from-primary to-secondary",
         },
         {
             icon: faGraduationCap,
             title: "Educational Impact",
             description:
                 "Hands-on learning opportunities for students in aerospace engineering, fostering New Zealand's space industry workforce.",
-            color: "from-indigo-500 to-purple-500",
+            color: "from-primary to-secondary",
         },
         {
             icon: faHandshake,
             title: "Industry Collaboration",
             description:
                 "Strategic partnerships with aerospace companies and research institutions accelerating innovation and knowledge transfer.",
-            color: "from-pink-500 to-rose-500",
+            color: "from-primary to-secondary",
         },
     ];
 
@@ -46,7 +55,7 @@ export default function FeaturesSection() {
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                         Key{" "}
-                        <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
                             Features
                         </span>
                     </h2>
@@ -57,11 +66,11 @@ export default function FeaturesSection() {
                 </div>
 
                 {/* Features Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
                     {features.map((feature, index) => (
                         <Card
                             key={index}
-                            className="group relative transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10"
+                            className="group relative transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 text-center"
                         >
                             {/* Icon */}
                             <div
@@ -75,7 +84,7 @@ export default function FeaturesSection() {
                             </div>
 
                             {/* Content */}
-                            <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
+                            <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors duration-300">
                                 {feature.title}
                             </h3>
                             <p className="text-white/70 leading-relaxed">

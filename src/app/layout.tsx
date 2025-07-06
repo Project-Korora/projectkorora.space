@@ -1,12 +1,12 @@
-import type { Metadata, Viewport } from "next";
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import Particles from "./components/Particles";
-import AnimatedOverlay from "./components/AnimatedOverlay";
+
+import BackgroundImage from "./components/BackgroundImage";
 
 // Font Awesome configuration
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -124,23 +124,6 @@ export default function RootLayout({
     );
     return (
         <html lang="en">
-            <head>
-                <link rel="icon" href="/favicon.ico" sizes="any" />
-                <link
-                    rel="icon"
-                    href="/favicon-16x16.png"
-                    sizes="16x16"
-                    type="image/png"
-                />
-                <link
-                    rel="icon"
-                    href="/favicon-32x32.png"
-                    sizes="32x32"
-                    type="image/png"
-                />
-                <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-                <link rel="manifest" href="/site.webmanifest" />
-            </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}
             >

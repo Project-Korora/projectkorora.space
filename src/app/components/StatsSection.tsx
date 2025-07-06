@@ -12,6 +12,19 @@ interface StatProps {
     description: string;
 }
 
+/**
+ * An animated statistic component.
+ *
+ * This component displays a number that animates (counts up) when it becomes
+ * visible in the viewport. It also shows a label and a description.
+ *
+ * @param {object} props - The properties for the component.
+ * @param {string} props.number - The target number (or string) to display.
+ * @param {string} props.label - The label for the statistic.
+ * @param {string} [props.suffix=""] - An optional suffix to append to the number (e.g., "+").
+ * @param {string} props.description - A description of the statistic.
+ * @returns {JSX.Element} The rendered animated statistic.
+ */
 function AnimatedStat({ number, label, suffix = "", description }: StatProps) {
     const [isVisible, setIsVisible] = useState(false);
     const [displayNumber, setDisplayNumber] = useState("0");
@@ -65,7 +78,7 @@ function AnimatedStat({ number, label, suffix = "", description }: StatProps) {
     return (
         <div ref={ref} className="text-center">
             <div className="text-4xl md:text-6xl font-bold text-white mb-2">
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
                     {displayNumber}
                     {suffix}
                 </span>
@@ -78,6 +91,15 @@ function AnimatedStat({ number, label, suffix = "", description }: StatProps) {
     );
 }
 
+/**
+ * The stats section for the homepage.
+ *
+ * This component showcases key project statistics using the AnimatedStat
+ * component. It also includes cards highlighting academic excellence,
+ * innovation, and industry impact.
+ *
+ * @returns {JSX.Element} The rendered stats section.
+ */
 export default function StatsSection() {
     const stats = [
         {
@@ -112,7 +134,7 @@ export default function StatsSection() {
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                         Project{" "}
-                        <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
                             Impact
                         </span>
                     </h2>
@@ -125,7 +147,7 @@ export default function StatsSection() {
                 {/* Stats Container */}
                 <div className="relative">
                     {/* Background Glow */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-cyan-600/10 rounded-3xl blur-xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/10 via-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-3xl blur-xl"></div>
 
                     {/* Stats Grid */}
                     <Card className="p-8 md:p-12">
@@ -145,11 +167,11 @@ export default function StatsSection() {
 
                 {/* Additional Info */}
                 <div className="mt-16 grid md:grid-cols-3 gap-8">
-                    <Card color="cyan" className="text-center">
-                        <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/20 rounded-lg mb-4">
+                    <Card color="accent" className="text-center">
+                        <div className="inline-flex items-center justify-center w-12 h-12 bg-[var(--color-accent)]/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faAward}
-                                className="text-blue-400"
+                                className="text-primary"
                                 size="xl"
                                 fixedWidth
                             />
@@ -162,11 +184,11 @@ export default function StatsSection() {
                         </p>
                     </Card>
 
-                    <Card color="cyan" className="text-center">
-                        <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-500/20 rounded-lg mb-4">
+                    <Card color="accent" className="text-center">
+                        <div className="inline-flex items-center justify-center w-12 h-12 bg-[var(--color-accent)]/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faCog}
-                                className="text-purple-400"
+                                className="text-primary"
                                 size="xl"
                                 fixedWidth
                             />
@@ -179,11 +201,11 @@ export default function StatsSection() {
                         </p>
                     </Card>
 
-                    <Card color="cyan" className="text-center">
-                        <div className="inline-flex items-center justify-center w-12 h-12 bg-cyan-500/20 rounded-lg mb-4">
+                    <Card color="accent" className="text-center">
+                        <div className="inline-flex items-center justify-center w-12 h-12 bg-[var(--color-accent)]/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faGlobe}
-                                className="text-cyan-400"
+                                className="text-primary"
                                 size="xl"
                                 fixedWidth
                             />

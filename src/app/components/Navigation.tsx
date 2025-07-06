@@ -16,8 +16,18 @@ const navigationItems: NavigationItem[] = [
     { name: "Team", href: "/team" },
     { name: "Proposal", href: "/proposal" },
     { name: "Contact", href: "/contact" },
+    { name: "Theme", href: "/theme" },
 ];
 
+/**
+ * The main navigation component for the application.
+ *
+ * This component includes the logo, desktop navigation links, and a mobile
+ * menu button that toggles a dropdown menu for smaller screens. It handles
+ * the state for the mobile menu.
+ *
+ * @returns {JSX.Element} The rendered navigation component.
+ */
 export default function Navigation() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

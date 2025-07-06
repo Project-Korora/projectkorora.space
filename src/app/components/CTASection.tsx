@@ -10,6 +10,15 @@ import {
     faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * A call-to-action (CTA) section for the homepage.
+ *
+ * This component is designed to encourage user engagement, providing prominent
+ * links to the team and contact pages, and highlighting key opportunities
+ * for students, industry, and researchers.
+ *
+ * @returns {JSX.Element} The rendered CTA section.
+ */
 export default function CTASection() {
     return (
         <section className="py-20 relative">
@@ -17,8 +26,8 @@ export default function CTASection() {
                 {/* Main CTA Container */}
                 <div className="relative">
                     {/* Background Effects */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/20 via-[var(--color-secondary)]/20 to-[var(--color-accent)]/20 rounded-3xl blur-xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 rounded-3xl"></div>
 
                     {/* Content */}
                     <Card className="p-8 md:p-16 text-center">
@@ -26,7 +35,7 @@ export default function CTASection() {
                         <div className="mb-12">
                             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
                                 Join the <br />
-                                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-accent)] to-[var(--color-secondary)] bg-clip-text text-transparent">
                                     Space Revolution
                                 </span>
                             </h2>
@@ -42,7 +51,7 @@ export default function CTASection() {
                         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
                             <Link
                                 href="/team"
-                                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 text-lg"
+                                className="group px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] hover:opacity-90 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[var(--color-primary)]/25 text-lg"
                             >
                                 <span className="flex items-center">
                                     Meet Our Team
@@ -65,7 +74,7 @@ export default function CTASection() {
                         {/* Features Grid */}
                         <div className="grid md:grid-cols-3 gap-8 mb-12">
                             <div className="text-center">
-                                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl mb-4">
+                                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] rounded-2xl mb-4">
                                     <FontAwesomeIcon
                                         icon={faUsers}
                                         className="text-white"
@@ -83,7 +92,7 @@ export default function CTASection() {
                             </div>
 
                             <div className="text-center">
-                                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-4">
+                                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] rounded-2xl mb-4">
                                     <FontAwesomeIcon
                                         icon={faIndustry}
                                         className="text-white"
@@ -101,7 +110,7 @@ export default function CTASection() {
                             </div>
 
                             <div className="text-center">
-                                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl mb-4">
+                                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] rounded-2xl mb-4">
                                     <FontAwesomeIcon
                                         icon={faFlask}
                                         className="text-white"
