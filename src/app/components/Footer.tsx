@@ -1,5 +1,13 @@
 import Link from "next/link";
 
+/**
+ * The footer component for the application.
+ *
+ * This component displays the copyright notice and provides links to important
+ * pages like Privacy Policy, Terms of Use, and Accessibility.
+ *
+ * @returns {JSX.Element} The rendered footer component.
+ */
 export default function Footer() {
     return (
         <>

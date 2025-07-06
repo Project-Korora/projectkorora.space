@@ -3,6 +3,17 @@ interface MobileMenuButtonProps {
     onClick: () => void;
 }
 
+/**
+ * A button for toggling the mobile navigation menu.
+ *
+ * This component displays a hamburger icon that animates to a close icon
+ * when the menu is open.
+ *
+ * @param {object} props - The properties for the component.
+ * @param {boolean} props.isOpen - Whether the mobile menu is currently open.
+ * @param {() => void} props.onClick - The function to call when the button is clicked.
+ * @returns {JSX.Element} The rendered mobile menu button.
+ */
 export default function MobileMenuButton({
     isOpen,
     onClick,
@@ -12,7 +23,7 @@ export default function MobileMenuButton({
             onClick={onClick}
             className={`${
                 isOpen
-                    ? "text-blue-400 font-bold"
+                    ? "text-primary font-bold"
                     : "text-white hover:text-white/80"
             } focus:outline-none focus:ring-2 focus:ring-white/20 p-2`}
             aria-expanded={isOpen}

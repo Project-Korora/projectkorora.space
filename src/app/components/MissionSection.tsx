@@ -2,6 +2,15 @@ import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSatellite } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * The mission section for the homepage.
+ *
+ * This section provides a high-level overview of the project's mission,
+ * focusing on pioneering space technology and educational excellence.
+ * It includes a visual card highlighting the CubeSat technology.
+ *
+ * @returns {JSX.Element} The rendered mission section.
+ */
 export default function MissionSection() {
     return (
         <section className="py-20 relative">
@@ -10,7 +19,7 @@ export default function MissionSection() {
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                         Our{" "}
-                        <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
                             Mission
                         </span>
                     </h2>
@@ -55,10 +64,10 @@ export default function MissionSection() {
 
                     {/* Visual Element */}
                     <div className="relative">
-                        <Card color="blue" className="p-8">
+                        <Card color="primary" className="p-8">
                             {/* Satellite Icon */}
                             <div className="text-center mb-6">
-                                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mb-4">
+                                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full mb-4">
                                     <FontAwesomeIcon
                                         icon={faSatellite}
                                         className="text-white"
@@ -79,7 +88,7 @@ export default function MissionSection() {
                             {/* Stats */}
                             <div className="grid grid-cols-2 gap-4 text-center">
                                 <div>
-                                    <div className="text-2xl font-bold text-cyan-400">
+                                    <div className="text-2xl font-bold text-secondary">
                                         3U
                                     </div>
                                     <div className="text-white/60 text-sm">
@@ -87,7 +96,7 @@ export default function MissionSection() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="text-2xl font-bold text-blue-400">
+                                    <div className="text-2xl font-bold text-secondary">
                                         EP
                                     </div>
                                     <div className="text-white/60 text-sm">

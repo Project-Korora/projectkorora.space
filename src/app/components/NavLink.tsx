@@ -11,6 +11,20 @@ interface NavLinkProps {
     role?: string;
 }
 
+/**
+ * A navigation link component.
+ *
+ * This component wraps Next.js's Link component, providing styling that
+ * indicates the currently active page.
+ *
+ * @param {object} props - The properties for the component.
+ * @param {string} props.href - The URL the link points to.
+ * @param {React.ReactNode} props.children - The content to be displayed inside the link.
+ * @param {() => void} [props.onClick] - Function to call on click, useful for closing mobile menus.
+ * @param {string} [props.className=""] - Additional CSS classes to apply to the link.
+ * @param {string} [props.role] - The ARIA role for the link.
+ * @returns {JSX.Element} The rendered navigation link.
+ */
 export default function NavLink({
     href,
     children,
@@ -25,7 +39,7 @@ export default function NavLink({
             href={href}
             onClick={onClick}
             data-active={pathname === href}
-            className={`py-2 px-4 text-lg font-small transition-colors duration-200 text-white/80 hover:text-white hover: data-[active=true]:text-blue-300 ${className}`}
+            className={`py-2 px-4 text-lg font-small transition-colors duration-200 text-white/80 hover:text-white hover: data-[active=true]:text-primary ${className}`}
             role={role}
         >
             {children}

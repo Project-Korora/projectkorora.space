@@ -5,6 +5,15 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * The hero section for the homepage.
+ *
+ * This component serves as the main entry view, featuring the project title,
+ * a brief description, and primary calls-to-action. It includes a subtle
+ * parallax effect on scroll.
+ *
+ * @returns {JSX.Element} The rendered hero section.
+ */
 export default function HeroSection() {
     const [scrollY, setScrollY] = useState(0);
 
@@ -25,7 +34,7 @@ export default function HeroSection() {
                 <h1 className="text-7xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight">
                     <span className="text-white">Project</span>
                     <br />
-                    <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
                         Kororā
                     </span>
                 </h1>
@@ -33,7 +42,7 @@ export default function HeroSection() {
                 {/* Subtitle */}
                 <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
                     New Zealand CubeSat with
-                    <span className="text-blue-300 font-semibold">
+                    <span className="text-primary font-semibold">
                         {" "}
                         electric propulsion systems
                     </span>
@@ -43,7 +52,7 @@ export default function HeroSection() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                     <Link
                         href="/about"
-                        className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+                        className="group px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] hover:opacity-90 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[var(--color-primary)]/25"
                     >
                         <span className="flex items-center">
                             Explore Our Mission

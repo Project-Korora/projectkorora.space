@@ -1,20 +1,159 @@
 @import "tailwindcss";
 
+@theme {
+    /**
+     * ========================================================================
+     * Theming Strategy: CSS Variable Aliasing
+     *
+     * We use a two-tiered CSS variable system for maintainability:
+     *
+     * 1. **Raw Value Tokens (e.g., --color-primary-500):**
+     *    These define specific, literal values (a shade of blue, a pixel size).
+     *
+     * 2. **Semantic Alias Tokens (e.g., --color-primary):**
+     *    These point to the raw value tokens using var(). Components should
+     *    almost always use these semantic aliases.
+     *
+     * This strategy allows us to update a raw value or remap a semantic alias
+     * in one place, propagating the change throughout the entire site without
+     * needing to refactor component code.
+     * ========================================================================
+     */
+
+    /**
+     * ========================================================================
+     * Color Palette
+     *
+     * Defines the core color tokens for the Website. Each color has a base
+     * value and a corresponding hover state.
+     * ========================================================================
+     */
+
+    /** @theme A deep color used for primary actions and highlights. */
+    --color-primary-500: rgb(5 68 109);
+    --color-primary: var(--color-primary-500);
+    --color-primary-hover: color-mix(
+        in srgb,
+        var(--color-primary) var(--opacity-hover),
+        transparent
+    );
+
+    /** @theme A lighter color for secondary elements. */
+    --color-secondary-500: rgb(29 98 151);
+    --color-secondary: var(--color-secondary-500);
+    --color-secondary-hover: color-mix(
+        in srgb,
+        var(--color-secondary) var(--opacity-hover),
+        transparent
+    );
+
+    /** @theme Used for call-to-actions and special highlights. */
+    --color-accent-500: hsl(160 84% 39%);
+    --color-accent: var(--color-accent-500);
+    --color-accent-hover: color-mix(
+        in srgb,
+        var(--color-accent) var(--opacity-hover),
+        transparent
+    );
+
+    /** @theme A very light color, used for text and bright UI elements. */
+    --color-light-500: hsl(0deg 0% 100%);
+    --color-light: var(--color-light-500);
+    --color-light-hover: color-mix(
+        in srgb,
+        var(--color-light) var(--opacity-hover),
+        transparent
+    );
+
+    /** @theme A very dark color, used for backgrounds and dark UI elements. */
+    --color-dark-500: hsl(0deg 0% 0%);
+    --color-dark: var(--color-dark-500);
+    /** @theme A subtle hover effect for dark elements, mixing in a hint of light. */
+    --color-dark-hover: color-mix(in srgb, var(--color-light) 5%, transparent);
+
+    /**
+     * ========================================================================
+     * Typography
+     *
+     * Defines the font families used throughout the application.
+     * ========================================================================
+     */
+
+    /** @theme The primary sans-serif font family. */
+    --font-sans: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+    /** @theme The primary monospace font family. */
+    --font-mono: var(
+        --font-geist-mono,
+        ui-monospace,
+        SFMono-Regular,
+        monospace
+    );
+
+    /**
+     * ========================================================================
+     * UI Metrics & Effects
+     *
+     * Defines tokens for border radius, blur effects, and animations.
+     * ========================================================================
+     */
+
+    --radius-4xl: 1rem;
+    /** @theme The default application-wide border radius for all elements. */
+    --radius: var(--radius-4xl);
+
+    --backdrop-blur-xs: 2px;
+    /** @theme The default application-wide backdrop blur. */
+    --backdrop-blur: var(--backdrop-blur-xs);
+
+    /**
+     * ========================================================================
+     * Animations
+     * ========================================================================
+     */
+
+    /** @theme A slow, subtle pulse animation. */
+    --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    /** @theme A gentle floating animation. */
+    --animate-float: float 6s ease-in-out infinite;
+
+    /**
+     * ========================================================================
+     * Opacity Tokens
+     *
+     * Defines reusable opacity values for UI elements.
+     * ========================================================================
+     */
+
+    /** @theme The opacity level applied to elements on hover. */
+    --opacity-hover: 50%;
+    /** @theme The base opacity level for card backgrounds. */
+    --opacity-card: 70%;
+
+    /** @keyframes for the --animate-float animation. */
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+}
+
 html {
     /* Ensure smooth scrolling */
     scroll-behavior: smooth;
+    /* Ensure no overflow issues at the bottom of the page. */
     overscroll-behavior: none;
 }
 
 body {
-    background: #0a0a0a;
+    background: #000000;
     color: #ffffff;
     font-family: var(--font-geist-sans), system-ui, sans-serif;
     position: relative;
     min-height: 100vh;
-    /* Ensure no overflow issues */
-    overflow-x: hidden;
-    overscroll-behavior: none;
 }
 
 /* Fixed background using pseudo-element - works on mobile */
