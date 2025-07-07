@@ -5,18 +5,23 @@
      * ========================================================================
      * Theming Strategy: CSS Variable Aliasing
      *
-     * We use a two-tiered CSS variable system for maintainability:
+     * We use a two-tiered CSS variable system:
      *
-     * 1. **Raw Value Tokens (e.g., --color-primary-500):**
-     *    These define specific, literal values (a shade of blue, a pixel size).
+     * 1. **Raw Value Tokens** (e.g., `--color-primary-500`) — hold literal
+     *    values. Treat these as _implementation details_.
+     * 2. **Semantic Alias Tokens** (e.g., `--color-primary`) — reference raw
+     *    tokens via `var()`. Components and Tailwind class mappings **must use
+     *    these aliases**.
      *
-     * 2. **Semantic Alias Tokens (e.g., --color-primary):**
-     *    These point to the raw value tokens using var(). Components should
-     *    almost always use these semantic aliases.
+     * Only the semantic aliases are surfaced in `tailwind.config.ts`, giving
+     * you shorthand classes like `bg-primary` and `bg-primary-hover`. The raw
+     * `*-500` tokens remain here for fine-grained tweaks or future design
+     * variants but are not meant to be used directly in markup.
      *
-     * This strategy allows us to update a raw value or remap a semantic alias
-     * in one place, propagating the change throughout the entire site without
-     * needing to refactor component code.
+     * **Why two files?**  Keeping tokens in CSS means they exist at runtime
+     * (enabling instant theme switches).  Tailwind classes are generated at
+     * build time from `tailwind.config.ts`, giving developers short, safe
+     * utility names without duplicating values.
      * ========================================================================
      */
 
