@@ -5,6 +5,7 @@
 - [Contributing to Project Kororā](#contributing-to-project-kororā)
   - [Table of Contents](#table-of-contents)
   - [Development Workflow](#development-workflow)
+    - [(Optional) Open the Pull Request from your terminal](#optional-open-the-pull-request-from-your-terminal)
   - [Commit Messages](#commit-messages)
     - [Commit Types](#commit-types)
     - [Scope](#scope)
@@ -41,6 +42,33 @@ Follow this 5-step loop for every contribution:
 5. When approved, use **"Squash and merge"** to keep `main` linear.
 
 > ℹ️ `main` is protected—direct pushes are rejected to enforce code review and CI. All pushes must be signed (`git commit -S`) and fast-forwardable. See [Signing Commits](#signing-commits) for more info.
+
+---
+
+### (Optional) Open the Pull Request from your terminal
+
+If you have the [GitHub CLI](https://cli.github.com/) installed and authenticated, you can create the PR without leaving the command line:
+
+```bash
+# Inside your feature branch
+git fetch origin       # ensure local refs are up-to-date (required for --fill)
+# --fill copies commit message; --draft opens it as a Draft PR
+gh pr create --base main --head username/feature --draft --fill
+```
+
+Useful follow-ups:
+
+```bash
+# View the PR in your browser
+gh pr view --web
+
+# Check PR status (CI, reviews, mergeability)
+gh pr checks
+```
+
+This is functionally identical to opening the PR in the GitHub UI, but faster for terminal-focused workflows.
+
+---
 
 This workflow helps keep our `main` branch clean and allows for effective collaboration.
 
