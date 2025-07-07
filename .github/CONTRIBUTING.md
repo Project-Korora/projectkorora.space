@@ -120,6 +120,8 @@ When you are ready to merge your feature branch into `main`, you will need to op
 
 - **Keep it Focused**: A pull request should address a single concern. If you find yourself making unrelated changes, consider moving them to a separate branch and pull request.
 
+- **Include Documentation**: All changes that introduce or modify code must be accompanied by documentation. This is a critical part of our workflow. For full details on our documentation standards and practices, please read the [**DOCUMENTATION GUIDELINES**](../docs/DOCUMENTATION_GUIDELINES.md).
+
 - **Self-Review First**: Before requesting a review from others, perform a self-review of your changes. Check for typos, logical errors, and adherence to the project's coding standards.
 
 - **Request Reviewers**: Add at least one team member as a reviewer to get feedback. If you have specific people in mind who should review the code, mention them.

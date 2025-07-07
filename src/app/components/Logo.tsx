@@ -1,11 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 
+/**
+ * The project logo component.
+ *
+ * This component displays the project's logo image and name, linked to the homepage.
+ *
+ * @returns {JSX.Element} The rendered logo component.
+ */
 export default function Logo() {
     return (
         <Link
             href="/"
-            className="flex items-center space-x-3 text-white text-xl font-bold hover:text-white/80 transition-colors duration-200"
+            className="group flex items-center space-x-2 text-white text-xl font-bold"
         >
             <Image
                 src="/logo.png"
@@ -15,7 +22,10 @@ export default function Logo() {
                 className="rounded-full"
                 priority
             />
-            <span>Project Kororā</span>
+            <span>Project</span>
+            <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
+                Kororā
+            </span>
         </Link>
     );
 }

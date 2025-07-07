@@ -2,6 +2,14 @@ import PageContainer from "../../components/PageContainer";
 import PageHeader from "../../components/PageHeader";
 import Card from "../../components/Card";
 
+/**
+ * The project proposal page.
+ *
+ * This page outlines the mission overview, technical objectives, and
+ * educational impact of Project Kororā.
+ *
+ * @returns {JSX.Element} The rendered proposal page.
+ */
 export default function ProposalPage() {
     return (
         <PageContainer>

@@ -1,55 +1,52 @@
-import Logo from "./Logo";
+import Link from "next/link";
 
+/**
+ * The footer component for the application.
+ *
+ * This component displays the copyright notice and provides links to important
+ * pages like Privacy Policy, Terms of Use, and Accessibility.
+ *
+ * @returns {JSX.Element} The rendered footer component.
+ */
 export default function Footer() {
     return (
-        <footer className="bg-black/80 backdrop-blur-lg border-t border-white/10 mt-25">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    {/* Brand Section */}
+        <>
+            {/* Spacer above footer */}
+            <div className="h-24"></div>
 
-                    <div>
-                        <Logo />
-                        <p className="mt-2 text-sm text-white/60">
-                            A student-led initiative at Te Herenga Waka Victoria
-                            University of Wellington
-                        </p>
-                    </div>
-
-                    {/* Resources Section */}
-                    <div className="flex flex-col items-start md:items-end gap-4">
-                        <div className="flex flex-wrap gap-4">
-                            <a
-                                href="/privacy"
-                                className="text-white/60 hover:text-white/80 text-sm transition-colors duration-200"
-                            >
-                                Privacy Policy
-                            </a>
-                            <a
-                                href="/terms"
-                                className="text-white/60 hover:text-white/80 text-sm transition-colors duration-200"
-                            >
-                                Terms of Use
-                            </a>
-                            <a
-                                href="/accessibility"
-                                className="text-white/60 hover:text-white/80 text-sm transition-colors duration-200"
-                            >
-                                Accessibility
-                            </a>
-                            <a
-                                href="/sitemap.xml"
-                                className="text-white/60 hover:text-white/80 text-sm transition-colors duration-200"
-                            >
-                                Sitemap
-                            </a>
-                        </div>
+            <footer className="bg-black/40 backdrop-blur-xl border-t border-white/10 py-8">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                        {/* Copyright */}
                         <p className="text-white/60 text-sm">
                             © {new Date().getFullYear()} Project Kororā. All
                             rights reserved.
                         </p>
+
+                        {/* Links */}
+                        <div className="flex flex-wrap justify-center gap-6">
+                            <Link
+                                href="/privacy"
+                                className="text-white/60 hover:text-white/90 text-sm transition-colors duration-200"
+                            >
+                                Privacy Policy
+                            </Link>
+                            <Link
+                                href="/terms"
+                                className="text-white/60 hover:text-white/90 text-sm transition-colors duration-200"
+                            >
+                                Terms of Use
+                            </Link>
+                            <Link
+                                href="/accessibility"
+                                className="text-white/60 hover:text-white/90 text-sm transition-colors duration-200"
+                            >
+                                Accessibility
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </>
     );
 }
