@@ -3,7 +3,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
-import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 
 import BackgroundImage from "./components/BackgroundImage";
@@ -19,10 +18,6 @@ const geistSans = Geist({
     subsets: ["latin"],
     display: "swap", // Improves loading performance
     weight: ["400", "500", "600", "700"], // Specify weights you'll use
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-    display: "swap", // Improves loading performance
-    weight: ["400", "500", "600", "700"], // Specify weights you'll use
 });
 
 // Configure Geist Mono with optimization
@@ -33,57 +28,20 @@ const geistMono = Geist_Mono({
     weight: ["400", "500", "600", "700"],
 });
 
-export const viewport: Viewport = {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-};
+// Moved metadata to a separate file since we're now using "use client"
+// The metadata is defined in src/app/metadata.ts
 
-export const metadata: Metadata = {
-    title: {
-        default: "Project Kororā",
-        template: "%s | Project Kororā",
-    },
-    description:
-        "Project Kororā aims to develop New Zealand's space economy by creating an accessible initiative for students at Te Herenga Waka. Our mission is to design and develop a CubeSat capable of being launched into space, featuring an innovative electric propulsion (EP) thruster.",
-    keywords: [
-        "CubeSat",
-        "space technology",
-        "New Zealand",
-        "electric propulsion",
-        "satellite",
-        "university project",
-    ],
-    authors: [{ name: "Project Kororā Team" }],
-    creator: "Te Herenga Waka Victoria University of Wellington",
-    openGraph: {
-        title: "Project Kororā",
-        description: "Advancing New Zealand's Space Economy Through Innovation",
-        type: "website",
-    },
-    title: {
-        default: "Project Kororā",
-        template: "%s | Project Kororā",
-    },
-    description:
-        "Project Kororā aims to develop New Zealand's space economy by creating an accessible initiative for students at Te Herenga Waka. Our mission is to design and develop a CubeSat capable of being launched into space, featuring an innovative electric propulsion (EP) thruster.",
-    keywords: [
-        "CubeSat",
-        "space technology",
-        "New Zealand",
-        "electric propulsion",
-        "satellite",
-        "university project",
-    ],
-    authors: [{ name: "Project Kororā Team" }],
-    creator: "Te Herenga Waka Victoria University of Wellington",
-    openGraph: {
-        title: "Project Kororā",
-        description: "Advancing New Zealand's Space Economy Through Innovation",
-        type: "website",
-    },
-};
-
+/**
+ * The root layout for the entire application.
+ *
+ * This component sets up the global fonts, body styling, and the main
+ * page structure including the navigation and footer. It also includes the
+ * background image that persists across all pages.
+ *
+ * @param {object} props - The properties for the component.
+ * @param {React.ReactNode} props.children - The child components to be rendered within the layout.
+ * @returns {JSX.Element} The rendered root layout.
+ */
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -91,34 +49,37 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <link
+                    rel="icon"
+                    href="/favicon-16x16.png"
+                    sizes="16x16"
+                    type="image/png"
+                />
+                <link
+                    rel="icon"
+                    href="/favicon-32x32.png"
+                    sizes="32x32"
+                    type="image/png"
+                />
+                <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+                <link rel="manifest" href="/site.webmanifest" />
+            </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}
+                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen relative`}
             >
-                {/* Particles background covering the whole screen */}
-                <div
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100vh",
-                        zIndex: -1,
-                    }}
-                >
-                    <Particles
-                        particleColors={["#ffffff", "#ffffff"]}
-                        particleCount={500}
-                        particleSpread={10}
-                        speed={0.03}
-                        particleBaseSize={100}
-                        sizeRandomness={0}
-                        cameraDistance={10}
-                        moveParticlesOnHover={false}
-                        alphaParticles={true}
-                        disableRotation={false}
-                    />
+                {/* Background image - bottom layer */}
+                <BackgroundImage src="/background.jpg" />
+
+                {/* Content layers - top layer */}
+                <div className="relative z-10 flex flex-col min-h-screen">
+                    <Navigation />
+                    <main className="flex-1 pt-16 pointer-events-auto">
+                        {children}
+                    </main>
+                    <Footer />
                 </div>
-                {children}
             </body>
         </html>
     );
