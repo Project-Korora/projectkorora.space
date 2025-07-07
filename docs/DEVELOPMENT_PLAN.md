@@ -16,24 +16,28 @@ This document outlines the development plan for Project Kororā, a modern, respo
 
 For a team of eight, we can define specialised roles to ensure clear ownership and efficiency.
 
-- **Project Lead (1):** Oversees the entire project, manages timelines, removes blockers, and facilitates communication.
-- **Design System & UI Lead (1):** Owns the theme (`globals.css`), core component library, and overall visual consistency. Ensures all UI work adheres to the token-driven approach.
-- **Frontend Engineering Lead (1):** Guides the overall technical architecture, leads code reviews, and is responsible for the quality and structure of the application code.
-- **Frontend Engineers (3):** Implement components and pages, refactor existing code, and collaborate on feature development.
-- **QA & Accessibility Lead (1):** Owns the testing strategy, from unit tests to end-to-end testing. Champions accessibility and performs audits.
-- **DevOps & Performance Lead (1):** Manages the CI/CD pipeline, deployment environments, and leads performance optimisation efforts.
+- **Project Lead: Galen Green**
+  - Oversees the entire project, manages timelines, removes blockers, and facilitates communication.
+- **Design System & UI Lead: Unknown**
+  - Owns the theme (`globals.css`), core component library, and overall visual consistency. Ensures all UI work adheres to the token-driven approach.
+- **Frontend Engineering Lead: Unknown**
+  - Guides the overall technical architecture, leads code reviews, and is responsible for the quality and structure of the application code.
+- **Frontend Engineers: Jessica, Thomas**
+  - Implement components and pages, refactor existing code, and collaborate on feature development.
+    - Jessica: Contact page
+    - Albion: Teams page
+    - Unknown: Proposal page
+    - Unknown: About page
+- **QA & Accessibility Lead: Tatvika**
+  - Owns the testing strategy, from unit tests to end-to-end testing. Champions accessibility and performs audits.
+- **DevOps & Performance Lead: Tane?**
+  - Manages the CI/CD pipeline, deployment environments, and leads performance optimisation efforts.
 
 ---
 
 ## 3. Documentation Culture & Strategy
 
-Documentation is a core part of our development process, not an afterthought. Every team member is responsible for documenting their work. Our strategy is designed to be maintainable and avoid duplication.
-
-- **Single Source of Truth:**
-  - **Inline (JSDoc):** The code itself is the primary source of truth. All components, functions, and type definitions _must_ have clear JSDoc comments explaining _how_ they work, their parameters, and what they return.
-  - **Overview (`/docs`):** Markdown files in the `/docs` directory explain the _why_ and _what_. This includes architectural decisions, component usage patterns, and project setup guides.
-- **Documentation as Part of "Done":** A task is not complete until it is accompanied by the required documentation. This ensures our documentation stays current.
-- **No Duplication:** Do not repeat detailed implementation logic from JSDoc in markdown files. Link to code or reference component names instead.
+See the **[Documentation Guidelines](./DOCUMENTATION_GUIDELINES.md)** for the full documentation philosophy, structure, and style guide.
 
 ---
 
@@ -135,23 +139,15 @@ The project is broken down into the following epics. Each epic contains a list o
 
 This is a suggested 4-sprint (8-week) timeline.
 
-- **Sprint 1 (Weeks 1-2): Foundation & Setup**
+- **Sprint 1: Foundation & Setup**
   - **Focus:** Epics 1, 4.1, 5.1.
   - **Goal:** Finalize the design system, set up testing frameworks, and establish the CI pipeline. All new work will build on this foundation.
-- **Sprint 2 (Weeks 3-4): Refactoring & Implementation**
+- **Sprint 2: Refactoring & Implementation**
   - **Focus:** Epics 2 & 3.
   - **Goal:** Refactor all existing code to meet standards and build out all pages with content.
-- **Sprint 3 (Weeks 5-6): Quality & Testing**
+- **Sprint 3: Quality & Testing**
   - **Focus:** Epic 4.
   - **Goal:** Intensive QA phase. Write all tests, perform the A11y audit, and fix all identified bugs and issues.
-- **Sprint 4 (Weeks 7-8): Optimization & Launch**
+- **Sprint 4: Optimization & Launch**
   - **Focus:** Epics 5 & 6.
   - **Goal:** Final performance tuning, complete all documentation, and prepare for production launch.
-
----
-
-## 6. Workflow
-
-- **Branching:** Use a GitFlow-like model. Create branches from `main` for features (e.g., `feature/contact-form`). All work must be submitted via Pull Requests.
-- **Pull Requests:** A PR must be reviewed by at least one other engineer and pass all CI checks before being merged. **The PR description should summarize changes and link to the relevant task.**
-- **Task Management:** Use GitHub Issues and a Project board to track the status of all tasks outlined in this document.

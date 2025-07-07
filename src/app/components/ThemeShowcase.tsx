@@ -12,7 +12,7 @@ interface ColorBoxProps {
 
 const ColorBox = ({ color, name, textColor = "text-light" }: ColorBoxProps) => (
     <div
-        className={`p-4 rounded-[var(--radius)] min-h-[80px] border border-light/10 flex items-center justify-center ${color} w-full`}
+        className={`p-4 rounded min-h-[80px] border border-light/10 flex items-center justify-center ${color} w-full`}
     >
         <p className={`${textColor} font-mono text-xs font-bold`}>{name}</p>
     </div>
@@ -34,8 +34,7 @@ export default function ThemeShowcase() {
                 <h2 className="text-2xl font-bold text-light mb-4">
                     Primary Color
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <ColorBox color="bg-primary-500" name="primary-500" />
+                <div className="grid grid-cols-2 gap-4">
                     <ColorBox color="bg-primary" name="primary" />
                     <ColorBox color="bg-primary-hover" name="primary-hover" />
                 </div>
@@ -46,8 +45,7 @@ export default function ThemeShowcase() {
                 <h2 className="text-2xl font-bold text-light mb-4">
                     Secondary Color
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <ColorBox color="bg-secondary-500" name="secondary-500" />
+                <div className="grid grid-cols-2 gap-4">
                     <ColorBox color="bg-secondary" name="secondary" />
                     <ColorBox
                         color="bg-secondary-hover"
@@ -61,8 +59,7 @@ export default function ThemeShowcase() {
                 <h2 className="text-2xl font-bold text-light mb-4">
                     Accent Color
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <ColorBox color="bg-accent-500" name="accent-500" />
+                <div className="grid grid-cols-2 gap-4">
                     <ColorBox color="bg-accent" name="accent" />
                     <ColorBox color="bg-accent-hover" name="accent-hover" />
                 </div>
@@ -73,12 +70,7 @@ export default function ThemeShowcase() {
                 <h2 className="text-2xl font-bold text-light mb-4">
                     Light Color
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <ColorBox
-                        color="bg-light-500"
-                        name="light-500"
-                        textColor="text-dark"
-                    />
+                <div className="grid grid-cols-2 gap-4">
                     <ColorBox
                         color="bg-light"
                         name="light"
@@ -97,8 +89,7 @@ export default function ThemeShowcase() {
                 <h2 className="text-2xl font-bold text-light mb-4">
                     Dark Color
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <ColorBox color="bg-dark-500" name="dark-500" />
+                <div className="grid grid-cols-2 gap-4">
                     <ColorBox color="bg-dark" name="dark" />
                     <ColorBox color="bg-dark-hover" name="dark-hover" />
                 </div>
@@ -270,10 +261,10 @@ export default function ThemeShowcase() {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex justify-center">
-                        <div className="animate-pulse-slow bg-primary-500 rounded-full h-16 w-16"></div>
+                        <div className="animate-pulse-slow bg-primary rounded-full h-16 w-16"></div>
                     </div>
                     <div className="flex justify-center">
-                        <div className="animate-float bg-secondary-500 rounded-full h-16 w-16"></div>
+                        <div className="animate-float bg-secondary rounded-full h-16 w-16"></div>
                     </div>
                 </div>
             </section>

@@ -1,31 +1,46 @@
 # Contributing to Project Kororā
 
+## Table of Contents
+
+- [Contributing to Project Kororā](#contributing-to-project-kororā)
+  - [Table of Contents](#table-of-contents)
+  - [Development Workflow](#development-workflow)
+  - [Commit Messages](#commit-messages)
+    - [Commit Types](#commit-types)
+    - [Scope](#scope)
+    - [Breaking Changes](#breaking-changes)
+  - [Signing Commits](#signing-commits)
+    - [Setting Up GPG Key](#setting-up-gpg-key)
+    - [How to Sign Commits](#how-to-sign-commits)
+  - [Pull Requests](#pull-requests)
+    - [Best Practices](#best-practices)
+
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue or assessing patches and features.
 
 ## Development Workflow
 
-This project uses a feature branch workflow. When contributing, please follow these steps:
+Follow this 5-step loop for every contribution:
 
-1.  **Create a Feature Branch**: Branch off from the `main` branch. Name your branch with your username and a short description of your task.
+1. **Create a branch** off `main`:
+   ```bash
+   git checkout -b username/feature
+   ```
+2. **Commit often & push**:
+   ```bash
+   git add . # Add all changes to the staging area
+   git commit -m "feat: add awesome stuff" # Commit with a descriptive message
+   git push -u origin username/feature # Push the changes to the remote repository
+   ```
+3. **Open a Draft PR early** — CI checks will run.
+4. **Keep your branch up-to-date** (rebase, never merge into `main`):
+   ```bash
+   git fetch origin # Fetch the latest changes from the remote repository
+   git rebase origin/main # Rebase the current branch onto the main branch
+   git push --force-with-lease # Force push the changes to the remote repository
+   ```
+5. When approved, use **"Squash and merge"** to keep `main` linear.
 
-    ```bash
-    # Example for creating a branch named 'galengreen/new-feature' from 'main'
-    git checkout -b galengreen/new-feature main
-    ```
-
-2.  **Work and Commit**: Make your changes on your feature branch. Commit your work frequently with clear messages (See section below on commit messages)
-
-3.  **Stay Updated**: Regularly pull changes from the `main` branch into your feature branch to stay in sync and resolve conflicts early.
-
-    ```bash
-    git pull origin main
-    ```
-
-4.  **Open a Pull Request**: When your feature is complete, open a Pull Request from your feature branch back to the `main` branch.
-
-5.  **Code Review**: Your code will be reviewed by other team members.
-
-6.  **Merge**: Once approved, your code will be merged into the `main` branch.
+> ℹ️ `main` is protected—direct pushes are rejected to enforce code review and CI. All pushes must be signed (`git commit -S`) and fast-forwardable. See [Signing Commits](#signing-commits) for more info.
 
 This workflow helps keep our `main` branch clean and allows for effective collaboration.
 
