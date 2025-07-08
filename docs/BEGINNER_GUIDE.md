@@ -16,7 +16,7 @@
     - [Using Design Tokens (`globals.css`)](#using-design-tokens-globalscss)
       - [How to apply tokens in JSX/Tailwind](#how-to-apply-tokens-in-jsxtailwind)
       - [Mapping tokens in `tailwind.config.ts` (optional)](#mapping-tokens-in-tailwindconfigts-optional)
-  - [6. Git Workflow & Pull Requests](#6-git-workflow--pull-requests)
+  - [6. Git Workflow \& Pull Requests](#6-git-workflow--pull-requests)
   - [7. Linting \& Formatting](#7-linting--formatting)
   - [8. Testing (future)](#8-testing-future)
   - [9. Troubleshooting](#9-troubleshooting)
@@ -84,13 +84,14 @@ Visit **http://localhost:3000** — the site auto-reloads as you edit files.
 
 ```
 projectkorora.space/
-├─ src/app/          # Next.js 13+ App Router code
-│  ├─ (pages)/       # Route groups (about, contact, etc.)
-│  ├─ components/    # Re-usable UI components
-│  ├─ globals.css    # Global Tailwind styles
-│  └─ layout.tsx     # Root layout (shared across pages)
-├─ public/           # Static assets served at /<file>
-├─ docs/             # Project documentation (incl. **this file**)
+├─ src/app/           # Next.js 13+ App Router code
+│  ├─ (pages)/        # Route groups (about, contact, etc.)
+│  ├─ components/     # Re-usable UI components
+│  ├─ globals.css     # Global Tailwind styles (design tokens)
+│  └─ layout.tsx      # Root layout (shared across pages)
+├─ public/            # Static assets served at /<file>
+├─ docs/              # Project documentation (incl. **this file**)
+├─ tailwind.config.ts # Tailwind configuration & token mapping
 └─ ...
 ```
 
