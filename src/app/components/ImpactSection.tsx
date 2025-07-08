@@ -100,7 +100,7 @@ function AnimatedStat({ number, label, suffix = "", description }: StatProps) {
  *
  * @returns {JSX.Element} The rendered stats section.
  */
-export default function StatsSection() {
+export default function ImpactSection() {
     const stats = [
         {
             number: "1st",

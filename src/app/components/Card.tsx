@@ -72,7 +72,11 @@ export default function Card({
 
     return (
         <div
-            className={`group relative p-6 rounded-[var(--radius)] backdrop-blur-[var(--backdrop-blur)] transition-transform duration-300 ease-out hover:scale-[1.02] ${bg} ${border} ${className}`}
+            className={`group relative p-6
+                rounded               /* ← token */
+                backdrop-blur                 /* ← token */
+                transition-transform duration-300 ease-out hover:scale-[1.02]
+                ${bg} ${border} ${className}`}
             style={{
                 /* subtle depth + inner highlight */
                 boxShadow:

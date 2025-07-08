@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Card from "./Card";
 import Button from "./Button";
@@ -12,7 +11,7 @@ interface ColorBoxProps {
 
 const ColorBox = ({ color, name, textColor = "text-light" }: ColorBoxProps) => (
     <div
-        className={`p-4 rounded min-h-[80px] border border-light/10 flex items-center justify-center ${color} w-full`}
+        className={`p-4 rounded backdrop-blur min-h-[80px] flex items-center justify-center ${color} w-full`}
     >
         <p className={`${textColor} font-mono text-xs font-bold`}>{name}</p>
     </div>
@@ -62,6 +61,42 @@ export default function ThemeShowcase() {
                 <div className="grid grid-cols-2 gap-4">
                     <ColorBox color="bg-accent" name="accent" />
                     <ColorBox color="bg-accent-hover" name="accent-hover" />
+                </div>
+            </section>
+
+            {/* Gradients */}
+            <section>
+                <h2 className="text-2xl font-bold text-light mb-4">
+                    Gradients
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    {/* base gradients */}
+                    <ColorBox
+                        color="bg-gradient-to-r from-primary to-secondary"
+                        name="primary ➜ secondary"
+                    />
+                    <ColorBox
+                        color="bg-gradient-to-r from-primary to-accent"
+                        name="primary ➜ accent"
+                    />
+                    <ColorBox
+                        color="bg-gradient-to-r from-secondary to-accent"
+                        name="secondary ➜ accent"
+                    />
+
+                    {/* hover-state gradients */}
+                    <ColorBox
+                        color="bg-gradient-to-r from-primary-hover to-secondary-hover"
+                        name="primary-hover ➜ secondary-hover"
+                    />
+                    <ColorBox
+                        color="bg-gradient-to-r from-primary-hover to-accent-hover"
+                        name="primary-hover ➜ accent-hover"
+                    />
+                    <ColorBox
+                        color="bg-gradient-to-r from-secondary-hover to-accent-hover"
+                        name="secondary-hover ➜ accent-hover"
+                    />
                 </div>
             </section>
 
@@ -212,20 +247,20 @@ export default function ThemeShowcase() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                     {/* Default (surface) card */}
                     <Card>
-                        <h3 className="text-xl font-bold text-white mb-2">
+                        <h3 className="text-xl font-bold text-light mb-2">
                             Default Card
                         </h3>
-                        <p className="text-white/80">
+                        <p className="text-light/80">
                             Uses radius + blur tokens from globals.css.
                         </p>
                     </Card>
 
                     {/* Primary themed card */}
                     <Card color="primary">
-                        <h3 className="text-xl font-bold text-white mb-2">
+                        <h3 className="text-xl font-bold text-light mb-2">
                             Primary Card
                         </h3>
-                        <p className="text-white/80">
+                        <p className="text-light/80">
                             Background & glow driven by{" "}
                             <code>--color-primary</code>.
                         </p>
@@ -233,10 +268,10 @@ export default function ThemeShowcase() {
 
                     {/* Secondary themed card */}
                     <Card color="secondary">
-                        <h3 className="text-xl font-bold text-white mb-2">
+                        <h3 className="text-xl font-bold text-light mb-2">
                             Secondary Card
                         </h3>
-                        <p className="text-white/80">
+                        <p className="text-light/80">
                             Styled with <code>--color-secondary</code>{" "}
                             variables.
                         </p>
@@ -244,10 +279,10 @@ export default function ThemeShowcase() {
 
                     {/* Accent themed card */}
                     <Card color="accent">
-                        <h3 className="text-xl font-bold text-white mb-2">
+                        <h3 className="text-xl font-bold text-light mb-2">
                             Accent Card
                         </h3>
-                        <p className="text-white/80">
+                        <p className="text-light/80">
                             Styled with <code>--color-accent</code> variables.
                         </p>
                     </Card>

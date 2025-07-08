@@ -2,7 +2,7 @@ import PageContainer from "../components/PageContainer";
 import HeroSection from "../components/HeroSection";
 import MissionSection from "../components/MissionSection";
 import FeaturesSection from "../components/FeaturesSection";
-import StatsSection from "../components/StatsSection";
+import ImpactSection from "../components/ImpactSection";
 import CTASection from "../components/CTASection";
 
 /**
@@ -20,7 +20,7 @@ export default function HomePage() {
             <PageContainer>
                 <MissionSection />
                 <FeaturesSection />
-                <StatsSection />
+                <ImpactSection />
                 <CTASection />
             </PageContainer>
         </div>
