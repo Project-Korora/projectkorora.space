@@ -11,8 +11,17 @@ type CarouselContextProps = {
     scrollNext: () => void
 }
 
+type CarouselProps = {
+    showHint: boolean
+}
+
 const carouselContext = React.createContext<CarouselContextProps | null>(null)
 
+/**
+ * A hook to access carousel internals in order to extend functionality from other components
+ * @throws {Error} if not used within a carousel provider
+ * @returns {CarouselContextProps}
+ */
 function useCarousel() {
     const context = React.useContext(carouselContext)
     if (!context) {
@@ -21,14 +30,25 @@ function useCarousel() {
     return context
 }
 
+/**
+ * 
+ * @param {React.ComponentProps<"div"> & CarouselProps} props
+ * @returns {React.JSX.Element} Top level carousel component
+ */
 function Carousel({
     className = "",
     children,
+    showHint=true,
     ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div"> & CarouselProps) {
     const [carouselRef, carouselApi] = useEmblaCarousel()
-    const [hintVisible, setHintVisible] = React.useState(true)
-    
+    const [hintVisible, setHintVisible] = React.useState(showHint)
+
+
+    /**
+    *  callbacks to scroll the carousel left & right for use with other components
+    *  available via useCaraousel
+    */
     const scrollPrev = React.useCallback(() => {
         carouselApi?.scrollPrev()
     }, [carouselApi])
@@ -37,6 +57,7 @@ function Carousel({
         carouselApi?.scrollNext()
     }, [carouselApi])
 
+    // hides hint upon interaction 
     React.useEffect(() => {
         if (!carouselApi) return;
         const selectConn = () => {
@@ -61,6 +82,7 @@ function Carousel({
                 aria-roledescription="carousel"
                 {...props}
             >
+                {/* render a hint indicating swipe ability  */}
                 {hintVisible && (
                     <div className="pointer-events-none absolute inset-0 z-10 pb-2 flex items-end justify-between px-4">
                         <ChevronLeft className="h-6 w-6 shrink-0 animate-pulse" aria-hidden="true" />
@@ -74,6 +96,12 @@ function Carousel({
     )
 }
 
+
+/**
+ * Container holding carousel elements
+ * @param {React.ComponentProps<"div">} 
+ * @returns {React.JSX.Element}
+ */
 function CarouselDiv({
     className = "",
     ...props
@@ -90,6 +118,11 @@ function CarouselDiv({
     )
 }
 
+/**
+ * Single carousel element (slide)
+ * @param {React.ComponentProps<"div">}
+ * @returns {React.JSX.Element}
+ */
 function CarouselElement({
     className = "",
     ...props
@@ -105,7 +138,6 @@ function CarouselElement({
 }
 
 
-{/* expose useCarausel incase other components need access to the context */}
 export {
     Carousel,
     CarouselDiv,
