@@ -25,13 +25,13 @@ Follow this 5-step loop for every contribution:
 
 1. **Create a branch** off `main`:
    ```bash
-   git checkout -b username/feature
+   git checkout -b gitUsername/featureName
    ```
 2. **Commit often & push**:
    ```bash
    git add . # Add all changes to the staging area
    git commit -m "feat: add awesome stuff" # Commit with a descriptive message
-   git push -u origin username/feature # Push the changes to the remote repository
+   git push -u origin gitUsername/featureName # Push the changes to the remote repository
    ```
 3. **Open a Draft PR early** — CI checks will run.
 4. **Keep your branch up-to-date** (rebase, never merge into `main`):

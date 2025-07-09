@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import { useEffect, useState } from "react";
+import LoadingScreen from "./components/LoadingScreen";
 
 // Font Awesome configuration
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -26,9 +28,6 @@ const geistMono = Geist_Mono({
     weight: ["400", "500", "600", "700"],
 });
 
-import { useEffect, useState } from "react";
-import LoadingScreen from "./components/LoadingScreen";
-
 /**
  * The root layout for the entire application.
  *
@@ -46,6 +45,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const [isLoading, setIsLoading] = useState(true);
+    const [videoEnded, setVideoEnded] = useState(false);
 
     /* ① lock --device-height to physical screen size once */
     useEffect(() => {
@@ -92,20 +92,57 @@ export default function RootLayout({
                     font-sans antialiased flex flex-col h-device    /* ② use it here */
                 `}
             >
-                {/* Background video - bottom layer */}
+                {/* Background video */}
                 <video
                     src="/Background.mp4"
+                    poster="/background.jpg"
                     autoPlay
                     muted
                     playsInline
                     preload="auto"
-                    onEnded={(e) => {
-                        const video = e.currentTarget;
-                        video.currentTime = video.duration;
-                        video.pause();
+                    onEnded={() => setVideoEnded(true)}
+                    style={{
+                        position: "fixed",
+                        inset: 0,
+                        width: "100vw",
+                        height: "100vh",
+                        objectFit: "cover",
+                        pointerEvents: "none",
                     }}
-                    className="fixed inset-0 w-screen h-device object-cover pointer-events-none"
-                />
+                    aria-hidden="true"
+                >
+                    {/* Fallback for unsupported browsers */}
+                    <img
+                        src="/background.jpg"
+                        alt="Background"
+                        style={{
+                            position: "fixed",
+                            inset: 0,
+                            width: "100vw",
+                            height: "100vh",
+                            objectFit: "cover",
+                            pointerEvents: "none",
+                        }}
+                        aria-hidden="true"
+                    />
+                </video>
+
+                {/* Poster image after video ends */}
+                {videoEnded && (
+                    <img
+                        src="/background.jpg"
+                        alt="Background"
+                        style={{
+                            position: "fixed",
+                            inset: 0,
+                            width: "100vw",
+                            height: "100vh",
+                            objectFit: "cover",
+                            pointerEvents: "none",
+                        }}
+                        aria-hidden="true"
+                    />
+                )}
 
                 {/* Content layers - top layer */}
                 {isLoading && <LoadingScreen />}
