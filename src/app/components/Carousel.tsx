@@ -85,9 +85,9 @@ function Carousel({
                 {/* render a hint indicating swipe ability  */}
                 {hintVisible && (
                     <div className="pointer-events-none absolute inset-0 z-10 pb-2 flex items-end justify-between px-4">
-                        <ChevronLeft className="h-6 w-6 shrink-0 animate-pulse" aria-hidden="true" />
+                        <ChevronLeft className="h-6 w-6 shrink-0 animate-pulse-slow" aria-hidden="true" />
                         <span className="mx-2 text-xs font-medium pb-1 uppercase tracking-wide">Swipe</span>
-                        <ChevronRight className="h-6 w-6 shrink-0 animate-pulse" aria-hidden="true" />
+                        <ChevronRight className="h-6 w-6 shrink-0 animate-pulse-slow" aria-hidden="true" />
                     </div>
                 )}
                 {children}
