@@ -34,7 +34,7 @@ export default function HeroSection() {
                 <h1 className="text-7xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight">
                     <span className="text-light">Project</span>
                     <br />
-                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    <span className="text-[#139FCE]">
                         Kororā
                     </span>
                 </h1>
@@ -52,7 +52,7 @@ export default function HeroSection() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                     <Link
                         href="/about"
-                        className="group px-8 py-4 bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-light font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
+                        className="group px-8 py-4 bg-gradient-to-r from-[#07456E] to-[#2077A2] hover:opacity-90 text-light font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
                     >
                         <span className="flex items-center">
                             Explore Our Mission

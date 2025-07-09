@@ -106,13 +106,12 @@ export default function Navigation() {
                                     <NavLink
                                         key={item.href}
                                         href={item.href}
-                                        onClick={closeMobileMenu}
-                                        className="block text-base font-medium"
-                                        role="menuitem"
+                                        className={item.name === "Home" ? "text-[#2077A2]" : ""}
                                     >
                                         {item.name}
                                     </NavLink>
                                 ))}
+
                             </div>
                         </div>
                     )}

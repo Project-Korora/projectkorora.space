@@ -23,9 +23,7 @@ export default function Logo() {
                 priority
             />
             <span>Project</span>
-            <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
-                Kororā
-            </span>
+            <span className="text-[#2077A2]">Kororā</span>
         </Link>
     );
 }
