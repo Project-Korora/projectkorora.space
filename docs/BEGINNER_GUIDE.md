@@ -174,7 +174,7 @@ Helpful Resources:
 
 ## 6. Git Workflow & Pull Requests
 
-For branching, commit conventions, signed commits, and pull-request requirements, refer to the authoritative **[Contributing Guide](../.github/CONTRIBUTING.md)**.
+For branching, commit conventions, signed commits, and pull-request requirements, refer to the authoritative **[Contributing Guide](CONTRIBUTING.md)**.
 
 ---
 
