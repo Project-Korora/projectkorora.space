@@ -168,6 +168,35 @@ export default function ThemeShowcase() {
                                 <Button isLoading>Loading</Button>
                             </div>
                         </div>
+
+                        {/* Gradient Buttons */}
+                        <div>
+                            <h3 className="text-lg font-bold text-light mb-3">
+                                Gradient Buttons
+                            </h3>
+                            <div className="flex flex-wrap gap-4">
+                                <Button
+                                    gradientColors={["primary", "secondary"]}
+                                >
+                                    Primary ➜ Secondary
+                                </Button>
+                                <Button
+                                    gradientColors={[
+                                        "primary",
+                                        "accent",
+                                        "secondary",
+                                    ]}
+                                >
+                                    Three-Color Gradient
+                                </Button>
+                                <Button
+                                    gradientColors={["accent", "secondary"]}
+                                    gradientDirection="tr"
+                                >
+                                    Diagonal Gradient
+                                </Button>
+                            </div>
+                        </div>
                     </div>
                 </Card>
             </section>

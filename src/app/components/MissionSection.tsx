@@ -17,13 +17,13 @@ export default function MissionSection() {
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold text-light mb-6">
                         Our{" "}
-                        <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             Mission
                         </span>
                     </h2>
-                    <p className="text-xl text-white/70 max-w-3xl mx-auto">
+                    <p className="text-xl text-light/70 max-w-3xl mx-auto">
                         Advancing New Zealand&apos;s space capabilities through
                         student-led innovation and cutting-edge CubeSat
                         technology
@@ -35,10 +35,10 @@ export default function MissionSection() {
                     {/* Text Content */}
                     <div className="space-y-6">
                         <div className="space-y-4">
-                            <h3 className="text-2xl font-semibold text-white">
+                            <h3 className="text-2xl font-semibold text-light">
                                 Pioneering Space Technology
                             </h3>
-                            <p className="text-white/80 leading-relaxed">
+                            <p className="text-light/80 leading-relaxed">
                                 Project Kororā represents New Zealand&apos;s
                                 first comprehensive student-led CubeSat
                                 initiative, designed to develop our
@@ -49,10 +49,10 @@ export default function MissionSection() {
                         </div>
 
                         <div className="space-y-4">
-                            <h3 className="text-2xl font-semibold text-white">
+                            <h3 className="text-2xl font-semibold text-light">
                                 Educational Excellence
                             </h3>
-                            <p className="text-white/80 leading-relaxed">
+                            <p className="text-light/80 leading-relaxed">
                                 Based at Te Herenga Waka—Victoria University of
                                 Wellington, our project provides hands-on
                                 experience in aerospace engineering, fostering
@@ -64,21 +64,21 @@ export default function MissionSection() {
 
                     {/* Visual Element */}
                     <div className="relative">
-                        <Card color="primary" className="p-8">
+                        <Card color="secondary" className="p-8">
                             {/* Satellite Icon */}
                             <div className="text-center mb-6">
-                                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full mb-4">
+                                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded mb-4">
                                     <FontAwesomeIcon
                                         icon={faSatellite}
-                                        className="text-white"
+                                        className="text-light"
                                         size="3x"
                                         fixedWidth
                                     />
                                 </div>
-                                <h4 className="text-xl font-semibold text-white mb-2">
+                                <h4 className="text-xl font-semibold text-light mb-2">
                                     CubeSat Technology
                                 </h4>
-                                <p className="text-white/70 text-sm">
+                                <p className="text-light/70 text-sm">
                                     Developing next-generation small satellites
                                     with innovative electric propulsion
                                     capabilities
@@ -88,18 +88,18 @@ export default function MissionSection() {
                             {/* Stats */}
                             <div className="grid grid-cols-2 gap-4 text-center">
                                 <div>
-                                    <div className="text-2xl font-bold text-secondary">
+                                    <div className="text-2xl font-bold text-accent">
                                         3U
                                     </div>
-                                    <div className="text-white/60 text-sm">
+                                    <div className="text-light text-sm">
                                         CubeSat Size
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="text-2xl font-bold text-secondary">
+                                    <div className="text-2xl font-bold text-accent">
                                         EP
                                     </div>
-                                    <div className="text-white/60 text-sm">
+                                    <div className="text-light text-sm">
                                         Propulsion
                                     </div>
                                 </div>
