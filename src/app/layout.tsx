@@ -26,8 +26,8 @@ const geistMono = Geist_Mono({
     weight: ["400", "500", "600", "700"],
 });
 
-// Moved metadata to a separate file since we're now using "use client"
-// The metadata is defined in src/app/metadata.ts
+import { useEffect, useState } from "react";
+import LoadingScreen from "./components/LoadingScreen";
 
 /**
  * The root layout for the entire application.
@@ -45,6 +45,28 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const [isLoading, setIsLoading] = useState(true);
+
+    /* ① lock --device-height to physical screen size once */
+    useEffect(() => {
+        // `window.screen.height` = full device height in CSS px, unaffected by
+        // browser chrome showing/hiding
+        const cssPx = `${window.screen.height}px`;
+        document.documentElement.style.setProperty("--device-height", cssPx);
+
+        const handleLoad = () => setIsLoading(false);
+
+        if (document.readyState === "complete") {
+            setIsLoading(false);
+        } else {
+            window.addEventListener("load", handleLoad);
+        }
+
+        return () => {
+            window.removeEventListener("load", handleLoad);
+        };
+    }, []);
+
     return (
         <html lang="en">
             <head>
@@ -65,7 +87,10 @@ export default function RootLayout({
                 <link rel="manifest" href="/site.webmanifest" />
             </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen relative`}
+                className={`
+                    ${geistSans.variable} ${geistMono.variable}
+                    font-sans antialiased flex flex-col h-device    /* ② use it here */
+                `}
             >
                 {/* Background video - bottom layer */}
                 <video
@@ -79,28 +104,18 @@ export default function RootLayout({
                         video.currentTime = video.duration;
                         video.pause();
                     }}
-                    className="fixed inset-0 w-screen h-screen object-cover pointer-events-none"
+                    className="fixed inset-0 w-screen h-device object-cover pointer-events-none"
                 />
 
                 {/* Content layers - top layer */}
-                <div className="relative z-10 flex flex-col min-h-screen">
+                {isLoading && <LoadingScreen />}
+                <div className="relative z-10 flex flex-col h-device">
                     <Navigation />
                     <main className="flex-1 pt-16 pointer-events-auto">
                         {children}
                     </main>
                     <Footer />
                 </div>
-            </body>
-        </html>
-    );
-    return (
-        <html lang="en">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}
-            >
-                <Navigation />
-                <main className="flex-1 pt-16">{children}</main>
-                <Footer />
             </body>
         </html>
     );

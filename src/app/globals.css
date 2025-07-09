@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* Device height lock to avoid mobile browser chrome resizing */
+:root {
+    --device-height: 100vh; /* updated to physical screen height in layout.tsx */
+}
+
+.h-device {
+    height: var(--device-height);
+    min-height: var(--device-height);
+}
+
 @theme {
     /**
      * ========================================================================
