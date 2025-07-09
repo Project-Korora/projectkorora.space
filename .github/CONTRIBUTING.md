@@ -5,6 +5,7 @@
 - [Contributing to Project Kororā](#contributing-to-project-kororā)
   - [Table of Contents](#table-of-contents)
   - [Development Workflow](#development-workflow)
+    - [Quick Rebase Summary (CLI \& VS Code)](#quick-rebase-summary-cli--vs-code)
     - [(Optional) Open the Pull Request from your terminal](#optional-open-the-pull-request-from-your-terminal)
   - [Commit Messages](#commit-messages)
     - [Commit Types](#commit-types)
@@ -42,6 +43,28 @@ Follow this 5-step loop for every contribution:
 5. When approved, use **"Squash and merge"** to keep `main` linear.
 
 > ℹ️ `main` is protected—direct pushes are rejected to enforce code review and CI. All pushes must be signed (`git commit -S`) and fast-forwardable. See [Signing Commits](#signing-commits) for more info.
+
+### Quick Rebase Summary (CLI & VS Code)
+
+Fetch → rebase → push:
+
+```bash
+# Make sure you are on your feature branch
+git fetch origin          # Grab latest main
+git rebase origin/main    # Replay your commits on top of main
+# Fix any conflicts, then:
+git rebase --continue     # or --abort / --skip as needed
+git push --force-with-lease  # Update your PR
+```
+
+**Doing the same in VS Code**
+
+1. Open the **Source Control** view (⟲ icon in the Activity Bar).
+2. Click the **⋯** menu and choose **Pull (Rebase)** _or_ press `⇧⌘P` and run **Git: Rebase Current Branch…**, selecting `origin/main` as the target.
+3. Resolve conflicts inline using **Accept Current / Incoming** buttons; VS Code shows a **Continue Rebase** button when all conflicts are resolved.
+4. Finally press **Push**—VS Code automatically uses `--force-with-lease`.
+
+Rebasing keeps the history linear and your pull request easy to review.
 
 ---
 
