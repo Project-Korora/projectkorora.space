@@ -11,14 +11,44 @@ The official website for Project Kororā, a student-led space initiative at Te H
 
 ### Getting Started
 
-To set up the project locally:
+There are two ways to set up the project locally: using Docker (recommended) or traditional setup.
 
-#### Prerequisites
+#### Option 1: Docker Setup (Recommended)
+
+Prerequisites:
+
+- Docker installed ([Get Docker](https://docs.docker.com/get-docker/))
+- Docker Compose installed (comes with Docker Desktop)
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Project-Korora/projectkorora.space.git
+   cd projectkorora.space
+   ```
+
+2. Start the development server:
+
+   ```bash
+   # For development (with hot reload)
+   docker compose up web
+
+   # For production build
+   docker compose up web-prod
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+Note for Apple Silicon (M1/M2) users:
+
+- Uncomment the `platform: linux/amd64` line in `docker-compose.yml` if you experience any issues.
+
+#### Option 2: Traditional Setup
+
+Prerequisites:
 
 - Git installed (https://git-scm.com/)
 - Node.js and npm installed (https://nodejs.org/)
-
-#### Steps
 
 1. Clone the repository:
 
@@ -27,9 +57,11 @@ To set up the project locally:
    ```
 
 2. Navigate to the website's directory:
+
    ```bash
    cd projectkorora.space
    ```
+
 3. Install the dependencies:
 
    ```bash
@@ -74,6 +106,7 @@ _For a step-by-step walkthrough (Node install, token system, Git workflow), see 
 - **[React](https://react.dev/learn)**: A JavaScript library for building dynamic user interfaces.
 - **[TypeScript](https://www.typescriptlang.org/docs)**: A statically typed superset of JavaScript that enhances code quality and maintainability.
 - **[Tailwind CSS](https://tailwindcss.com/docs)**: A utility-first CSS framework for rapidly building custom designs.
+- **[Docker](https://docs.docker.com/)**: Containerization platform for consistent development and deployment environments.
 
 ## License
 

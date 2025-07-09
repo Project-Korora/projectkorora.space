@@ -119,6 +119,8 @@ The project is broken down into the following epics. Each epic contains a list o
 | **5.3** | **Production Deployment Setup**   | Configure the production deployment workflow, triggered on merge to the main branch.                                                                                  |
 | **5.4** | **Lighthouse Score Optimization** | Run Lighthouse audits and implement changes to achieve scores of 90+ in all categories. **Optimization techniques used are documented in the architecture guide.**    |
 | **5.5** | **Bundle Size Analysis**          | Use `@next/bundle-analyzer` to inspect the production bundle and identify opportunities for optimization.                                                             |
+| **5.6** | **Docker Environment Setup**      | Implement Docker-based development and production environments. **Docker setup and usage documented in `docs/how-to/docker-setup.md`.**                               |
+| **5.7** | **Container Optimization**        | Optimize Docker images for size and security. Implement multi-stage builds and proper caching strategies. **Document optimization techniques.**                       |
 
 ### Epic 6: Final Documentation & Knowledge Transfer
 
