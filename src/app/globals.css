@@ -164,6 +164,8 @@ html {
 }
 
 body {
+    /* Disable bounce/overscroll on the body element as well (some browsers require both) */
+    overscroll-behavior: none;
     background: #000000;
     color: #ffffff;
     font-family: var(--font-geist-sans), system-ui, sans-serif;
