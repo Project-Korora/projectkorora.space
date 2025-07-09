@@ -5,8 +5,6 @@ import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 
-import BackgroundImage from "./components/BackgroundImage";
-
 // Font Awesome configuration
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -69,8 +67,20 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen relative`}
             >
-                {/* Background image - bottom layer */}
-                <BackgroundImage src="/background.jpg" />
+                {/* Background video - bottom layer */}
+                <video
+                    src="/Background.mp4"
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="auto"
+                    onEnded={(e) => {
+                        const video = e.currentTarget;
+                        video.currentTime = video.duration;
+                        video.pause();
+                    }}
+                    className="fixed inset-0 w-screen h-screen object-cover pointer-events-none"
+                />
 
                 {/* Content layers - top layer */}
                 <div className="relative z-10 flex flex-col min-h-screen">
@@ -88,34 +98,6 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}
             >
-                {/* Particles background covering the whole screen */}
-                <div
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100vh",
-                        zIndex: -1,
-                    }}
-                >
-                    <Particles
-                        particleColors={["#ffffff", "#ffffff"]}
-                        particleCount={500}
-                        particleSpread={10}
-                        speed={0.03}
-                        particleBaseSize={100}
-                        sizeRandomness={0}
-                        cameraDistance={10}
-                        moveParticlesOnHover={false}
-                        alphaParticles={true}
-                        disableRotation={false}
-                    />
-                </div>
-
-                {/* Animated dark overlay that fades in on page load */}
-                <AnimatedOverlay />
-
                 <Navigation />
                 <main className="flex-1 pt-16">{children}</main>
                 <Footer />

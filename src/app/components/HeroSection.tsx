@@ -32,15 +32,15 @@ export default function HeroSection() {
             >
                 {/* Main Title with Gradient */}
                 <h1 className="text-7xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight">
-                    <span className="text-white">Project</span>
+                    <span className="text-light">Project</span>
                     <br />
-                    <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                         Kororā
                     </span>
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
+                <p className="text-xl md:text-2xl text-light/80 mb-8 max-w-4xl mx-auto leading-relaxed">
                     New Zealand CubeSat with
                     <span className="text-primary font-semibold">
                         {" "}
@@ -52,7 +52,7 @@ export default function HeroSection() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                     <Link
                         href="/about"
-                        className="group px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] hover:opacity-90 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[var(--color-primary)]/25"
+                        className="group px-8 py-4 bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-light font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
                     >
                         <span className="flex items-center">
                             Explore Our Mission
@@ -66,7 +66,7 @@ export default function HeroSection() {
                     </Link>
                     <Link
                         href="/proposal"
-                        className="px-8 py-4 border-2 border-white/30 hover:border-white/60 text-white font-semibold rounded-lg transition-all duration-300 backdrop-blur-sm hover:bg-white/10"
+                        className="px-8 py-4 border-2 border-light/30 hover:border-light/60 text-light font-semibold transition-all duration-300 backdrop-blur-sm hover:bg-light/10"
                     >
                         View Our Proposal
                     </Link>

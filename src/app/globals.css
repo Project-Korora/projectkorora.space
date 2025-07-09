@@ -34,8 +34,8 @@
      * ========================================================================
      */
 
-    /** @theme A deep color used for primary actions and highlights. */
-    --color-primary-500: rgb(5 68 109);
+    /** @theme A color used for primary actions and highlights. */
+    --color-primary-500: #017bc0;
     --color-primary: var(--color-primary-500);
     --color-primary-hover: color-mix(
         in srgb,
@@ -43,8 +43,8 @@
         transparent
     );
 
-    /** @theme A lighter color for secondary elements. */
-    --color-secondary-500: rgb(29 98 151);
+    /** @theme A color for secondary elements. */
+    --color-secondary-500: #263e9f;
     --color-secondary: var(--color-secondary-500);
     --color-secondary-hover: color-mix(
         in srgb,
@@ -53,7 +53,7 @@
     );
 
     /** @theme Used for call-to-actions and special highlights. */
-    --color-accent-500: hsl(160 84% 39%);
+    --color-accent-500: #7dd2ed;
     --color-accent: var(--color-accent-500);
     --color-accent-hover: color-mix(
         in srgb,
@@ -62,7 +62,7 @@
     );
 
     /** @theme A very light color, used for text and bright UI elements. */
-    --color-light-500: hsl(0deg 0% 100%);
+    --color-light-500: hsl(0deg 0% 95%);
     --color-light: var(--color-light-500);
     --color-light-hover: color-mix(
         in srgb,
@@ -71,7 +71,7 @@
     );
 
     /** @theme A very dark color, used for backgrounds and dark UI elements. */
-    --color-dark-500: hsl(0deg 0% 0%);
+    --color-dark-500: hsl(0deg 0% 1%);
     --color-dark: var(--color-dark-500);
     /** @theme A subtle hover effect for dark elements, mixing in a hint of light. */
     --color-dark-hover: color-mix(in srgb, var(--color-light) 5%, transparent);
@@ -106,7 +106,7 @@
     /** @theme The default application-wide border radius for all elements. */
     --radius: var(--radius-4xl);
 
-    --backdrop-blur-xs: 2px;
+    --backdrop-blur-xs: 10px;
     /** @theme The default application-wide backdrop blur. */
     --backdrop-blur: var(--backdrop-blur-xs);
 
