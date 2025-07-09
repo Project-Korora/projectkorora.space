@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Card from "./Card";
+import Skeleton from "./Skeleton";
 
 interface TeamCardProps {
     team: string;
@@ -29,12 +30,13 @@ export default function TeamCard({
     name,
     title,
     className = "",
-    image = "/images/team/placeholder.jpg", // Default placeholder image
+    image
 }: TeamCardProps) {
     return (
         <Card className={className}>
             {/* Team Name Image */}
             <div className="mb-4 flex justify-center">
+                {image ? (
                 <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-primary-400/30">
                     <Image
                         src={image}
@@ -42,7 +44,7 @@ export default function TeamCard({
                         fill
                         className="object-cover"
                     />
-                </div>
+                </div>) : <Skeleton className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-primary-400/30"></Skeleton>}
             </div>
             <div className="mb-4 text-center">
                 <h3 className="text-xl font-bold mb-2 text-white">{name}</h3>

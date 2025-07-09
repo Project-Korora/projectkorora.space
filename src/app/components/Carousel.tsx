@@ -12,7 +12,7 @@ type CarouselContextProps = {
 }
 
 type CarouselProps = {
-    showHint: boolean
+    showHint?: boolean
 }
 
 const carouselContext = React.createContext<CarouselContextProps | null>(null)
