@@ -115,7 +115,7 @@ AI-powered assistants are valuable tools in our development workflow. They shoul
 
 ## 7. Maintenance & Contribution Workflow
 
-Documentation is a living part of the project and must be maintained. Our general contribution process is defined in the project's [**CONTRIBUTING.md**](../.github/CONTRIBUTING.md) guide, which covers the Git workflow and pull request standards. The following rules apply specifically to documentation:
+Documentation is a living part of the project and must be maintained. Our general contribution process is defined in the project's [**CONTRIBUTING.md**](CONTRIBUTING.md) guide, which covers the Git workflow and pull request standards. The following rules apply specifically to documentation:
 
 1. **Documentation is Required in Pull Requests:** Every PR that introduces or changes code _must_ include corresponding changes to documentation. This could be updating JSDoc, modifying a conceptual guide, or adding a new how-to.
 2. **Documentation in Code Reviews:** Documentation is a first-class citizen in our PR review process. Reviewers are expected to check documentation for clarity, accuracy, and adherence to the style guide, just as they would with code.

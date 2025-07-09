@@ -50,7 +50,7 @@ _For a step-by-step walkthrough (Node install, token system, Git workflow), see 
 > We welcome contributions! Please read the docs for more information on how to get started.
 
 - 📘 **Beginner Onboarding Guide** – step-by-step setup & workflow: [docs/BEGINNER_GUIDE.md](docs/BEGINNER_GUIDE.md)
-- 🤝 **Contributing Guide** – branching, commits, PR process: [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md)
+- 🤝 **Contributing Guide** – branching, commits, PR process: [.docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)
 - 📝 **Documentation Guidelines** – style & formatting rules: [docs/DOCUMENTATION_GUIDELINES.md](docs/DOCUMENTATION_GUIDELINES.md)
 - 🛣️ **Development Plan** – roadmap & milestones: [docs/DEVELOPMENT_PLAN.md](docs/DEVELOPMENT_PLAN.md)
 
