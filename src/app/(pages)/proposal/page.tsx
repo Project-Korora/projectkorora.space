@@ -6,6 +6,7 @@ import PageContainer from "../../components/PageContainer";
 import PageHeader from "../../components/PageHeader";
 import Card from "../../components/Card";
 import { useProposalAccess } from "../../components/ProposalAccessProvider";
+import LoadingScreen from "../../components/LoadingScreen";
 
 /**
  * The project proposal page.
@@ -22,14 +23,15 @@ export default function ProposalPage() {
 
     useEffect(() => {
         if (!hasAccess) {
-            // Redirect to home page if no access
-            router.push("/");
+            // Use replace instead of push for faster navigation
+            // Replace doesn't add to browser history
+            router.replace("/");
         }
     }, [hasAccess, router]);
 
-    // Don't render content if no access
+    // Don't render content if no access, show loading screen while redirect happens
     if (!hasAccess) {
-        return null;
+        return <LoadingScreen />;
     }
 
     return (
