@@ -101,7 +101,7 @@ export default function Navigation() {
                             role="menu"
                             aria-label="Mobile navigation menu"
                         >
-                            <div className="bg-black/50 backdrop-blur-lg border border-white/10 rounded-lg mt-2 px-2 pt-2 pb-3 space-y-1">
+                            <div className="bg-black/50 backdrop-blur-lg border border-white/10 rounded-lg mt-2 px-2 pt-2 pb-3 space-y-1 mb-3">
                                 {navigationItems.map((item) => (
                                     <NavLink
                                         key={item.href}

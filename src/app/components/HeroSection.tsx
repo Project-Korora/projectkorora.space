@@ -18,6 +18,7 @@ import Button from "./Button";
 export default function HeroSection() {
     const [scrollY, setScrollY] = useState(0);
 
+    // Parallax effect on scroll
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
         window.addEventListener("scroll", handleScroll);

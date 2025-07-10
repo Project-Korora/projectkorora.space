@@ -25,7 +25,7 @@ export default function MobileMenuButton({
                 isOpen
                     ? "text-primary font-bold"
                     : "text-white hover:text-white/80"
-            } focus:outline-none focus:ring-2 focus:ring-white/20 p-2`}
+            } focus:outline-none p-2`}
             aria-expanded={isOpen}
             aria-label="Toggle navigation menu"
         >

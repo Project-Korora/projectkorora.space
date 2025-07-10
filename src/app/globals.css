@@ -1,15 +1,5 @@
 @import "tailwindcss";
 
-/* Device height lock to avoid mobile browser chrome resizing */
-:root {
-    --device-height: 100vh; /* updated to physical screen height in layout.tsx */
-}
-
-.h-device {
-    height: var(--device-height);
-    min-height: var(--device-height);
-}
-
 @theme {
     /**
      * ========================================================================
@@ -161,6 +151,9 @@ html {
     scroll-behavior: smooth;
     /* Ensure no overflow issues at the bottom of the page. */
     overscroll-behavior: none;
+    /* Prevent mobile scroll jitter */
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -171,6 +164,9 @@ body {
     font-family: var(--font-geist-sans), system-ui, sans-serif;
     position: relative;
     min-height: 100vh;
+    /* Mobile scroll optimization */
+    height: 100%;
+    overflow-x: hidden;
 }
 
 /* Fixed background using pseudo-element - works on mobile */
