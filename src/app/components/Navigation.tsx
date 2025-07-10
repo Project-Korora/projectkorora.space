@@ -4,17 +4,19 @@ import { useState, useEffect } from "react";
 import Logo from "./Logo";
 import NavLink from "./NavLink";
 import MobileMenuButton from "./MobileMenuButton";
+import { useProposalAccess } from "./ProposalAccessProvider";
 
 interface NavigationItem {
     name: string;
     href: string;
+    requiresAccess?: boolean;
 }
 
-const navigationItems: NavigationItem[] = [
+const baseNavigationItems: NavigationItem[] = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Team", href: "/team" },
-    { name: "Proposal", href: "/proposal" },
+    { name: "Proposal", href: "/proposal", requiresAccess: true },
     { name: "Contact", href: "/contact" },
     { name: "Theme", href: "/theme" },
 ];
@@ -30,6 +32,12 @@ const navigationItems: NavigationItem[] = [
  */
 export default function Navigation() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { hasAccess } = useProposalAccess();
+
+    // Filter navigation items based on access
+    const navigationItems = baseNavigationItems.filter(
+        (item) => !item.requiresAccess || hasAccess
+    );
 
     // Close mobile menu when window is resized to desktop size
     useEffect(() => {
