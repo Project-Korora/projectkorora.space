@@ -35,7 +35,7 @@
      */
 
     /** @theme A color used for primary actions and highlights. */
-    --color-primary-500: #017bc0;
+    --color-primary-500: #2077a2;
     --color-primary: var(--color-primary-500);
     --color-primary-hover: color-mix(
         in srgb,
@@ -44,7 +44,7 @@
     );
 
     /** @theme A color for secondary elements. */
-    --color-secondary-500: #263e9f;
+    --color-secondary-500: #07456e;
     --color-secondary: var(--color-secondary-500);
     --color-secondary-hover: color-mix(
         in srgb,
