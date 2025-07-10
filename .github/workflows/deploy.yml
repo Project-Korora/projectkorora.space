@@ -2,9 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [feat-galengreen/access-control-system]
+    branches: [main]
   pull_request:
-    branches: [feat-galengreen/access-control-system]
+    branches: [main]
 
 permissions:
   contents: read
@@ -48,7 +48,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/feat-galengreen/access-control-system'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
