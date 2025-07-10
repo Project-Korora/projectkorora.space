@@ -49,6 +49,9 @@ const config: Config = {
                 "pulse-slow": "var(--animate-pulse-slow)",
                 float: "var(--animate-float)",
             },
+            height: {
+                device: "var(--device-height)",
+            },
         },
     },
     plugins: [],
