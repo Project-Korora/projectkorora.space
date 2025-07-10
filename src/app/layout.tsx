@@ -105,7 +105,7 @@ export default function RootLayout({
                         position: "fixed",
                         inset: 0,
                         width: "100vw",
-                        height: "100vh",
+                        height: "var(--device-height)",
                         objectFit: "cover",
                         pointerEvents: "none",
                     }}
@@ -119,7 +119,7 @@ export default function RootLayout({
                             position: "fixed",
                             inset: 0,
                             width: "100vw",
-                            height: "100vh",
+                            height: "var(--device-height)",
                             objectFit: "cover",
                             pointerEvents: "none",
                         }}
@@ -136,7 +136,7 @@ export default function RootLayout({
                             position: "fixed",
                             inset: 0,
                             width: "100vw",
-                            height: "100vh",
+                            height: "var(--device-height)",
                             objectFit: "cover",
                             pointerEvents: "none",
                         }}

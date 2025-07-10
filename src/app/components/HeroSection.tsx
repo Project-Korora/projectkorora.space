@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Button from "./Button";
 
 /**
  * The hero section for the homepage.
@@ -17,6 +18,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 export default function HeroSection() {
     const [scrollY, setScrollY] = useState(0);
 
+    // Parallax effect on scroll
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
         window.addEventListener("scroll", handleScroll);
@@ -49,10 +51,13 @@ export default function HeroSection() {
                 </p>
 
                 {/* CTA Buttons */}
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                    <Link
+                    <Button
                         href="/about"
-                        className="group px-8 py-4 bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-light font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
+                        gradientColors={["primary", "secondary"]}
+                        size="lg"
+                        className="group transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-secondary/20"
                     >
                         <span className="flex items-center">
                             Explore Our Mission
@@ -63,13 +68,10 @@ export default function HeroSection() {
                                 fixedWidth
                             />
                         </span>
-                    </Link>
-                    <Link
-                        href="/proposal"
-                        className="px-8 py-4 border-2 border-light/30 hover:border-light/60 text-light font-semibold transition-all duration-300 backdrop-blur-sm hover:bg-light/10"
-                    >
+                    </Button>
+                    <Button href="/proposal" variant="outline" size="lg">
                         View Our Proposal
-                    </Link>
+                    </Button>
                 </div>
             </div>
         </section>

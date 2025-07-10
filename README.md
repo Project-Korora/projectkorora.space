@@ -20,7 +20,7 @@ To set up the project locally:
 
 #### Steps
 
-1. Clone the repository:
+1. Clone the repository(NOT FORK):
 
    ```bash
    git clone https://github.com/Project-Korora/projectkorora.space.git

@@ -77,14 +77,14 @@ function AnimatedStat({ number, label, suffix = "", description }: StatProps) {
 
     return (
         <div ref={ref} className="text-center">
-            <div className="text-4xl md:text-6xl font-bold text-white mb-2">
-                <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
+            <div className="text-4xl md:text-6xl font-bold text-light mb-2">
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                     {displayNumber}
                     {suffix}
                 </span>
             </div>
-            <div className="text-lg font-semibold text-white mb-2">{label}</div>
-            <div className="text-sm text-white/60 max-w-xs mx-auto">
+            <div className="text-lg font-semibold text-light mb-2">{label}</div>
+            <div className="text-sm text-light/60 max-w-xs mx-auto">
                 {description}
             </div>
         </div>
@@ -106,7 +106,7 @@ export default function ImpactSection() {
             number: "1st",
             label: "Student CubeSat",
             description:
-                "New Zealand&apos;s pioneering student-led satellite initiative",
+                "New Zealand's pioneering student-led satellite initiative",
         },
         {
             number: "3",
@@ -132,13 +132,13 @@ export default function ImpactSection() {
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold text-light mb-6">
                         Project{" "}
-                        <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             Impact
                         </span>
                     </h2>
-                    <p className="text-xl text-white/70 max-w-3xl mx-auto">
+                    <p className="text-xl text-light/80 max-w-3xl mx-auto">
                         Measurable progress toward advancing New Zealand&apos;s
                         space capabilities and educational excellence
                     </p>
@@ -147,7 +147,7 @@ export default function ImpactSection() {
                 {/* Stats Container */}
                 <div className="relative">
                     {/* Background Glow */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/10 via-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 rounded-3xl blur-xl"></div>
+                    <div className="absolute inset-0 bg-primary/10 rounded-3xl blur-xl"></div>
 
                     {/* Stats Grid */}
                     <Card className="p-8 md:p-12">
@@ -167,53 +167,53 @@ export default function ImpactSection() {
 
                 {/* Additional Info */}
                 <div className="mt-16 grid md:grid-cols-3 gap-8">
-                    <Card color="accent" className="text-center">
-                        <div className="inline-flex items-center justify-center w-12 h-12 bg-[var(--color-accent)]/20 rounded-lg mb-4">
+                    <Card color="primary" className="text-center">
+                        <div className="inline-flex items-center justify-center w-12 h-12 bg-accent/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faAward}
-                                className="text-primary"
+                                className="text-light"
                                 size="xl"
                                 fixedWidth
                             />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-2">
+                        <h3 className="text-lg font-semibold text-light mb-2">
                             Academic Excellence
                         </h3>
-                        <p className="text-white/70 text-sm">
+                        <p className="text-light/70 text-sm">
                             Victoria University of Wellington partnership
                         </p>
                     </Card>
 
-                    <Card color="accent" className="text-center">
-                        <div className="inline-flex items-center justify-center w-12 h-12 bg-[var(--color-accent)]/20 rounded-lg mb-4">
+                    <Card color="primary" className="text-center">
+                        <div className="inline-flex items-center justify-center w-12 h-12 bg-accent/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faCog}
-                                className="text-primary"
+                                className="text-light"
                                 size="xl"
                                 fixedWidth
                             />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-2">
+                        <h3 className="text-lg font-semibold text-light mb-2">
                             Innovation Focus
                         </h3>
-                        <p className="text-white/70 text-sm">
+                        <p className="text-light/70 text-sm">
                             Cutting-edge space technology development
                         </p>
                     </Card>
 
-                    <Card color="accent" className="text-center">
-                        <div className="inline-flex items-center justify-center w-12 h-12 bg-[var(--color-accent)]/20 rounded-lg mb-4">
+                    <Card color="primary" className="text-center">
+                        <div className="inline-flex items-center justify-center w-12 h-12 bg-accent/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faGlobe}
-                                className="text-primary"
+                                className="text-light"
                                 size="xl"
                                 fixedWidth
                             />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-2">
+                        <h3 className="text-lg font-semibold text-light mb-2">
                             Industry Impact
                         </h3>
-                        <p className="text-white/70 text-sm">
+                        <p className="text-light/70 text-sm">
                             Building New Zealand&apos;s space economy
                         </p>
                     </Card>
