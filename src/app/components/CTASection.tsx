@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
@@ -16,21 +15,53 @@ import Button from "./Button";
  * @returns {JSX.Element} The rendered hero section.
  */
 export default function HeroSection() {
-    const [scrollY, setScrollY] = useState(0);
+    const heroContentRef = useRef<HTMLDivElement>(null);
 
-    // Parallax effect on scroll
+    // Simplified parallax with better mobile performance
     useEffect(() => {
-        const handleScroll = () => setScrollY(window.scrollY);
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        let ticking = false;
+
+        const updateParallax = () => {
+            if (heroContentRef.current) {
+                // Get scroll position - check body first since html has overflow:hidden
+                const scrollTop =
+                    document.body.scrollTop ||
+                    window.scrollY ||
+                    document.documentElement.scrollTop;
+
+                // Use transform3d for GPU acceleration
+                const translateY = scrollTop * 0.2;
+                heroContentRef.current.style.transform = `translate3d(0, ${translateY}px, 0)`;
+            }
+            ticking = false;
+        };
+
+        const handleScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        };
+
+        // Listen to both window and body scroll since html has overflow:hidden
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        document.body.addEventListener("scroll", handleScroll, {
+            passive: true,
+        });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            document.body.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Hero Content */}
             <div
+                ref={heroContentRef}
                 className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
-                style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+                style={{ willChange: "transform" }}
             >
                 {/* Main Title with Gradient */}
                 <h1 className="text-7xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight">

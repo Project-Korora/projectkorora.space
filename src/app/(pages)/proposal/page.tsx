@@ -1,16 +1,39 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import PageContainer from "../../components/PageContainer";
 import PageHeader from "../../components/PageHeader";
 import Card from "../../components/Card";
+import { useProposalAccess } from "../../components/ProposalAccessProvider";
+import LoadingScreen from "../../components/LoadingScreen";
 
 /**
  * The project proposal page.
  *
  * This page outlines the mission overview, technical objectives, and
- * educational impact of Project Kororā.
+ * educational impact of Project Kororā. Access is restricted to users
+ * who have been granted special access via the key route.
  *
  * @returns {JSX.Element} The rendered proposal page.
  */
 export default function ProposalPage() {
+    const { hasAccess } = useProposalAccess();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!hasAccess) {
+            // Use replace instead of push for faster navigation
+            // Replace doesn't add to browser history
+            router.replace("/");
+        }
+    }, [hasAccess, router]);
+
+    // Don't render content if no access, show loading screen while redirect happens
+    if (!hasAccess) {
+        return <LoadingScreen />;
+    }
+
     return (
         <PageContainer>
             <PageHeader
