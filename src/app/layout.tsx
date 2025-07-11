@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/LoadingScreen";
+import { ProposalAccessProvider } from "./components/ProposalAccessProvider";
 
 // Font Awesome configuration
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -146,13 +147,15 @@ export default function RootLayout({
 
                 {/* Content layers - top layer */}
                 {isLoading && <LoadingScreen />}
-                <div className="relative z-10 flex flex-col h-device">
-                    <Navigation />
-                    <main className="flex-1 pt-16 pointer-events-auto">
-                        {children}
-                    </main>
-                    <Footer />
-                </div>
+                <ProposalAccessProvider>
+                    <div className="relative z-10 flex flex-col h-device">
+                        <Navigation />
+                        <main className="flex-1 pt-16 pointer-events-auto">
+                            {children}
+                        </main>
+                        <Footer />
+                    </div>
+                </ProposalAccessProvider>
             </body>
         </html>
     );
