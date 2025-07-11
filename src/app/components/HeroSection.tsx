@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
+import { useProposalAccess } from "./ProposalAccessProvider";
 
 /**
  * The hero section for the homepage.
@@ -16,6 +17,7 @@ import Button from "./Button";
  */
 export default function HeroSection() {
     const heroContentRef = useRef<HTMLDivElement>(null);
+    const { hasAccess } = useProposalAccess();
 
     // Simplified parallax with better mobile performance
     useEffect(() => {
@@ -100,9 +102,11 @@ export default function HeroSection() {
                             />
                         </span>
                     </Button>
-                    <Button href="/proposal" variant="outline" size="lg">
-                        View Our Proposal
-                    </Button>
+                    {hasAccess && (
+                        <Button href="/proposal" variant="outline" size="lg">
+                            View Our Proposal
+                        </Button>
+                    )}
                 </div>
             </div>
         </section>
