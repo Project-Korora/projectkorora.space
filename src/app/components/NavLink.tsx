@@ -34,12 +34,26 @@ export default function NavLink({
 }: NavLinkProps) {
     const pathname = usePathname();
 
+    const handleClick = (e: React.MouseEvent) => {
+        // Call the original onClick if provided
+        if (onClick) {
+            onClick();
+        }
+
+        // Reset scroll position immediately
+        setTimeout(() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }, 0);
+    };
+
     return (
         <Link
             href={href}
-            onClick={onClick}
+            onClick={handleClick}
             data-active={pathname === href}
-            className={`py-2 px-4 text-lg font-small transition-colors duration-200 text-white/80 hover:text-white hover: data-[active=true]:text-primary ${className}`}
+            className={`py-2 px-4 text-lg font-small transition-colors duration-200 text-light hover:text-primary data-[active=true]:text-primary ${className}`}
             role={role}
         >
             {children}
