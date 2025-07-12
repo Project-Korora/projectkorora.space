@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Logo from "./Logo";
 import NavLink from "./NavLink";
 import MobileMenuButton from "./MobileMenuButton";
+import SocialIcons from "./SocialIcons";
 import { useProposalAccess } from "./ProposalAccessProvider";
 
 interface NavigationItem {
@@ -24,9 +25,9 @@ const baseNavigationItems: NavigationItem[] = [
 /**
  * The main navigation component for the application.
  *
- * This component includes the logo, desktop navigation links, and a mobile
- * menu button that toggles a dropdown menu for smaller screens. It handles
- * the state for the mobile menu.
+ * This component includes the logo, desktop navigation links, social icons,
+ * and a mobile menu button that toggles a dropdown menu for smaller screens.
+ * It handles the state for the mobile menu.
  *
  * @returns {JSX.Element} The rendered navigation component.
  */
@@ -93,6 +94,11 @@ export default function Navigation() {
                             ))}
                         </div>
 
+                        {/* Desktop Social Icons */}
+                        <div className="hidden md:flex items-center">
+                            <SocialIcons size="xl" />
+                        </div>
+
                         {/* Mobile Menu Button */}
                         <div className="md:hidden flex items-center">
                             <MobileMenuButton
@@ -121,6 +127,11 @@ export default function Navigation() {
                                         {item.name}
                                     </NavLink>
                                 ))}
+
+                                {/* Mobile Social Icons */}
+                                <div className="pt-4 mt-4 border-t border-white/10">
+                                    <SocialIcons variant="mobile" size="sm" />
+                                </div>
                             </div>
                         </div>
                     )}
