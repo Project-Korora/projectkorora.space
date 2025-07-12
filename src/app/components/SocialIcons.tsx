@@ -20,7 +20,7 @@ interface SocialIconsProps {
  *
  * @param {object} props - The properties for the component.
  * @param {string} [props.className=""] - Additional CSS classes to apply to the container.
- * @param {"sm" | "md" | "lg"} [props.size="md"] - Size of the icons.
+ * @param {"sm" | "md" | "lg" | "xl" | "xxl" | "xxxl"} [props.size="xl"] - Size of the icons.
  * @param {"default" | "mobile"} [props.variant="default"] - Display variant for different contexts.
  * @returns {JSX.Element} The rendered social icons component.
  */
@@ -54,16 +54,16 @@ export default function SocialIcons({
 
     const sizeClasses = {
         sm: "text-sm",
-        md: "text-md",
+        md: "text-base",
         lg: "text-lg",
         xl: "text-xl",
-        xxl: "text-xxl",
-        xxxl: "text-xxxl",
+        xxl: "text-2xl",
+        xxxl: "text-3xl",
     };
 
     const containerClasses = {
-        default: "flex items-center",
-        mobile: "flex flex-col space-y-3",
+        default: "flex items-center s",
+        mobile: "flex flex-col space-y-0",
     };
 
     const linkClasses = {
@@ -93,7 +93,7 @@ export default function SocialIcons({
                         className={variant === "mobile" ? "w-5 h-5" : ""}
                     />
                     {variant === "mobile" && (
-                        <span className="text-sm">{social.name}</span>
+                        <span className="text-lg">{social.name}</span>
                     )}
                 </a>
             ))}

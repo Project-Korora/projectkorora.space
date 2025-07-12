@@ -98,7 +98,7 @@ export default function Navigation() {
                         </div>
 
                         {/* Desktop Social Icons */}
-                        <div className="hidden md:flex items-center">
+                        <div className="hidden min-[1000px]:flex items-center">
                             <SocialIcons size="xl" />
                         </div>
 
@@ -132,7 +132,7 @@ export default function Navigation() {
                                 ))}
 
                                 {/* Mobile Social Icons */}
-                                <div className="pt-4 mt-4 border-t border-white/10">
+                                <div className="pt-4 mt-4 border-t border-light/10">
                                     <SocialIcons variant="mobile" size="sm" />
                                 </div>
                             </div>
