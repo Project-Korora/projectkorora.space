@@ -1,0 +1,130 @@
+name: Sync Wiki
+on:
+  push:
+    paths:
+      - 'docs/**'
+      - '.github/workflows/sync-docs-wiki.yml'
+    branches:
+      - main
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.WIKI_TOKEN }}
+          
+      - name: Clone wiki repository
+        run: |
+          git clone https://${{ secrets.WIKI_TOKEN }}@github.com/${{ github.repository }}.wiki.git wiki
+          
+      - name: Process and copy documentation
+        run: |
+          # Clear existing wiki content (but keep .git folder)
+          find wiki -type f -name "*.md" -delete
+          
+          # Process markdown files (excluding root.md)
+          find docs -name "*.md" | grep -v "root.md" | while read file; do
+            # Get filename without extension
+            filename=$(basename "$file" .md)
+            
+            # Convert filename to wiki format (e.g., "backend.api" -> "Backend - Api")
+            wiki_name=$(echo "$filename" | sed 's/\./ - /g' | sed 's/\b\w/\U&/g')
+            
+            # Remove YAML frontmatter and copy
+            sed '/^---$/,/^---$/d' "$file" > "wiki/${wiki_name}.md"
+            
+            echo "Processed: $file -> wiki/${wiki_name}.md"
+          done
+          
+      - name: Generate table of contents and sidebar
+        run: |
+          # Process files and group by section (excluding root.md)
+          find docs -name "*.md" | grep -v "root.md" | while read file; do
+            filename=$(basename "$file" .md)
+            
+            # Extract section and page name
+            if [[ "$filename" == *.* ]]; then
+              section=$(echo "$filename" | cut -d'.' -f1 | sed 's/\b\w/\U&/g')
+              page=$(echo "$filename" | cut -d'.' -f2- | sed 's/\./ /g' | sed 's/\b\w/\U&/g')
+              wiki_name=$(echo "$filename" | sed 's/\./ - /g' | sed 's/\b\w/\U&/g')
+              wiki_link=$(echo "$wiki_name" | sed 's/ /_/g')  # Convert spaces to underscores for links
+              
+              # Add to sections array (simulate with file)
+              echo "$section|$page|$wiki_link" >> /tmp/sections.txt
+            fi
+          done
+          
+          # Create Home page with root.md content
+          cat > wiki/Home.md << 'EOF'
+          # Image-to-ASCII Documentation
+          
+          Welcome to the Image-to-ASCII project documentation. This project converts images to ASCII art with customizable parameters.
+          
+          EOF
+          
+          # Add root.md content if it exists
+          if [ -f "docs/root.md" ]; then
+            # Remove YAML frontmatter and add to Home page
+            sed '/^---$/,/^---$/d' docs/root.md | tail -n +2 >> wiki/Home.md
+            echo "" >> wiki/Home.md
+          fi
+          
+          # Add Table of Contents
+          echo "## Table of Contents" >> wiki/Home.md
+          echo "" >> wiki/Home.md
+          
+          # Process sections for TOC
+          if [ -f /tmp/sections.txt ]; then
+            # Get unique sections
+            cut -d'|' -f1 /tmp/sections.txt | sort -u | while read section; do
+              section_link=$(echo "$section" | sed 's/ /_/g')
+              echo "### [$section]($section_link)" >> wiki/Home.md
+              echo "" >> wiki/Home.md
+              
+              # Get pages for this section
+              grep "^$section|" /tmp/sections.txt | while IFS='|' read sec page wiki_link; do
+                echo "- [$page]($wiki_link)" >> wiki/Home.md
+              done
+              
+              echo "" >> wiki/Home.md
+            done
+          fi
+          
+          # Create Sidebar (no heading)
+          cat > wiki/_Sidebar.md << 'EOF'
+          EOF
+          
+          # Process sections for Sidebar
+          if [ -f /tmp/sections.txt ]; then
+            # Get unique sections
+            cut -d'|' -f1 /tmp/sections.txt | sort -u | while read section; do
+              section_link=$(echo "$section" | sed 's/ /_/g')
+              echo "**[$section]($section_link)**" >> wiki/_Sidebar.md
+              
+              # Get pages for this section
+              grep "^$section|" /tmp/sections.txt | while IFS='|' read sec page wiki_link; do
+                echo "- [$page]($wiki_link)" >> wiki/_Sidebar.md
+              done
+              
+              echo "" >> wiki/_Sidebar.md
+            done
+          fi
+          
+          # Clean up
+          rm -f /tmp/sections.txt
+          
+      - name: Push to wiki
+        run: |
+          cd wiki
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-sync from docs folder"
+            git push
+          fi
