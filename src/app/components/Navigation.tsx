@@ -28,6 +28,9 @@ const baseNavigationItems: NavigationItem[] = [
  * This component includes the logo, desktop navigation links, social icons,
  * and a mobile menu button that toggles a dropdown menu for smaller screens.
  * It handles the state for the mobile menu.
+ * This component includes the logo, desktop navigation links, social icons,
+ * and a mobile menu button that toggles a dropdown menu for smaller screens.
+ * It handles the state for the mobile menu.
  *
  * @returns {JSX.Element} The rendered navigation component.
  */
@@ -95,7 +98,7 @@ export default function Navigation() {
                         </div>
 
                         {/* Desktop Social Icons */}
-                        <div className="hidden min-[1000px]:flex items-center">
+                        <div className="hidden md:flex items-center">
                             <SocialIcons size="xl" />
                         </div>
 
@@ -129,7 +132,7 @@ export default function Navigation() {
                                 ))}
 
                                 {/* Mobile Social Icons */}
-                                <div className="pt-4 mt-4 border-t border-light/10">
+                                <div className="pt-4 mt-4 border-t border-white/10">
                                     <SocialIcons variant="mobile" size="sm" />
                                 </div>
                             </div>
