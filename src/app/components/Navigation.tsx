@@ -43,7 +43,7 @@ export default function Navigation() {
     // Close mobile menu when window is resized to desktop size
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 768) {
+            if (window.innerWidth >= 1000) {
                 setIsMobileMenuOpen(false);
             }
         };
@@ -75,7 +75,7 @@ export default function Navigation() {
     return (
         <header role="banner">
             <nav
-                className="fixed top-0 left-0 right-0 z-[9999] bg-black/80 backdrop-blur-lg border-b border-white/10 w-full"
+                className="fixed top-0 left-0 right-0 z-[9999] bg-dark/80 backdrop-blur-lg border-b border-light/10 w-full"
                 role="navigation"
                 aria-label="Main navigation"
             >
@@ -86,7 +86,7 @@ export default function Navigation() {
                         </div>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center space-x-0">
+                        <div className="hidden min-[1000px]:flex items-center">
                             {navigationItems.map((item) => (
                                 <NavLink key={item.href} href={item.href}>
                                     {item.name}
@@ -95,12 +95,12 @@ export default function Navigation() {
                         </div>
 
                         {/* Desktop Social Icons */}
-                        <div className="hidden md:flex items-center">
+                        <div className="hidden min-[1000px]:flex items-center">
                             <SocialIcons size="xl" />
                         </div>
 
                         {/* Mobile Menu Button */}
-                        <div className="md:hidden flex items-center">
+                        <div className="min-[1000px]:hidden flex items-center">
                             <MobileMenuButton
                                 isOpen={isMobileMenuOpen}
                                 onClick={toggleMobileMenu}
@@ -111,11 +111,11 @@ export default function Navigation() {
                     {/* Mobile Navigation Menu */}
                     {isMobileMenuOpen && (
                         <div
-                            className="md:hidden"
+                            className="min-[1000px]:hidden"
                             role="menu"
                             aria-label="Mobile navigation menu"
                         >
-                            <div className="bg-black/50 backdrop-blur-lg border border-white/10 rounded-lg mt-2 px-2 pt-2 pb-3 space-y-1 mb-3">
+                            <div className="bg-dark/50 backdrop-blur-lg border border-light/10 rounded-lg mt-2 px-2 pt-2 pb-3 space-y-1 mb-3">
                                 {navigationItems.map((item) => (
                                     <NavLink
                                         key={item.href}
@@ -129,7 +129,7 @@ export default function Navigation() {
                                 ))}
 
                                 {/* Mobile Social Icons */}
-                                <div className="pt-4 mt-4 border-t border-white/10">
+                                <div className="pt-4 mt-4 border-t border-light/10">
                                     <SocialIcons variant="mobile" size="sm" />
                                 </div>
                             </div>
