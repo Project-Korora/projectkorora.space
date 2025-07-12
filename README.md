@@ -78,7 +78,3 @@ _For a step-by-step walkthrough (Node install, token system, Git workflow), see 
 ## License
 
 This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
-
-
-// TEST for push
-JESSICA
