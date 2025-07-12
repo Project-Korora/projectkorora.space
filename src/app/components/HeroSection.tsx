@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 import { useProposalAccess } from "./ProposalAccessProvider";
+import OrbitingSatellite from "./OrbitingSatellite";
 
 /**
  * The hero section for the homepage.
@@ -59,6 +60,9 @@ export default function HeroSection() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            {/* Orbiting Satellite */}
+            <OrbitingSatellite />
+
             {/* Hero Content */}
             <div
                 ref={heroContentRef}
