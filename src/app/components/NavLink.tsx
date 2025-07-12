@@ -34,7 +34,7 @@ export default function NavLink({
 }: NavLinkProps) {
     const pathname = usePathname();
 
-    const handleClick = (e: React.MouseEvent) => {
+    const handleClick = () => {
         // Call the original onClick if provided
         if (onClick) {
             onClick();
