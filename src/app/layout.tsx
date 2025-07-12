@@ -5,6 +5,7 @@ import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import LoadingScreen from "./components/LoadingScreen";
 import { ProposalAccessProvider } from "./components/ProposalAccessProvider";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
 }>) {
     const [isLoading, setIsLoading] = useState(true);
     const [videoEnded, setVideoEnded] = useState(false);
+    const pathname = usePathname();
 
     /* ① lock --device-height to physical screen size once */
     useEffect(() => {
@@ -68,24 +70,35 @@ export default function RootLayout({
         };
     }, []);
 
+    // Reset scroll position on page navigation
+    useEffect(() => {
+        // Scroll to top when pathname changes (page navigation)
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }, [pathname]);
+
     return (
         <html lang="en">
             <head>
-                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
                 <link
                     rel="icon"
-                    href="/favicon-16x16.png"
+                    href="/favicon/favicon-16x16.png"
                     sizes="16x16"
                     type="image/png"
                 />
                 <link
                     rel="icon"
-                    href="/favicon-32x32.png"
+                    href="/favicon/favicon-32x32.png"
                     sizes="32x32"
                     type="image/png"
                 />
-                <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-                <link rel="manifest" href="/site.webmanifest" />
+                <link
+                    rel="apple-touch-icon"
+                    href="/favicon/apple-touch-icon.png"
+                />
+                <link rel="manifest" href="/favicon/site.webmanifest" />
             </head>
             <body
                 className={`
