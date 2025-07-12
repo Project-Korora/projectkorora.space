@@ -39,7 +39,7 @@ export default function NavLink({
             href={href}
             onClick={onClick}
             data-active={pathname === href}
-            className={`py-2 px-4 text-lg font-small transition-colors duration-200 text-white/80 hover:text-white hover: data-[active=true]:text-primary ${className}`}
+            className={`py-2 px-4 text-lg font-small transition-colors duration-200 text-light hover:text-primary data-[active=true]:text-primary ${className}`}
             role={role}
         >
             {children}
