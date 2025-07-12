@@ -1,9 +1,13 @@
 import PageContainer from "../../components/PageContainer";
 import Grid from "../../components/Grid";
 import TeamCard from "../../components/TeamCard";
-import { Carousel, CarouselDiv, CarouselElement } from "@/app/components/Carousel";
+import {
+    Carousel,
+    CarouselDiv,
+    CarouselElement,
+} from "@/app/components/Carousel";
 
-import teamList from "@/data/teamData"
+import teamList from "@/data/teamData";
 import PageHeader from "@/app/components/PageHeader";
 /**
  * The team page for Project Kororā.
@@ -21,15 +25,19 @@ export default function TeamPage() {
                 title="Teams"
                 description="Our groups working to help Project Kororā succeed"
             />
-            <Grid className = "hidden md:grid">
+            <Grid className="hidden md:grid">
                 <TeamCard team="Core" name="John Doe" title="Team Lead" />
             </Grid>
 
-            <Carousel className = "md:hidden">
+            <Carousel className="md:hidden">
                 <CarouselDiv>
                     {teamList.map((team, index) => (
                         <CarouselElement key={index}>
-                            <TeamCard team={team.team} name={team.name} title = {team.title}/>
+                            <TeamCard
+                                team={team.team}
+                                name={team.name}
+                                title={team.title}
+                            />
                         </CarouselElement>
                     ))}
                 </CarouselDiv>
