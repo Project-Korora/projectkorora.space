@@ -1,5 +1,46 @@
 # Changelog
 
+## [1.1.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.0.0...v1.1.0) (2025-07-13)
+
+
+### Features
+
+* Add OrbitingSatellite component and satellite image ([c50e077](https://github.com/Project-Korora/projectkorora.space/commit/c50e077002be47e4feba7ae4b9818cc748f7d09f))
+* Add OrbitingSatellite component and satellite image ([dc9a6d9](https://github.com/Project-Korora/projectkorora.space/commit/dc9a6d92bc19626691050c335f1e800b46d08c0d))
+* Add OrbitingSatellite component and satellite image ([b4f7041](https://github.com/Project-Korora/projectkorora.space/commit/b4f7041039a52692ce03d46995ec5cbbd057c236))
+* Add OrbitingSatellite component and satellite image ([b8ef9cb](https://github.com/Project-Korora/projectkorora.space/commit/b8ef9cb364d02f2fc297e8e83920bb629f5dfff0))
+* Add social icons to navigation component ([06c4b33](https://github.com/Project-Korora/projectkorora.space/commit/06c4b339ba34bf2cc07e9e3ef5fbb4beb47afc6a))
+* Add social icons to navigation component ([636d3e0](https://github.com/Project-Korora/projectkorora.space/commit/636d3e00a50f55446955a6b5ac77fd98f0875c9d))
+* Add social icons to navigation component ([5d1fd93](https://github.com/Project-Korora/projectkorora.space/commit/5d1fd93b936cf3852944c95957c707073d4dbda4))
+* Add social icons to navigation component ([9320845](https://github.com/Project-Korora/projectkorora.space/commit/93208453e3be0783fd684d7b5a26a8250905096e))
+* **architecture:** implement modern Next.js App Router with pages and components ([#27](https://github.com/Project-Korora/projectkorora.space/issues/27)) ([d8f6ede](https://github.com/Project-Korora/projectkorora.space/commit/d8f6ede55ca4b1a6f9a296f96862d97d3f0202fd))
+* contact page base ([bffbda6](https://github.com/Project-Korora/projectkorora.space/commit/bffbda62dd3d102f913b01386a51aa5c37d57962))
+* core page development of contact page ([e8842b6](https://github.com/Project-Korora/projectkorora.space/commit/e8842b6846d40c7b9ddc99505f5c332b76d1a89b))
+* Enhance documentation and add Tailwind CSS configuration ([#29](https://github.com/Project-Korora/projectkorora.space/issues/29)) ([902eb77](https://github.com/Project-Korora/projectkorora.space/commit/902eb77c3f9c17bde46a0ed9c06d72c92db08a6e))
+* galengreen/access control system ([#45](https://github.com/Project-Korora/projectkorora.space/issues/45)) ([0a0119f](https://github.com/Project-Korora/projectkorora.space/commit/0a0119f4eb61638d660c30aa6636f3c12147a432))
+* galengreen/access control system ([#45](https://github.com/Project-Korora/projectkorora.space/issues/45)) ([b50cac6](https://github.com/Project-Korora/projectkorora.space/commit/b50cac669e1b382f88263646dabc642161292816))
+* galengreen/sync-docs-wiki ([f7a5997](https://github.com/Project-Korora/projectkorora.space/commit/f7a599763b74565ed7faf7e60812ce2ec54b8013))
+* galengreen/sync-docs-wiki ([701340d](https://github.com/Project-Korora/projectkorora.space/commit/701340db7c9e2e3439568dbf43d009bde3779a5b))
+* implement carousel component ([#30](https://github.com/Project-Korora/projectkorora.space/issues/30)) ([82da0bf](https://github.com/Project-Korora/projectkorora.space/commit/82da0bf352bb74d5cc3613b9792e152400885780))
+* Integrate Markdown support ([#44](https://github.com/Project-Korora/projectkorora.space/issues/44)) ([221da0d](https://github.com/Project-Korora/projectkorora.space/commit/221da0dec062cbac0252d7020ca48cebac66de90))
+* Integrate Markdown support ([#44](https://github.com/Project-Korora/projectkorora.space/issues/44)) ([53f2084](https://github.com/Project-Korora/projectkorora.space/commit/53f2084ebb212f66f91eb06d942d8d3e644e6d18))
+* Merge pull request [#66](https://github.com/Project-Korora/projectkorora.space/issues/66) from Project-Korora/galengreen/general-design ([8647ec6](https://github.com/Project-Korora/projectkorora.space/commit/8647ec6ec0b36a6e5f6042e18459169869336785))
+
+
+### Bug Fixes
+
+* galengreen/Update sync-docs-wiki.yml ([1707bd1](https://github.com/Project-Korora/projectkorora.space/commit/1707bd1e358a9048739688b62cc8d9be4a34ae59))
+* galengreen/Update sync-docs-wiki.yml ([1707bd1](https://github.com/Project-Korora/projectkorora.space/commit/1707bd1e358a9048739688b62cc8d9be4a34ae59))
+* Navigation component code ([3cb4f73](https://github.com/Project-Korora/projectkorora.space/commit/3cb4f73cc793f84a67b7d7fc6c030315014353ab))
+* Update configuration and enhance component functionality ([dd60a0f](https://github.com/Project-Korora/projectkorora.space/commit/dd60a0fe43c2f440e263e0ed9ed9eef0652cbbba))
+* Update configuration and enhance component functionality ([399d5cf](https://github.com/Project-Korora/projectkorora.space/commit/399d5cffb33a6be5fa1192eb0ab74049d11c93a4))
+* Update configuration and enhance component functionality ([2218cce](https://github.com/Project-Korora/projectkorora.space/commit/2218cce8427bd0ce7e3488b638f1ba4daafb8f67))
+* Update configuration and enhance component functionality ([8a74f8e](https://github.com/Project-Korora/projectkorora.space/commit/8a74f8e31abe7fff47d21226f3d95bee9ae8c7ed))
+* Update deploy.yml ([#65](https://github.com/Project-Korora/projectkorora.space/issues/65)) ([c0f567c](https://github.com/Project-Korora/projectkorora.space/commit/c0f567cdf20ec9b5757a94c3487781b508676ab5))
+* Update deploy.yml ([#65](https://github.com/Project-Korora/projectkorora.space/issues/65)) ([11014d3](https://github.com/Project-Korora/projectkorora.space/commit/11014d33397bd7a9788457fede53ef389b7d65dd))
+* Update OrbitingSatellite component styles and animation ([bcdcb92](https://github.com/Project-Korora/projectkorora.space/commit/bcdcb92ed5b66ad87025abc981c27c5c55987d71))
+* Update OrbitingSatellite component styles and animation ([aa95aa6](https://github.com/Project-Korora/projectkorora.space/commit/aa95aa6edbb2f382d7e05cc518dcbcdb29bc2551))
+
 ## 1.0.0 (2025-05-14)
 
 
