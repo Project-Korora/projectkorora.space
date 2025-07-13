@@ -121,6 +121,11 @@
     /** @theme A gentle floating animation. */
     --animate-float: float 6s ease-in-out infinite;
 
+    --animate-accordion-down: accordion-down
+        var(--tw-animation-duration, var(--tw-duration, 200ms)) ease-out;
+    --animate-accordion-up: accordion-up
+        var(--tw-animation-duration, var(--tw-duration, 200ms)) ease-out;
+
     /**
      * ========================================================================
      * Opacity Tokens
@@ -142,6 +147,24 @@
         }
         50% {
             transform: translateY(-10px);
+        }
+    }
+
+    @keyframes accordion-down {
+        from {
+            height: 0;
+        }
+        to {
+            height: var(--radix-accordion-content-height);
+        }
+    }
+
+    @keyframes accordion-up {
+        from {
+            height: var(--radix-accordion-content-height);
+        }
+        to {
+            height: 0;
         }
     }
 }
