@@ -24,7 +24,7 @@ const OrbitingSatellite: React.FC = () => {
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {/* Satellite element positioned at orbit center with responsive sizing */}
             <div
-                className="absolute top-3/7 left-1/2 w-60 h-60 sm:w-70 sm:h-70 md:w-70 md:h-70"
+                className="absolute top-1/2 left-1/2 w-70 h-70 sm:w-90 sm:h-90 md:w-90 md:h-90"
                 style={{
                     // Centers the satellite container on the orbit center point
                     transform: "translate(-50%, -50%)",
@@ -59,12 +59,12 @@ const OrbitingSatellite: React.FC = () => {
                     0% {
                         /* Starting position: top of orbit */
                         transform: translate(-50%, -50%) rotate(-90deg)
-                            translateX(300px) rotate(0deg) rotate(180deg);
+                            translateX(300px) rotate(0deg) rotate(90deg);
                     }
                     100% {
                         /* Ending position: completed full orbit */
                         transform: translate(-50%, -50%) rotate(270deg)
-                            translateX(300px) rotate(0deg) rotate(180deg);
+                            translateX(300px) rotate(0deg) rotate(90deg);
                     }
                 }
 
@@ -77,12 +77,12 @@ const OrbitingSatellite: React.FC = () => {
                         0% {
                             /* Starting position: top of orbit */
                             transform: translate(-50%, -50%) rotate(-90deg)
-                                translateX(350px) rotate(0deg) rotate(180deg);
+                                translateX(380px) rotate(0deg) rotate(90deg);
                         }
                         100% {
                             /* Ending position: completed full orbit */
                             transform: translate(-50%, -50%) rotate(270deg)
-                                translateX(350px) rotate(0deg) rotate(180deg);
+                                translateX(380px) rotate(0deg) rotate(90deg);
                         }
                     }
                 }
