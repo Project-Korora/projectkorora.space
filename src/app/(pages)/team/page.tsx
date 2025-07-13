@@ -1,4 +1,3 @@
-
 import {
     Carousel,
     CarouselDiv,
@@ -52,7 +51,7 @@ function TeamInfo({ team, index }: { team: TeamType; index: number }) {
                         </div>
                     </div>
                 </div>
-                
+
                 <Skeleton className="w-full h-48 rounded-lg overflow-hidden"></Skeleton>
 
                 <p className="text-white/80 leading-relaxed">
@@ -106,7 +105,10 @@ export default function TeamPage() {
                 </div>
 
                 <div className="mb-16">
-                    <Card color="secondary" className="text-white bg-secondary/50">
+                    <Card
+                        color="secondary"
+                        className="text-white bg-secondary/50"
+                    >
                         <div className="text-center mb-6">
                             <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center gap-3 mb-3">
                                 <Users className="h-8 w-8" />

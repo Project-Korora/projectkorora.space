@@ -17,8 +17,8 @@ export default function Logo() {
             <Image
                 src="/logo.png"
                 alt="Logo"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 className="rounded-full"
                 priority
             />
