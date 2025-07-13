@@ -12,7 +12,7 @@ export default function Logo() {
     return (
         <Link
             href="/"
-            className="group flex items-center space-x-2 text-white text-xl font-bold"
+            className="group flex items-center space-x-3 text-white text-2xl font-bold"
         >
             <Image
                 src="/logo.png"
