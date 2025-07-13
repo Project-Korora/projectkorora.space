@@ -1,6 +1,5 @@
 import PageContainer from "../../components/PageContainer";
 import PageHeader from "../../components/PageHeader";
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import Button from "../../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -71,7 +70,7 @@ export default function ContactPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 hover:text-primary transition"
-                        >
+                    >
                         <i className="fab fa-instagram text-2xl"></i>
                         <span>Follow us on Instagram</span>
                     </a>
