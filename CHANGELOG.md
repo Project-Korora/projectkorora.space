@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.1.0...v1.2.0) (2025-07-14)
+
+
+### Features
+
+* dyno-bytes/team-page ([a15ead8](https://github.com/Project-Korora/projectkorora.space/commit/a15ead827bd98b05409b6c7b2769267a54670d79))
+* Merge pull request [#74](https://github.com/Project-Korora/projectkorora.space/issues/74) from Project-Korora/dyno-bytes/team-page ([a15ead8](https://github.com/Project-Korora/projectkorora.space/commit/a15ead827bd98b05409b6c7b2769267a54670d79))
+* **teams:** adjust team data content ([2cde146](https://github.com/Project-Korora/projectkorora.space/commit/2cde146f5fe1d9ea5cb412c9b6ad358b20acb0f0))
+* **teams:** enhance mobile view for responsiveness ([919ad84](https://github.com/Project-Korora/projectkorora.space/commit/919ad840003c85766d5053c3bd0d41dd5f016bef))
+* **teams:** update team data content ([4cce662](https://github.com/Project-Korora/projectkorora.space/commit/4cce662f5451dbc8461a3a46678c25922a1b5992))
+
 ## [1.1.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.0.0...v1.1.0) (2025-07-13)
 
 
