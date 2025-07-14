@@ -14,6 +14,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/app/components/Accordion";
+import CarouselScroller from "@/app/components/CarouselScroller";
 /**
  * The team page for Project Kororā.
  *
@@ -31,12 +32,20 @@ const advisors = [
     "Robin McNeill – CEO, Space Operations New Zealand Ltd",
 ];
 
-function TeamInfo({ team, index }: { team: TeamType; index: number }) {
+function TeamInfo({
+    team,
+    index,
+    className,
+}: {
+    className: string;
+    team: TeamType;
+    index: number;
+}) {
     return (
         <Card
             key={index}
             color="secondary"
-            className="bg-primary/10 hover:bg-primary/20 transition-colors duration-700 ease-out"
+            className={`${className} transition-colors duration-700 ease-out`}
         >
             <div className="space-y-6">
                 <div className="flex items-center justify-between">
@@ -88,7 +97,7 @@ export default function TeamPage() {
     return (
         <div className="min-h-screen">
             <div className="container mx-auto px-4 py-12">
-                <div className="text-center mb-16">
+                <div className="text-center mb-8">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 text-light">
                         Meet the teams
                     </h1>
@@ -104,7 +113,7 @@ export default function TeamPage() {
                     </p>
                 </div>
 
-                <div className="mb-16">
+                <div className="mb-8">
                     <Card
                         color="secondary"
                         className="text-white bg-secondary/50"
@@ -119,7 +128,7 @@ export default function TeamPage() {
                                 across the New Zealand space ecosystem
                             </p>
                         </div>
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <div className="hidden md:grid md:grid-cols-2 gap-4">
                             {advisors.map((advisor, index) => (
                                 <div
                                     key={index}
@@ -131,6 +140,27 @@ export default function TeamPage() {
                                 </div>
                             ))}
                         </div>
+                        <Carousel
+                            className="md:hidden"
+                            doLoop={true}
+                            showHint={false}
+                        >
+                            <CarouselDiv>
+                                {advisors.map((advisor, index) => (
+                                    <CarouselElement key={index}>
+                                        <div
+                                            key={index}
+                                            className="bg-white/10 rounded-lg p-4"
+                                        >
+                                            <p className="text-white font-medium">
+                                                {advisor}
+                                            </p>
+                                        </div>
+                                    </CarouselElement>
+                                ))}
+                            </CarouselDiv>
+                            <CarouselScroller />
+                        </Carousel>
                     </Card>
                 </div>
 
@@ -140,6 +170,7 @@ export default function TeamPage() {
                             team={team}
                             index={index}
                             key={index}
+                            className="bg-primary/10 hover:bg-primary/20"
                         ></TeamInfo>
                     ))}
                 </div>
@@ -148,7 +179,11 @@ export default function TeamPage() {
                     <CarouselDiv>
                         {teamList.map((team, index) => (
                             <CarouselElement key={index}>
-                                <TeamInfo team={team} index={index}></TeamInfo>
+                                <TeamInfo
+                                    team={team}
+                                    index={index}
+                                    className="bg-primary/20"
+                                ></TeamInfo>
                             </CarouselElement>
                         ))}
                     </CarouselDiv>
