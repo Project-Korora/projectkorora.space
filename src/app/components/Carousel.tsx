@@ -1,21 +1,23 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import useEmblaCarousel from "embla-carousel-react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import * as React from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { SwipeHint } from "./SwipeHint";
 
 type CarouselContextProps = {
-    carouselRef: ReturnType<typeof useEmblaCarousel>[0]
-    carouselApi: ReturnType<typeof useEmblaCarousel>[1]
-    scrollPrev: () => void
-    scrollNext: () => void
-}
+    carouselRef: ReturnType<typeof useEmblaCarousel>[0];
+    carouselApi: ReturnType<typeof useEmblaCarousel>[1];
+    scrollPrev: () => void;
+    scrollNext: () => void;
+    interacted: boolean;
+};
 
 type CarouselProps = {
-    showHint?: boolean
-}
+    showHint?: boolean;
+    doLoop?: boolean;
+};
 
-const carouselContext = React.createContext<CarouselContextProps | null>(null)
+const carouselContext = React.createContext<CarouselContextProps | null>(null);
 
 /**
  * A hook to access carousel internals in order to extend functionality from other components
@@ -23,49 +25,51 @@ const carouselContext = React.createContext<CarouselContextProps | null>(null)
  * @returns {CarouselContextProps}
  */
 function useCarousel() {
-    const context = React.useContext(carouselContext)
+    const context = React.useContext(carouselContext);
     if (!context) {
-        throw new Error("useCaraousel must be called within parent Carousel component")
+        throw new Error(
+            "useCaraousel must be called within parent Carousel component"
+        );
     }
-    return context
+    return context;
 }
 
 /**
- * 
+ *
  * @param {React.ComponentProps<"div"> & CarouselProps} props
  * @returns {React.JSX.Element} Top level carousel component
  */
 function Carousel({
     className = "",
     children,
-    showHint=true,
+    showHint = true,
+    doLoop = false,
     ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
-    const [carouselRef, carouselApi] = useEmblaCarousel()
-    const [hintVisible, setHintVisible] = React.useState(showHint)
-
+    const [carouselRef, carouselApi] = useEmblaCarousel({ loop: doLoop });
+    const [interacted, setInteracted] = React.useState(false);
 
     /**
-    *  callbacks to scroll the carousel left & right for use with other components
-    *  available via useCaraousel
-    */
+     *  callbacks to scroll the carousel left & right for use with other components
+     *  available via useCaraousel
+     */
     const scrollPrev = React.useCallback(() => {
-        carouselApi?.scrollPrev()
-    }, [carouselApi])
+        carouselApi?.scrollPrev();
+    }, [carouselApi]);
 
     const scrollNext = React.useCallback(() => {
-        carouselApi?.scrollNext()
-    }, [carouselApi])
+        carouselApi?.scrollNext();
+    }, [carouselApi]);
 
-    // hides hint upon interaction 
+    // hides hint upon interaction
     React.useEffect(() => {
         if (!carouselApi) return;
         const selectConn = () => {
-            setHintVisible(false)
-        }
+            setInteracted(true);
+        };
 
-        carouselApi.on('pointerDown', selectConn)
-    }, [carouselApi])
+        carouselApi.on("pointerDown", selectConn);
+    }, [carouselApi]);
 
     return (
         <carouselContext.Provider
@@ -74,6 +78,7 @@ function Carousel({
                 carouselApi,
                 scrollPrev,
                 scrollNext,
+                interacted,
             }}
         >
             <div
@@ -83,39 +88,31 @@ function Carousel({
                 {...props}
             >
                 {/* render a hint indicating swipe ability  */}
-                {hintVisible && (
-                    <div className="pointer-events-none absolute inset-0 z-10 pb-2 flex items-end justify-between px-4">
-                        <ChevronLeft className="h-6 w-6 shrink-0 animate-pulse-slow" aria-hidden="true" />
-                        <span className="mx-2 text-xs font-medium pb-1 uppercase tracking-wide">Swipe</span>
-                        <ChevronRight className="h-6 w-6 shrink-0 animate-pulse-slow" aria-hidden="true" />
-                    </div>
+                {!interacted && showHint && (
+                    <SwipeHint size="lg" className="z-50" />
                 )}
                 {children}
             </div>
         </carouselContext.Provider>
-    )
+    );
 }
-
 
 /**
  * Container holding carousel elements
- * @param {React.ComponentProps<"div">} 
+ * @param {React.ComponentProps<"div">}
  * @returns {React.JSX.Element}
  */
 function CarouselDiv({
     className = "",
     ...props
 }: React.ComponentProps<"div">) {
-    const { carouselRef } = useCarousel()
+    const { carouselRef } = useCarousel();
 
     return (
         <div ref={carouselRef} className="overflow-hidden">
-            <div
-                className={`flex -ml-4 ${className}`}
-                {...props}
-            />
+            <div className={`flex -ml-4 ${className}`} {...props} />
         </div>
-    )
+    );
 }
 
 /**
@@ -134,13 +131,7 @@ function CarouselElement({
             className={`min-w-0 shrink-0 grow-0 basis-full pl-4 ${className}`}
             {...props}
         />
-    )
+    );
 }
 
-
-export {
-    Carousel,
-    CarouselDiv,
-    CarouselElement,
-    useCarousel
-}
+export { Carousel, CarouselDiv, CarouselElement, useCarousel };
