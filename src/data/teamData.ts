@@ -145,7 +145,7 @@ const teams: TeamType[] = [
         sections: [
             {
                 header: "Legal and Regulatory Compliance",
-                body: "Oversees adherence to national and international space law, including licensing, orbital debris mitigation, and frequency allocation through regulatory bodies such as the ITU and MBIE.",
+                body: "Oversees adherence to national and international law.",
             },
             {
                 header: "Internal Governance and Policy Development",
@@ -153,7 +153,7 @@ const teams: TeamType[] = [
             },
             {
                 header: "Finance and External Relations",
-                body: "Coordinates funding efforts, grant applications, and contractual arrangements with stakeholders, ensuring financial accountability and compliance with institutional requirements.",
+                body: "Coordinates funding efforts, grant applications, and contractual arrangements.",
             },
         ],
     },
