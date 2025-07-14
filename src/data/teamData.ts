@@ -12,110 +12,171 @@ import {
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export type TeamType = {
-    name:string,
-    members:string, 
-    icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>,
-    description: string,
-    sections: {header: string, body: string}[]
-}
+    name: string;
+    icon: ForwardRefExoticComponent<
+        Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+    >;
+    description: string;
+    sections: { header: string; body: string }[];
+};
 
 const teams: TeamType[] = [
     {
         name: "Software Team",
-        members: "40+ members",
         icon: Code,
         description:
             "Develops all onboard software and digital infrastructure using the PyCubed open-source platform to build robust, fault-tolerant systems.",
         sections: [
-            { header: "Team Header 1", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-            { header: "Team Header 2", body: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
-            { header: "Team Header 3", body: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+            {
+                header: "Onboard Software Development",
+                body: "Responsible for developing the embedded systems that operate core satellite functions, including propulsion control, telemetry, system diagnostics, and autonomous fault recovery. Code is implemented using the PyCubed platform and is designed for robustness in spaceflight conditions.",
+            },
+            {
+                header: "Internal Tools and Web Infrastructure",
+                body: "Maintains internal documentation platforms, collaboration tools, and the mission's public website. These systems facilitate communication across project teams and ensure streamlined information sharing.",
+            },
+            {
+                header: "Digital Infrastructure for Satellite Operations",
+                body: "Implements backend software for managing satellite communications, mission data, and command processing.",
+            },
         ],
     },
     {
         name: "Mission Design / Mission Control",
-        members: "16 members",
         icon: MapPin,
         description:
             "Ensures overall mission feasibility and efficiency through trajectory planning, space environment analysis, and attitude control.",
         sections: [
-            { header: "Mission Header 1", body: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris." },
-            { header: "Mission Header 2", body: "Nisi ut aliquip ex ea commodo consequat." },
-            { header: "Mission Header 3", body: "Nisi ut aliquip ex ea commodo consequat." },
+            {
+                header: "Trajectory Planning and Analysis",
+                body: "Focuses on determining the satellite's orbital path using simulation tools such as GMAT. Ensures that trajectory designs meet mission constraints related to power, time, and propellant availability.",
+            },
+            {
+                header: "Space Environment Assessment",
+                body: "Conducts analysis of space weather phenomena such as solar radiation and geomagnetic disturbances to evaluate their impact on satellite performance, orientation, and subsystem longevity.",
+            },
+            {
+                header: "Attitude Determination and Control Modelling",
+                body: "Develops algorithms and models to maintain satellite orientation throughout the mission. Supports the selection and integration of appropriate sensors and actuators in collaboration with avionics and mechanical systems.",
+            },
         ],
     },
     {
         name: "Mechanical Team",
-        members: "19 members",
         icon: Rocket,
         description:
             "Responsible for the CubeSat's physical structure and propulsion system, ensuring durability and thermal resilience.",
         sections: [
-            { header: "Mechanical Header 1", body: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum." },
-            { header: "Mechanical Header 2", body: "Excepteur sint occaecat cupidatat non proident." },
-            { header: "Mechanical Header 3", body: "Excepteur sint occaecat cupidatat non proident." },
+            {
+                header: "Satellite Structural Design",
+                body: "Designs the mechanical frame and enclosure to withstand launch stresses, orbital thermal cycles, and mechanical loads. The structure provides protection for internal components while meeting CubeSat standards.",
+            },
+            {
+                header: "Propulsion Integration",
+                body: "Constructs the mechanical infrastructure required to support a Hall-effect thruster, including gas containment systems, cathode mounts, and secure mechanical interfaces for integration with the satellite frame.",
+            },
         ],
     },
     {
         name: "Power Team",
-        members: "10 members",
         icon: Zap,
         description:
             "Ensures Kororā can collect, store, and manage power through battery management and solar panel systems.",
         sections: [
-            { header: "Power Header 1", body: "Sunt in culpa qui officia deserunt mollit anim id est laborum." },
-            { header: "Power Header 2", body: "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio." },
-            { header: "Power Header 3", body: "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio." },
+            {
+                header: "Energy Collection and Storage",
+                body: "Develops systems for solar energy harvesting and battery storage to ensure continuous power supply across mission phases, including orbital eclipses and peak operational demands.",
+            },
+            {
+                header: "High-Voltage Power Management",
+                body: "Modifies and extends the PyCubed platform to support high-voltage requirements of the Hall-effect thruster. Ensures safe and reliable power conversion and delivery under spaceflight conditions.",
+            },
+            {
+                header: "Power System Integration",
+                body: "Coordinates closely with avionics and software teams to manage power distribution across the satellite. Focuses on system efficiency, electrical safety, and mission-wide reliability.",
+            },
         ],
     },
     {
         name: "Communications Team",
-        members: "9 members",
         icon: Radio,
         description:
             "Enables reliable data transmission between the Kororā CubeSat and Earth through comprehensive uplink and downlink architecture.",
         sections: [
-            { header: "Comms Header 1", body: "Suspendisse potenti. Morbi mattis ullamcorper velit." },
-            { header: "Comms Header 2", body: "Phasellus gravida semper nisi. Nullam vel sem." },
-              { header: "Comms Header 3", body: "Phasellus gravida semper nisi. Nullam vel sem." },
+            {
+                header: "Radiofrequency Hardware Development",
+                body: "Designs and manufactures antennas and RF systems for both the satellite and ground stations. Ensures reliable transmission and reception under varying orbital conditions and link budgets.",
+            },
+            {
+                header: "Communication Protocol Implementation",
+                body: "Implements modulation schemes, error correction, and data protocols required for real-time command and telemetry exchange across selected frequency bands.",
+            },
+            {
+                header: "Regulatory Compliance and Ground Testing",
+                body: "Manages licensing and regulatory approvals for frequency use and ground station integration. Oversees comprehensive testing to ensure end-to-end communications functionality meets international standards.",
+            },
         ],
     },
     {
         name: "Avionics Team",
-        members: "12 members",
         icon: Cpu,
         description:
             "Connects the CubeSat's sensors, controllers, and feedback systems for autonomous decision-making capabilities.",
         sections: [
-            { header: "Avionics Header 1", body: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus." },
-            { header: "Avionics Header 2", body: "Aenean vulputate eleifend tellus. Aenean leo ligula." },
+            {
+                header: "Sensor Integration and Interfacing",
+                body: "Integrates environmental and positional sensors such as gyroscopes, magnetometers, GPS, and sun sensors, required for orientation and autonomous operations.",
+            },
+            {
+                header: "Embedded Signal Processing",
+                body: "Processes raw sensor data into usable control signals through custom embedded systems, enabling real-time responsiveness to environmental conditions.",
+            },
+            {
+                header: "System Validation and Coordination",
+                body: "Ensures compatibility between avionics hardware and the broader spacecraft system. Validates sensor outputs, interfaces, and feedback loops through coordinated testing with software and mechanical teams.",
+            },
         ],
     },
     {
         name: "Law & Policy Team",
-        members: "9 members",
         icon: Scale,
         description:
             "Safeguards the legal and ethical foundation of the mission through policy compliance and governance.",
         sections: [
-            { header: "Policy Header 1", body: "Porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante." },
-            { header: "Policy Header 2", body: "Fusce fermentum. Nullam cursus lacinia erat." },
-             { header: "Policy Header 3", body: "Porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante." },
+            {
+                header: "Legal and Regulatory Compliance",
+                body: "Oversees adherence to national and international space law, including licensing, orbital debris mitigation, and frequency allocation through regulatory bodies such as the ITU and MBIE.",
+            },
+            {
+                header: "Internal Governance and Policy Development",
+                body: "Manages internal policies, operational procedures, and documentation to ensure ethical conduct and regulatory transparency throughout the mission lifecycle.",
+            },
+            {
+                header: "Finance and External Relations",
+                body: "Coordinates funding efforts, grant applications, and contractual arrangements with stakeholders, ensuring financial accountability and compliance with institutional requirements.",
+            },
         ],
     },
     {
         name: "Design & Marketing Team",
-        members: "8 members",
         icon: Palette,
         description:
             "Communicates Project Kororā to the world through visuals, social media, and public-facing assets.",
         sections: [
-            { header: "Design Header 1", body: "Praesent congue erat at massa. Sed cursus turpis vitae tortor." },
-            { header: "Design Header 2", body: "Donec posuere vulputate arcu. Phasellus accumsan cursus velit." },
-             { header: "Design Header 3", body: "Donec posuere vulputate arcu. Phasellus accumsan cursus velit." },
+            {
+                header: "Visual Identity and Branding",
+                body: "Develops the visual identity of Project Kororā through graphic design, brand standards, and visual assets for both print and digital media.",
+            },
+            {
+                header: "Media Production and Documentation",
+                body: "Produces photography, videography, and promotional materials to document key milestones, technical progress, and team collaboration throughout the mission.",
+            },
+            {
+                header: "Outreach and Public Engagement",
+                body: "Manages social media, event coverage, and external communications to promote the mission, raise public awareness, and support community and stakeholder engagement.",
+            },
         ],
     },
 ];
 
-
-export default teams
+export default teams;

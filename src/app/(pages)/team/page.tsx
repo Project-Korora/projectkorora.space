@@ -82,7 +82,7 @@ function TeamInfo({
                                     {section.header}
                                 </AccordionTrigger>
                                 <AccordionContent className="flex flex-col gap-4 text-balance">
-                                    <p>{section.body.repeat(3)}</p>
+                                    <p>{section.body}</p>
                                 </AccordionContent>
                             </AccordionItem>
                         );
