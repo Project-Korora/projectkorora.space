@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 import { useProposalAccess } from "./ProposalAccessProvider";
-import OrbitingSatellite from "./OrbitingSatellite";
+import OrbitingSatellite from "./Satellite";
 
 /**
  * The hero section for the homepage.
