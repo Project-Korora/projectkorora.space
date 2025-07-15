@@ -17,36 +17,45 @@ interface CardProps {
 }
 
 // Utility class fragments keyed by colour token
-const TOKEN: Record<CardColor, { bg: string; border: string; glow: string }> = {
+const TOKEN: Record<
+    CardColor,
+    { bg: string; border: string; glow: string; text: string }
+> = {
     default: {
         bg: "bg-[color:color-mix(in_srgb,var(--color-dark)_var(--opacity-card),transparent)]",
         border: "border-[var(--color-dark)]/(var(--opacity-card)) hover:border-[var(--color-dark-hover)]/[calc(var(--opacity-card)*1.5)]",
         glow: "bg-[var(--color-dark-hover)]/20",
+        text: "text-light",
     },
     primary: {
         bg: "bg-[color:color-mix(in_srgb,var(--color-primary)_var(--opacity-card),transparent)]",
         border: "border-[var(--color-primary)]/(var(--opacity-card)) hover:border-[var(--color-primary-hover)]/[calc(var(--opacity-card)*1.5)]",
         glow: "bg-[var(--color-primary-hover)]/20",
+        text: "text-light",
     },
     secondary: {
         bg: "bg-[color:color-mix(in_srgb,var(--color-secondary)_var(--opacity-card),transparent)]",
         border: "border-[var(--color-secondary)]/(var(--opacity-card)) hover:border-[var(--color-secondary-hover)]/[calc(var(--opacity-card)*1.5)]",
         glow: "bg-[var(--color-secondary-hover)]/20",
+        text: "text-light",
     },
     accent: {
         bg: "bg-[color:color-mix(in_srgb,var(--color-accent)_var(--opacity-card),transparent)]",
         border: "border-[var(--color-accent)]/(var(--opacity-card)) hover:border-[var(--color-accent-hover)]/[calc(var(--opacity-card)*1.5)]",
         glow: "bg-[var(--color-accent-hover)]/20",
+        text: "text-light",
     },
     light: {
         bg: "bg-[color:color-mix(in_srgb,var(--color-light)_var(--opacity-card),transparent)]",
         border: "border-[var(--color-light)]/(var(--opacity-card)) hover:border-[var(--color-light-hover)]/[calc(var(--opacity-card)*1.5)]",
         glow: "bg-[var(--color-light-hover)]/20",
+        text: "text-dark",
     },
     dark: {
         bg: "bg-[color:color-mix(in_srgb,var(--color-dark)_var(--opacity-card),transparent)]",
         border: "border-[var(--color-dark)]/(var(--opacity-card)) hover:border-[var(--color-dark-hover)]/[calc(var(--opacity-card)*1.5)]",
         glow: "bg-[var(--color-dark-hover)]/20",
+        text: "text-light",
     },
 };
 
@@ -68,14 +77,15 @@ export default function Card({
     className = "",
     color = "default",
 }: CardProps) {
-    const { bg, border, glow } = TOKEN[color] ?? TOKEN.default;
+    const { bg, border, glow, text } = TOKEN[color] ?? TOKEN.default;
 
     return (
         <div
-            className={`group relative p-6
-                rounded               /* ← token */
-                backdrop-blur                 /* ← token */
+            className={`group relative p-10
+                rounded
+                backdrop-blur
                 transition-transform duration-300 ease-out hover:scale-[1.02]
+                mt-5
                 ${bg} ${border} ${className}`}
             style={{
                 /* subtle depth + inner highlight */
@@ -87,7 +97,7 @@ export default function Card({
             <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-light)]/5 via-transparent to-[var(--color-light)]/5 rounded-[inherit] pointer-events-none" />
 
             {/* content */}
-            <div className="relative z-10">{children}</div>
+            <div className={`relative z-10 ${text}`}>{children}</div>
 
             {/* coloured glow */}
             <div

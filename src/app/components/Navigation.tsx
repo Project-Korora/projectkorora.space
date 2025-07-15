@@ -19,7 +19,6 @@ const baseNavigationItems: NavigationItem[] = [
     { name: "Team", href: "/team" },
     { name: "Proposal", href: "/proposal", requiresAccess: true },
     { name: "Contact", href: "/contact" },
-    { name: "Theme", href: "/theme" },
 ];
 
 /**
