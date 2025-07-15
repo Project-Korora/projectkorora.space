@@ -4,100 +4,82 @@
 
 - [Contributing to Project Kororā](#contributing-to-project-kororā)
   - [Table of Contents](#table-of-contents)
-  - [Development Workflow](#development-workflow)
-    - [Quick Rebase Summary (CLI \& VS Code)](#quick-rebase-summary-cli--vs-code)
-    - [(Optional) Open the Pull Request from your terminal](#optional-open-the-pull-request-from-your-terminal)
-  - [Commit Messages](#commit-messages)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Before You Start](#before-you-start)
+    - [Setting Up GPG Key](#setting-up-gpg-key)
+    - [How to Sign Commits](#how-to-sign-commits)
+  - [Commit Standards](#commit-standards)
+    - [Commit Message Format](#commit-message-format)
     - [Commit Types](#commit-types)
     - [Scope](#scope)
     - [Breaking Changes](#breaking-changes)
-  - [Signing Commits](#signing-commits)
-    - [Setting Up GPG Key](#setting-up-gpg-key)
-    - [How to Sign Commits](#how-to-sign-commits)
+  - [Development Workflow](#development-workflow)
+    - [Quick Merge Summary (CLI \& VS Code)](#quick-merge-summary-cli--vs-code)
   - [Pull Requests](#pull-requests)
     - [Best Practices](#best-practices)
 
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue or assessing patches and features.
 
-## Development Workflow
+## Getting Started
 
-Follow this 5-step loop for every contribution:
+Before you begin contributing, ensure you have the necessary setup to work with our codebase effectively.
 
-1. **Create a branch** off `main`:
+### Prerequisites
+
+- Git installed and configured
+- Node.js and npm for the project
+- GitHub account with SSH or HTTPS access configured
+- GPG key set up for commit signing (required)
+
+### Before You Start
+
+1. **Check for existing issues** - Look through [existing issues](https://github.com/Project-Korora/projectkorora.space/issues) to see if your feature/bug is already being discussed
+2. **Run the project locally** - Make sure you can build and run the project:
    ```bash
-   git checkout -b gitUsername/featureName
+   npm install
+   npm run dev
+   npm run build  # Ensure it builds without errors
    ```
-2. **Commit often & push**:
+3. **Check code quality** - Run linting and formatting:
    ```bash
-   git add . # Add all changes to the staging area
-   git commit -m "feat: add awesome stuff" # Commit with a descriptive message
-   git push -u origin gitUsername/featureName # Push the changes to the remote repository
+   npm run lint
+   npm run format  # If available
    ```
-3. **Open a Draft PR early** — CI checks will run.
-4. **Keep your branch up-to-date** (rebase, never merge into `main`):
-   ```bash
-   git fetch origin # Fetch the latest changes from the remote repository
-   git rebase origin/main # Rebase the current branch onto the main branch
-   git push --force-with-lease # Force push the changes to the remote repository
-   ```
-5. When approved, use **"Squash and merge"** to keep `main` linear.
 
-> ℹ️ `main` is protected—direct pushes are rejected to enforce code review and CI. All pushes must be signed (`git commit -S`) and fast-forwardable. See [Signing Commits](#signing-commits) for more info.
+> ℹ️ `main` is protected—direct pushes are rejected to enforce code review and CI. All pushes must be signed (`git commit -S`).
 
-### Quick Rebase Summary (CLI & VS Code)
+### Setting Up GPG Key
 
-Fetch → rebase → push:
+To ensure the integrity and authenticity of our commit history, all commits must be signed with a GPG key. Signed commits provide a layer of security by verifying that the commit genuinely comes from the stated author and has not been tampered with.
+
+If you have not set up a GPG key with your GitHub account, please follow GitHub's official documentation:
+
+- [Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
+- [Adding a GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-new-gpg-key-to-your-github-account)
+- [Telling Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
+
+### How to Sign Commits
+
+You can sign an individual commit using the `-S` flag:
 
 ```bash
-# Make sure you are on your feature branch
-git fetch origin          # Grab latest main
-git rebase origin/main    # Replay your commits on top of main
-# Fix any conflicts, then:
-git rebase --continue     # or --abort / --skip as needed
-git push --force-with-lease  # Update your PR
+git commit -S -m "feat: your descriptive commit message"
 ```
 
-**Doing the same in VS Code**
-
-1. Open the **Source Control** view (⟲ icon in the Activity Bar).
-2. Click the **⋯** menu and choose **Pull (Rebase)** _or_ press `⇧⌘P` and run **Git: Rebase Current Branch…**, selecting `origin/main` as the target.
-3. Resolve conflicts inline using **Accept Current / Incoming** buttons; VS Code shows a **Continue Rebase** button when all conflicts are resolved.
-4. Finally press **Push**—VS Code automatically uses `--force-with-lease`.
-
-Rebasing keeps the history linear and your pull request easy to review.
-
----
-
-### (Optional) Open the Pull Request from your terminal
-
-If you have the [GitHub CLI](https://cli.github.com/) installed and authenticated, you can create the PR without leaving the command line:
+To sign all commits by default, you can configure Git globally. This is the recommended approach:
 
 ```bash
-# Inside your feature branch
-git fetch origin       # ensure local refs are up-to-date (required for --fill)
-# --fill copies commit message; --draft opens it as a Draft PR
-gh pr create --base main --head username/feature --draft --fill
+git config --global commit.gpgsign true
 ```
 
-Useful follow-ups:
+This configuration ensures all your future commits in any local repository will be signed automatically.
 
-```bash
-# View the PR in your browser
-gh pr view --web
-
-# Check PR status (CI, reviews, mergeability)
-gh pr checks
-```
-
-This is functionally identical to opening the PR in the GitHub UI, but faster for terminal-focused workflows.
-
----
-
-This workflow helps keep our `main` branch clean and allows for effective collaboration.
-
-## Commit Messages
+## Commit Standards
 
 This project adheres to the [Conventional Commits specification](https://www.conventionalcommits.org/). All commits must follow this standard to maintain a clear and explicit commit history.
+
+### Commit Message Format
 
 The commit message should be structured as follows:
 
@@ -142,33 +124,86 @@ BREAKING CHANGE: The `authenticate` function now returns a Promise instead of a 
 
 A breaking change can be part of any commit type. For more details, please review the [full specification](https://www.conventionalcommits.org/).
 
-## Signing Commits
+## Development Workflow
 
-To ensure the integrity and authenticity of our commit history, all commits should be signed with a GPG key. Signed commits provide a layer of security by verifying that the commit genuinely comes from the stated author and has not been tampered with.
+Follow this 5-step loop for every contribution:
 
-### Setting Up GPG Key
+1.  **Create a branch** off `main`:
+    ```bash
+    git checkout -b gitUsername/featureName # gitUsername is your GitHub username, featureName is the name of the feature you are working on (this becomes the branch name)
+    ```
+2.  **Commit often & push** (remember to sign commits):
 
-If you have not set up a GPG key with your GitHub account, please follow GitHub's official documentation:
+    ```bash
+    git add . # Add all changes to the staging area
+    git commit -S -m "feat: add awesome stuff" # Commit with a descriptive message
+    git push -u origin gitUsername/featureName # Push the changes to the remote repository (gitUsername/featureName is the name of the branch you created in step 1)
+    ```
 
-- [Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
-- [Adding a GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-new-gpg-key-to-your-github-account)
-- [Telling Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
+3.  **Open a Draft PR early** — CI checks will run.
 
-### How to Sign Commits
+    Create the PR through the GitHub website interface or use the Quick GitHub CLI method (if you have [GitHub CLI](https://cli.github.com/) installed):
 
-You can sign an individual commit using the `-S` flag:
+    ```bash
+    # Inside your feature branch
+    git fetch origin # ensure local refs are up-to-date
+    # Create a draft PR with custom title and description
+    gh pr create --base main --head gitUsername/featureName --draft --title "feat: your feature description" --body "Brief description of what this PR does"
+    ```
+
+    **Alternative with --fill** (uses your latest commit message):
+
+    ```bash
+     v
+    ```
+
+4.  **Keep your branch up-to-date** (merge from `main`):
+
+    ```bash
+    git fetch origin # Fetch the latest changes from the remote repository
+    git merge origin/main # Merge the latest main branch changes into your feature branch
+    git push # Push the changes to the remote repository
+    ```
+
+    For merge conflict resolution, see the [Quick Merge Summary](#quick-merge-summary-cli--vs-code) section below.
+
+5.  When approved, you can merge your pull request using the GitHub website.
+
+This workflow helps keep our `main` branch clean and allows for effective collaboration.
+
+### Quick Merge Summary (CLI & VS Code)
+
+Fetch → merge → push:
 
 ```bash
-git commit -S -m "feat: your descriptive commit message"
+# Make sure you are on your feature branch
+git fetch origin          # Grab latest main
+git merge origin/main     # Merge latest main into your feature branch
+# Fix any conflicts, then:
+git add .                 # Stage resolved conflicts
+git commit                # Complete the merge commit
+git push                  # Update your PR
 ```
 
-To sign all commits by default, you can configure Git globally. This is the recommended approach.
+**Doing the same in VS Code**
 
-```bash
-git config --global commit.gpgsign true
-```
+1. Open the **Source Control** view (⟲ icon in the Activity Bar).
+2. Click the **⋯** menu and choose **Pull (Merge)** _or_ press `⇧⌘P` and run **Git: Merge Branch…**, selecting `origin/main` as the source.
+3. Resolve conflicts inline using **Accept Current / Incoming** buttons; VS Code shows a **Commit** button when all conflicts are resolved.
+4. Finally press **Push** to update your PR.
 
-This configuration ensures all your future commits in any local repository will be signed automatically.
+Merging keeps your feature branch up-to-date with main while preserving your development history.
+
+**Handling Merge Conflicts:**
+If you encounter conflicts during the merge:
+
+1. Git will mark conflicted files - open them in your editor
+2. Look for conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`)
+3. Resolve conflicts by choosing the correct code
+4. Remove the conflict markers
+5. Stage the resolved files: `git add .`
+6. Complete the merge: `git commit`
+7. Push your changes: `git push`
 
 ## Pull Requests
 
@@ -176,7 +211,7 @@ When you are ready to merge your feature branch into `main`, you will need to op
 
 ### Best Practices
 
-- **Write a Clear Title**: Your title should be concise and follow the [Conventional Commits](#commit-messages) format (e.g., `feat(api): add user authentication`). This helps in release automation and changelog generation.
+- **Write a Clear Title**: Your title should be concise and follow the [Conventional Commits](#commit-standards) format (e.g., `feat(api): add user authentication`). This helps in release automation and changelog generation.
 
 - **Provide a Detailed Description**: The description should clearly explain the "why" behind your changes.
 
