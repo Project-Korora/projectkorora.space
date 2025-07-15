@@ -128,40 +128,46 @@ A breaking change can be part of any commit type. For more details, please revie
 
 Follow this 5-step loop for every contribution:
 
-1. **Create a branch** off `main`:
-   ```bash
-   git checkout -b gitUsername/featureName # gitUsername is your GitHub username, featureName is the name of the feature you are working on (this becomes the branch name)
-   ```
-2. **Commit often & push** (remember to sign commits):
+1.  **Create a branch** off `main`:
+    ```bash
+    git checkout -b gitUsername/featureName # gitUsername is your GitHub username, featureName is the name of the feature you are working on (this becomes the branch name)
+    ```
+2.  **Commit often & push** (remember to sign commits):
 
-   ```bash
-   git add . # Add all changes to the staging area
-   git commit -S -m "feat: add awesome stuff" # Commit with a descriptive message
-   git push -u origin gitUsername/featureName # Push the changes to the remote repository (gitUsername/featureName is the name of the branch you created in step 1)
-   ```
+    ```bash
+    git add . # Add all changes to the staging area
+    git commit -S -m "feat: add awesome stuff" # Commit with a descriptive message
+    git push -u origin gitUsername/featureName # Push the changes to the remote repository (gitUsername/featureName is the name of the branch you created in step 1)
+    ```
 
-3. **Open a Draft PR early** — CI checks will run.
+3.  **Open a Draft PR early** — CI checks will run.
 
-   Create the PR through the GitHub website interface or use the Quick GitHub CLI method (if you have [GitHub CLI](https://cli.github.com/) installed):
+    Create the PR through the GitHub website interface or use the Quick GitHub CLI method (if you have [GitHub CLI](https://cli.github.com/) installed):
 
-   ```bash
-   # Inside your feature branch
-   git fetch origin       # ensure local refs are up-to-date (required for --fill)
-   # --fill copies commit message; --draft opens it as a Draft PR
-   gh pr create --base main --head gitUsername/featureName --draft --fill # gitUsername/featureName is the name of the branch you created in step 1
-   ```
+    ```bash
+    # Inside your feature branch
+    git fetch origin # ensure local refs are up-to-date
+    # Create a draft PR with custom title and description
+    gh pr create --base main --head gitUsername/featureName --draft --title "feat: your feature description" --body "Brief description of what this PR does"
+    ```
 
-4. **Keep your branch up-to-date** (merge from `main`):
+    **Alternative with --fill** (uses your latest commit message):
 
-   ```bash
-   git fetch origin # Fetch the latest changes from the remote repository
-   git merge origin/main # Merge the latest main branch changes into your feature branch
-   git push # Push the changes to the remote repository
-   ```
+    ```bash
+     v
+    ```
 
-   For merge conflict resolution, see the [Quick Merge Summary](#quick-merge-summary-cli--vs-code) section below.
+4.  **Keep your branch up-to-date** (merge from `main`):
 
-5. When approved, you can merge your pull request using the GitHub website.
+    ```bash
+    git fetch origin # Fetch the latest changes from the remote repository
+    git merge origin/main # Merge the latest main branch changes into your feature branch
+    git push # Push the changes to the remote repository
+    ```
+
+    For merge conflict resolution, see the [Quick Merge Summary](#quick-merge-summary-cli--vs-code) section below.
+
+5.  When approved, you can merge your pull request using the GitHub website.
 
 This workflow helps keep our `main` branch clean and allows for effective collaboration.
 
