@@ -39,22 +39,8 @@ const FORM_CONFIG: FormConfig = {
         process.env.PUBLIC_ACCESS_KEY || "753b8080-3081-4116-9c3e-597313a5addf",
     hcaptchaSiteKey: "50b2fe65-b00b-4b9e-ad62-3ba471098be2",
     settings: {
-        from_name: "Project Kororā",
-        subject: "New Contact Message from Project Kororā Website",
-    },
-};
-
-// hCaptcha Custom Theme to match Project Kororā design system
-// Note: This requires the custom=true parameter and may need account feature enabled
-const HCAPTCHA_CUSTOM_THEME = {
-    palette: {
-        primary: {
-            main: "#00bcd4", // Cyan primary color to match design
-        },
-        text: {
-            heading: "#ffffff", // White headings for dark theme
-            body: "#e5e5e5", // Light gray body text
-        },
+        from_name: "Project Korora",
+        subject: "New Message from Project Korora Website",
     },
 };
 
@@ -262,7 +248,7 @@ export default function Contact() {
                             onVerify={onCaptchaVerify}
                             onExpire={onCaptchaExpire}
                             reCaptchaCompat={false}
-                            theme={HCAPTCHA_CUSTOM_THEME}
+                            theme="dark"
                         />
                     </div>
 

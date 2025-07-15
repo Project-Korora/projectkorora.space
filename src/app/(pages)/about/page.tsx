@@ -91,6 +91,8 @@ export default async function AboutPage() {
                 <Image
                     src="/images/fullteam.jpg"
                     alt="Project Kororā Full Team Photo"
+                    width={1200}
+                    height={800}
                     className="w-full h-auto object-cover"
                 />
             </Card>
@@ -109,6 +111,8 @@ export default async function AboutPage() {
                             <Image
                                 src={member.image}
                                 alt={member.name}
+                                width={120}
+                                height={120}
                                 className="w-30 h-30 rounded-full object-cover border border-light/20 flex-shrink-0"
                             />
                             <div>

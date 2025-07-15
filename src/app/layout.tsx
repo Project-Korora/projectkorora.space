@@ -130,11 +130,8 @@ export default function RootLayout({
                     <Image
                         src="/background.jpg"
                         alt="Background"
+                        fill
                         style={{
-                            position: "fixed",
-                            inset: 0,
-                            width: "100vw",
-                            height: "var(--device-height)",
                             objectFit: "cover",
                             pointerEvents: "none",
                         }}
@@ -144,19 +141,25 @@ export default function RootLayout({
 
                 {/* Poster image after video ends */}
                 {videoEnded && (
-                    <Image
-                        src="/background.jpg"
-                        alt="Background"
+                    <div
                         style={{
                             position: "fixed",
                             inset: 0,
                             width: "100vw",
                             height: "var(--device-height)",
-                            objectFit: "cover",
                             pointerEvents: "none",
                         }}
-                        aria-hidden="true"
-                    />
+                    >
+                        <Image
+                            src="/background.jpg"
+                            alt="Background"
+                            fill
+                            style={{
+                                objectFit: "cover",
+                            }}
+                            aria-hidden="true"
+                        />
+                    </div>
                 )}
 
                 {/* Content layers - top layer */}
