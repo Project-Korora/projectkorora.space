@@ -55,7 +55,7 @@ export default function FeaturesSection() {
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-light mb-6">
                         Key{" "}
-                        <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                             Features
                         </span>
                     </h2>

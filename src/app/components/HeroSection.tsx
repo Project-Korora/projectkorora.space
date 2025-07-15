@@ -73,7 +73,7 @@ export default function HeroSection() {
                 <h1 className="text-7xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight">
                     <span className="text-light">Project</span>
                     <br />
-                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                         Kororā
                     </span>
                 </h1>
@@ -92,7 +92,7 @@ export default function HeroSection() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                     <Button
                         href="/about"
-                        gradientColors={["primary", "secondary"]}
+                        gradientColors={["secondary", "primary"]}
                         size="lg"
                         className="group transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-secondary/20"
                     >

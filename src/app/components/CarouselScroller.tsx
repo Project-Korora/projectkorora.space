@@ -1,0 +1,26 @@
+"use client";
+import React from "react";
+import { useCarousel } from "./Carousel";
+
+interface ScrollerProps {
+    delay?: number;
+}
+
+export default function CarouselScroller({ delay = 4000 }: ScrollerProps) {
+    const { interacted, carouselApi } = useCarousel();
+
+    React.useEffect(() => {
+        if (!interacted) {
+            const interval = setInterval(() => {
+                if (!carouselApi) return;
+                const idx = carouselApi.selectedScrollSnap();
+                const count = carouselApi.scrollSnapList().length;
+                const targIdx = idx + 1 >= count ? 0 : idx + 1;
+                carouselApi.scrollTo(targIdx);
+            }, delay);
+            return () => clearInterval(interval);
+        }
+    }, [interacted, carouselApi, delay]);
+
+    return null;
+}

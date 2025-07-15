@@ -134,7 +134,7 @@ export default function ImpactSection() {
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-light mb-6">
                         Project{" "}
-                        <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                             Impact
                         </span>
                     </h2>
@@ -167,7 +167,7 @@ export default function ImpactSection() {
 
                 {/* Additional Info */}
                 <div className="mt-16 grid md:grid-cols-3 gap-8">
-                    <Card color="primary" className="text-center">
+                    <Card color="secondary" className="text-center">
                         <div className="inline-flex items-center justify-center w-12 h-12 bg-accent/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faAward}
@@ -184,7 +184,7 @@ export default function ImpactSection() {
                         </p>
                     </Card>
 
-                    <Card color="primary" className="text-center">
+                    <Card color="secondary" className="text-center">
                         <div className="inline-flex items-center justify-center w-12 h-12 bg-accent/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faCog}
@@ -201,7 +201,7 @@ export default function ImpactSection() {
                         </p>
                     </Card>
 
-                    <Card color="primary" className="text-center">
+                    <Card color="secondary" className="text-center">
                         <div className="inline-flex items-center justify-center w-12 h-12 bg-accent/20 rounded-lg mb-4">
                             <FontAwesomeIcon
                                 icon={faGlobe}
