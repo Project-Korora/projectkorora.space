@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.2.0...v1.3.0) (2025-07-15)
+
+
+### Features
+
+* Merge pull request [#78](https://github.com/Project-Korora/projectkorora.space/issues/78) from Project-Korora/feat--galengreen/contact_form ([d77833a](https://github.com/Project-Korora/projectkorora.space/commit/d77833aaea6750a21a62cbefee851e3cb123c40c))
+
 ## [1.2.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.1.0...v1.2.0) (2025-07-14)
 
 
