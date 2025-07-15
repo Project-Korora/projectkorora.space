@@ -2,6 +2,11 @@
 
 import React from "react";
 
+/**
+ * A loading screen component that displays a circular spinner.
+ *
+ * @returns {JSX.Element} The rendered loading screen.
+ */
 export default function LoadingScreen() {
     return (
         <div

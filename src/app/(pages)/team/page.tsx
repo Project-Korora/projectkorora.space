@@ -34,6 +34,14 @@ const advisors = [
     "Robin McNeill – CEO, Space Operations New Zealand Ltd",
 ];
 
+/**
+ * A component that displays information about a team.
+ *
+ * @param {Object} props - The component props.
+ * @param {TeamType} props.team - The team data.
+ * @param {number} props.index - The index of the team.
+ * @returns {JSX.Element} The rendered team info component.
+ */
 function TeamInfo({ team, index }: { team: TeamType; index: number }) {
     return (
         <Card key={index} color="dark" className="!mt-0">
@@ -72,6 +80,13 @@ function TeamInfo({ team, index }: { team: TeamType; index: number }) {
     );
 }
 
+/**
+ * The team page for Project Kororā.
+ *
+ * This page is intended to display the members of the project team.
+ *
+ * @returns {JSX.Element} The rendered team page.
+ */
 export default function TeamPage() {
     return (
         <PageContainer>

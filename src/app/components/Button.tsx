@@ -19,6 +19,11 @@ interface ButtonProps {
     gradientDirection?: "r" | "l" | "t" | "b" | "tl" | "tr" | "bl" | "br";
 }
 
+/**
+ * Versatile button component with multiple variants, sizes, and optional gradient styling
+ * @param {ButtonProps} props - Button component properties including variant, size, and styling options
+ * @returns {JSX.Element} Rendered button or link element with appropriate styling and functionality
+ */
 export default function Button({
     children,
     variant = "primary",
@@ -57,6 +62,12 @@ export default function Button({
     };
 
     // Build gradient classes
+    /**
+     * Builds CSS gradient styles for custom gradient buttons
+     * @param {string[]} colors - Array of color names to use in the gradient (minimum 2 required)
+     * @param {"r" | "l" | "t" | "b" | "tl" | "tr" | "bl" | "br"} direction - Direction of the gradient (r, l, t, b, tl, tr, bl, br)
+     * @returns {{className: string, style: React.CSSProperties}} Object containing className and style properties for the gradient
+     */
     const buildGradientStyles = (
         colors?: string[],
         direction: "r" | "l" | "t" | "b" | "tl" | "tr" | "bl" | "br" = "r"

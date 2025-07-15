@@ -22,7 +22,7 @@ const carouselContext = React.createContext<CarouselContextProps | null>(null);
 /**
  * A hook to access carousel internals in order to extend functionality from other components
  * @throws {Error} if not used within a carousel provider
- * @returns {CarouselContextProps}
+ * @returns {CarouselContextProps} The carousel context containing refs, API, scroll functions, and interaction state
  */
 function useCarousel() {
     const context = React.useContext(carouselContext);
@@ -35,9 +35,9 @@ function useCarousel() {
 }
 
 /**
- *
- * @param {React.ComponentProps<"div"> & CarouselProps} props
- * @returns {React.JSX.Element} Top level carousel component
+ * Top level carousel component that provides context and manages state
+ * @param {React.ComponentProps<"div"> & CarouselProps} props - Component props including className, children, showHint, doLoop, and standard div props
+ * @returns {JSX.Element} JSX element containing the carousel provider and children
  */
 function Carousel({
     className = "",
@@ -50,8 +50,8 @@ function Carousel({
     const [interacted, setInteracted] = React.useState(false);
 
     /**
-     *  callbacks to scroll the carousel left & right for use with other components
-     *  available via useCaraousel
+     * Callbacks to scroll the carousel left & right for use with other components
+     * Available via useCarousel hook
      */
     const scrollPrev = React.useCallback(() => {
         carouselApi?.scrollPrev();
@@ -98,9 +98,9 @@ function Carousel({
 }
 
 /**
- * Container holding carousel elements
- * @param {React.ComponentProps<"div">}
- * @returns {React.JSX.Element}
+ * Container holding carousel elements with overflow handling
+ * @param {React.ComponentProps<"div">} props - Component props including className and standard div props
+ * @returns {JSX.Element} JSX element containing the carousel viewport and slide container
  */
 function CarouselDiv({
     className = "",
@@ -116,9 +116,9 @@ function CarouselDiv({
 }
 
 /**
- * Single carousel element (slide)
- * @param {React.ComponentProps<"div">}
- * @returns {React.JSX.Element}
+ * Single carousel element (slide) with proper spacing and accessibility
+ * @param {React.ComponentProps<"div">} props - Component props including className and standard div props
+ * @returns {JSX.Element} JSX element configured as a carousel slide with proper ARIA attributes
  */
 function CarouselElement({
     className = "",

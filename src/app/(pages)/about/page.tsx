@@ -4,6 +4,7 @@ import PageContainer from "../../components/PageContainer";
 import PageHeader from "../../components/PageHeader";
 import MarkdownContent from "../../components/MarkdownContent";
 import Card from "@/app/components/Card";
+import Image from "next/image";
 
 export const metadata: Metadata = {
     title: "About Project Kororā",
@@ -87,7 +88,7 @@ export default async function AboutPage() {
 
             {/* Full Team Photo Section */}
             <Card color="dark" className="!p-0 overflow-hidden">
-                <img
+                <Image
                     src="/images/fullteam.jpg"
                     alt="Project Kororā Full Team Photo"
                     className="w-full h-auto object-cover"
@@ -105,7 +106,7 @@ export default async function AboutPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {teamMembers.map((member, index) => (
                         <div key={index} className="flex items-center gap-6">
-                            <img
+                            <Image
                                 src={member.image}
                                 alt={member.name}
                                 className="w-30 h-30 rounded-full object-cover border border-light/20 flex-shrink-0"

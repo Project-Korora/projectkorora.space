@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LoadingScreen from "./components/LoadingScreen";
 import { ProposalAccessProvider } from "./components/ProposalAccessProvider";
+import Image from "next/image";
 
 // Font Awesome configuration
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -126,7 +127,7 @@ export default function RootLayout({
                     aria-hidden="true"
                 >
                     {/* Fallback for unsupported browsers */}
-                    <img
+                    <Image
                         src="/background.jpg"
                         alt="Background"
                         style={{
@@ -143,7 +144,7 @@ export default function RootLayout({
 
                 {/* Poster image after video ends */}
                 {videoEnded && (
-                    <img
+                    <Image
                         src="/background.jpg"
                         alt="Background"
                         style={{

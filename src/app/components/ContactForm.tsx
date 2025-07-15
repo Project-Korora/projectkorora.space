@@ -84,6 +84,7 @@ const INPUT_NORMAL_CLASSES =
 
 /**
  * Error message component for form validation
+ * @returns {JSX.Element} JSX element displaying an error message with icon
  */
 const ErrorMessage = ({ message }: { message: string }) => (
     <div className="flex items-center space-x-2 text-red-400">
@@ -94,6 +95,7 @@ const ErrorMessage = ({ message }: { message: string }) => (
 
 /**
  * Contact form component with hCaptcha integration
+ * @returns {JSX.Element} JSX element containing the complete contact form with validation and captcha
  */
 export default function Contact() {
     // Note: To enable hCaptcha custom themes, you need to:

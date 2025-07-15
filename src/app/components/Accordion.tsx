@@ -5,12 +5,22 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "lucide-react";
 import clsx from "clsx";
 
+/**
+ * Root accordion component that manages the state and structure of accordion items
+ * @param {React.ComponentProps<typeof AccordionPrimitive.Root>} props - All props from AccordionPrimitive.Root component
+ * @returns {JSX.Element} Accordion root element with proper data attributes
+ */
 function Accordion({
     ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
     return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
 }
 
+/**
+ * Individual accordion item component with consistent styling
+ * @param {React.ComponentProps<typeof AccordionPrimitive.Item>} props - Component props including className and all AccordionPrimitive.Item props
+ * @returns {JSX.Element} Styled accordion item with border and spacing
+ */
 function AccordionItem({
     className,
     ...props
@@ -24,6 +34,11 @@ function AccordionItem({
     );
 }
 
+/**
+ * Clickable trigger for accordion items with chevron icon and hover states
+ * @param {React.ComponentProps<typeof AccordionPrimitive.Trigger>} props - Component props including className, children, and all AccordionPrimitive.Trigger props
+ * @returns {JSX.Element} Styled accordion trigger with animation and accessibility features
+ */
 function AccordionTrigger({
     className,
     children,
@@ -51,6 +66,11 @@ function AccordionTrigger({
     );
 }
 
+/**
+ * Collapsible content area for accordion items with smooth animations
+ * @param {React.ComponentProps<typeof AccordionPrimitive.Content>} props - Component props including className, children, and all AccordionPrimitive.Content props
+ * @returns {JSX.Element} Animated accordion content with proper spacing and text styling
+ */
 function AccordionContent({
     className,
     children,
