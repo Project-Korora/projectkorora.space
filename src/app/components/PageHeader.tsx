@@ -22,7 +22,7 @@ export default function PageHeader({
     className = "",
 }: PageHeaderProps) {
     return (
-        <div className={`relative z-1 text-center mb-12 ${className}`}>
+        <div className={`relative z-1 text-center mb-12 mt-10 ${className}`}>
             <h1 className="text-4xl font-bold mb-6 text-light">{title}</h1>
             <p className="text-xl text-light/80 max-w-5xl mx-auto">
                 {description}

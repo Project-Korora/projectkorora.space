@@ -22,7 +22,7 @@ export type TeamType = {
 
 const teams: TeamType[] = [
     {
-        name: "Software Team",
+        name: "Software Team (40+ members)",
         icon: Code,
         description:
             "Develops all onboard software and digital infrastructure using the PyCubed open-source platform to build robust, fault-tolerant systems.",
@@ -42,7 +42,7 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Mission Design / Mission Control",
+        name: "Mission Design / Mission Control (16 members)",
         icon: MapPin,
         description:
             "Ensures overall mission feasibility and efficiency through trajectory planning, space environment analysis, and attitude control.",
@@ -62,7 +62,7 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Mechanical Team",
+        name: "Mechanical Team (19 members)",
         icon: Rocket,
         description:
             "Responsible for the CubeSat's physical structure and propulsion system, ensuring durability and thermal resilience.",
@@ -78,7 +78,7 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Power Team",
+        name: "Power Team (10 members)",
         icon: Zap,
         description:
             "Ensures Kororā can collect, store, and manage power through battery management and solar panel systems.",
@@ -98,7 +98,7 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Communications Team",
+        name: "Communications Team (9 members)",
         icon: Radio,
         description:
             "Enables reliable data transmission between the Kororā CubeSat and Earth through comprehensive uplink and downlink architecture.",
@@ -118,7 +118,7 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Avionics Team",
+        name: "Avionics Team (12 members)",
         icon: Cpu,
         description:
             "Connects the CubeSat's sensors, controllers, and feedback systems for autonomous decision-making capabilities.",
@@ -138,7 +138,7 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Law & Policy Team",
+        name: "Law & Policy Team (9 members)",
         icon: Scale,
         description:
             "Safeguards the legal and ethical foundation of the mission through policy compliance and governance.",
@@ -158,7 +158,7 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Design & Marketing Team",
+        name: "Design & Marketing Team (8 members)",
         icon: Palette,
         description:
             "Communicates Project Kororā to the world through visuals, social media, and public-facing assets.",
