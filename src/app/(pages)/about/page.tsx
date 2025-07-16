@@ -25,7 +25,7 @@ export default async function AboutPage() {
             name: "Zhen Hong Chai",
             team: "Attitude Determination & Mission Design",
             title: "Co-Founder and Leader",
-            image: "/images/teamleads/zhen.jpg",
+            image: "/images/teamleads/zac.jpg",
         },
         {
             name: "Alex Fausett",
@@ -67,13 +67,13 @@ export default async function AboutPage() {
             name: "Alex McKeown",
             team: "Design",
             title: "Leader",
-            image: "/images/teamleads/alex_k.jpg",
+            image: "/images/teamleads/placeholder.jpg",
         },
         {
-            name: "Arunan",
+            name: "Arunan and Ivy Hampton",
             team: "Law, Policy and Finance",
             title: "Leader",
-            image: "/images/teamleads/arunan.jpg",
+            image: "/images/teamleads/placeholder.jpg",
         },
     ];
 

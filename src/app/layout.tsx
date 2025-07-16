@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LoadingScreen from "./components/LoadingScreen";
 import { ProposalAccessProvider } from "./components/ProposalAccessProvider";
-import CustomCursor from "./components/CustomCursor";
 import Image from "next/image";
 
 // Font Awesome configuration
@@ -165,7 +164,6 @@ export default function RootLayout({
 
                 {/* Content layers - top layer */}
                 {isLoading && <LoadingScreen />}
-                <CustomCursor />
                 <ProposalAccessProvider>
                     <div className="relative z-10 flex flex-col h-device">
                         <Navigation />
