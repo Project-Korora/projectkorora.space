@@ -25,7 +25,7 @@ export default async function AboutPage() {
             name: "Zhen Hong Chai",
             team: "Attitude Determination & Mission Design",
             title: "Co-Founder and Leader",
-            image: "/images/teamleads/zac.jpg",
+            image: "/images/teamleads/zhen.jpg",
         },
         {
             name: "Alex Fausett",
@@ -70,10 +70,10 @@ export default async function AboutPage() {
             image: "/images/teamleads/placeholder.jpg",
         },
         {
-            name: "Arunan and Ivy Hampton",
+            name: "Arunan",
             team: "Law, Policy and Finance",
             title: "Leader",
-            image: "/images/teamleads/placeholder.jpg",
+            image: "/images/teamleads/arunan.jpg",
         },
     ];
 
