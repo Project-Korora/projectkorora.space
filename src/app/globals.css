@@ -191,6 +191,11 @@ body {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto; /* Enable vertical scrolling on body */
+    margin: 0px;
+}
+
+* {
+    cursor: none;
 }
 
 /* Fixed background using pseudo-element - works on mobile */
@@ -216,5 +221,37 @@ body::before {
         background-size: cover;
         width: 100vw;
         height: 100vh;
+    }
+}
+
+/* Custom cursor optimizations */
+@media (hover: hover) and (pointer: fine) {
+    /* Only apply custom cursor on devices with precise pointing (desktop) */
+    .custom-cursor-active * {
+        cursor: none !important;
+    }
+}
+
+/* Disable custom cursor on touch devices */
+@media (hover: none) or (pointer: coarse) {
+    .custom-cursor {
+        display: none !important;
+    }
+}
+
+/* Performance optimization for cursor animations */
+.cursor-element {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform: translateZ(0); /* Force GPU acceleration */
+    pointer-events: none;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .cursor-element {
+        transition: none !important;
+        animation: none !important;
     }
 }
