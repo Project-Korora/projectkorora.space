@@ -118,12 +118,13 @@ export default function ImpactSection() {
             number: "100",
             label: "Students Involved",
             suffix: "+",
-            description: "Multidisciplinary team of engineering students",
+            description:
+                "Multidisciplinary team from STEM, law, design, and arts",
         },
         {
-            number: "EP",
+            number: "HET",
             label: "Propulsion System",
-            description: "Advanced electric propulsion technology",
+            description: "Miniature Hall-effect thruster technology",
         },
     ];
 

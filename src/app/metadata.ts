@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         template: "%s | Project Kororā",
     },
     description:
-        "Project Kororā aims to develop New Zealand's space economy by creating an accessible initiative for students at Te Herenga Waka. Our mission is to design and develop a CubeSat capable of being launched into space, featuring an innovative electric propulsion (EP) thruster.",
+        "Project Kororā aims to develop New Zealand's space economy by creating an accessible initiative for students at Te Herenga Waka. Our mission is to design and develop a 3U CubeSat capable of being launched into space, featuring an innovative miniature Hall-effect thruster.",
     keywords: [
         "CubeSat",
         "space technology",

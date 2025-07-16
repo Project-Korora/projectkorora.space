@@ -20,9 +20,9 @@ export default function FeaturesSection() {
     const features = [
         {
             icon: faRocket,
-            title: "Electric Propulsion",
+            title: "Hall-Effect Thruster",
             description:
-                "Revolutionary EP thruster technology enabling precise orbital maneuvers and extended mission duration for small satellites.",
+                "Revolutionary miniature Hall-effect thruster technology enabling precise orbital maneuvers and extended mission duration for CubeSats.",
             color: "from-primary to-secondary",
         },
         {
@@ -34,9 +34,9 @@ export default function FeaturesSection() {
         },
         {
             icon: faGraduationCap,
-            title: "Educational Impact",
+            title: "Inclusive Education",
             description:
-                "Hands-on learning opportunities for students in aerospace engineering, fostering New Zealand's space industry workforce.",
+                "Open-source platforms and workshops creating accessible pathways for students from all backgrounds—STEM, law, design, and arts—to explore space technology.",
             color: "from-primary to-secondary",
         },
         {

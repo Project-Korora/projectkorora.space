@@ -83,7 +83,7 @@ export default function HeroSection() {
                     New Zealand CubeSat with
                     <span className="text-primary font-semibold">
                         {" "}
-                        electric propulsion systems
+                        Hall-effect thruster technology
                     </span>
                 </p>
 
