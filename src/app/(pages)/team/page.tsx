@@ -71,6 +71,7 @@ function TeamInfo({
                     collapsible
                     className="w-full"
                     defaultValue="item-1"
+                    hideMobileDefault={true}
                 >
                     {team.sections.map((section, index) => {
                         return (
