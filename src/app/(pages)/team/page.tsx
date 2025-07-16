@@ -7,7 +7,6 @@ import {
 import teamList, { TeamType } from "@/data/teamData";
 import Card from "@/app/components/Card";
 import { Users } from "lucide-react";
-import Skeleton from "@/app/components/Skeleton";
 import PageContainer from "@/app/components/PageContainer";
 import PageHeader from "@/app/components/PageHeader";
 import {
@@ -17,12 +16,12 @@ import {
     AccordionTrigger,
 } from "@/app/components/Accordion";
 import CarouselScroller from "@/app/components/CarouselScroller";
+import Image from "next/image";
+
 /**
  * The team page for Project Kororā.
  *
  * This page is intended to display the members of the project team.
- * NOTE: This is currently a placeholder and needs to be populated
- * with actual team member data.
  *
  * @returns {JSX.Element} The rendered team page.
  */
@@ -34,6 +33,21 @@ const advisors = [
     "Robin McNeill – CEO, Space Operations New Zealand Ltd",
 ];
 
+// Map team names to their corresponding photo files
+const getTeamPhoto = (teamName: string): string => {
+    const photoMap: { [key: string]: string } = {
+        "Software Team (40+ members)": "/images/software.jpg",
+        "Mission Design / Mission Control (16 members)": "/images/fullteam.jpg", // Using full team for mission control
+        "Mechanical Team (19 members)": "/images/mechanical.jpg",
+        "Power Team (10 members)": "/images/power-systems.jpg",
+        "Communications Team (9 members)": "/images/communication.jpg",
+        "Avionics Team (12 members)": "/images/avionics.jpg",
+        "Law & Policy Team (9 members)": "/images/law.jpg",
+        "Design & Marketing Team (8 members)": "/images/fullteam.jpg", // Using full team for design
+    };
+    return photoMap[teamName] || "/images/fullteam.jpg";
+};
+
 /**
  * A component that displays information about a team.
  *
@@ -43,6 +57,8 @@ const advisors = [
  * @returns {JSX.Element} The rendered team info component.
  */
 function TeamInfo({ team, index }: { team: TeamType; index: number }) {
+    const teamPhoto = getTeamPhoto(team.name);
+
     return (
         <Card key={index} color="dark" className="!mt-0">
             <div className="space-y-6">
@@ -55,7 +71,15 @@ function TeamInfo({ team, index }: { team: TeamType; index: number }) {
                     </div>
                 </div>
 
-                <Skeleton className="w-full h-48 rounded-lg overflow-hidden"></Skeleton>
+                <div className="w-full h-48 rounded-lg overflow-hidden">
+                    <Image
+                        src={teamPhoto}
+                        alt={`${team.name} team photo`}
+                        width={600}
+                        height={300}
+                        className="w-full h-full object-cover"
+                    />
+                </div>
 
                 <p className="leading-relaxed">{team.description}</p>
                 <Accordion type="single" collapsible className="w-full">

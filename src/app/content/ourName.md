@@ -6,11 +6,11 @@ Our name comes from the little blue penguin, or kororā—Aotearoa New Zealand�
 
 - Foster a network of space enthusiast students at Victoria University and across Aotearoa.
 - Build visibility for the project.
-- Raise 500 - 1k in funding for the project.
+- Raise $500 - $1k in funding for the project.
 - Build relationships with industry, academic experts, and other CubeSat teams internationally.
 - Deliver a detailed final iteration of a NZSA-compliant proposal by the end of the year.
 - Maintain active subteams with clear goals, timelines, and documentation practices.
-- Launch a made version of the cubesat via weather balloon to test the communications
+- Launch a first version of the CubeSat via weather balloon to test the communications
 - Contribute to the long-term development of an accessible, open-source CubeSat platform for future student missions.
 
 Project Kororā brings together ambition, technical rigour, and community-driven design to push the boundaries of what students can achieve in space.
