@@ -5,14 +5,28 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "lucide-react";
 import clsx from "clsx";
 
+interface AccordionProps {
+    hideMobileDefault?: boolean;
+}
+
 /**
  * Root accordion component that manages the state and structure of accordion items
  * @param {React.ComponentProps<typeof AccordionPrimitive.Root>} props - All props from AccordionPrimitive.Root component
  * @returns {JSX.Element} Accordion root element with proper data attributes
  */
 function Accordion({
+    hideMobileDefault,
     ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Root>) {
+}: React.ComponentProps<typeof AccordionPrimitive.Root> & AccordionProps) {
+    const isMobile = window?.innerWidth < 768;
+    {
+        /* cannot destructure normally due to multiple | single typing */
+    }
+    if (isMobile && hideMobileDefault) {
+        const { defaultValue, ...remaining } = props;
+        return <AccordionPrimitive.Root data-slot="accordion" {...remaining} />;
+    }
+
     return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
 }
 

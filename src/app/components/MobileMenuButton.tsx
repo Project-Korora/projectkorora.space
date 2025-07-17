@@ -21,35 +21,44 @@ export default function MobileMenuButton({
     return (
         <button
             onClick={onClick}
-            className={`${
-                isOpen
-                    ? "text-primary font-bold"
-                    : "text-white hover:text-white/80"
-            } focus:outline-none p-2`}
+            className={`group inline-flex w-12 h-12 text-light bg-transparent text-center items-center justify-center rounded transition ${isOpen ? "text-primary" : "text-light"}`}
             aria-expanded={isOpen}
             aria-label="Toggle navigation menu"
         >
             <svg
-                className="h-10 w-10" //Controls the size of the hamburger menu button
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                className="w-8 h-8 fill-current pointer-events-none"
+                viewBox="0 0 16 16"
             >
-                {isOpen ? (
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                    />
-                ) : (
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 6h16M4 12h16M4 18h16"
-                    />
-                )}
+                <rect
+                    className={`origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)]
+                    ${isOpen 
+                        ? 'translate-y-0 rotate-45' 
+                        : '-translate-y-[5px]'
+                    }`}
+                    y="7"
+                    width="16"
+                    height="2"
+                    rx="1"
+                />
+                <rect
+                    className={`origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)]
+                    ${isOpen ? 'opacity-0' : 'opacity-100'}`}
+                    y="7"
+                    width="16"
+                    height="2"
+                    rx="1"
+                />
+                <rect
+                    className={`origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)]
+                    ${isOpen 
+                        ? 'translate-y-0 -rotate-45' 
+                        : 'translate-y-[5px]'
+                    }`}
+                    y="7"
+                    width="16"
+                    height="2"
+                    rx="1"
+                />
             </svg>
         </button>
     );
