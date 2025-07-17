@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.4.0...v1.5.0) (2025-07-17)
+
+
+### Features
+
+* Merge pull request [#83](https://github.com/Project-Korora/projectkorora.space/issues/83) from Project-Korora/feat--galengreen/design ([f81fa23](https://github.com/Project-Korora/projectkorora.space/commit/f81fa238c18c9bed4b9a7d904a7f94289ab57f03))
+
+
+### Bug Fixes
+
+* update contributing guidelines for PR creation command ([8ada83e](https://github.com/Project-Korora/projectkorora.space/commit/8ada83e53864dac657b437248572081914d47e12))
+
 ## [1.4.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.3.0...v1.4.0) (2025-07-17)
 
 
