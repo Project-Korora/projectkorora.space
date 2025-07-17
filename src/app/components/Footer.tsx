@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 /**
  * The footer component for the application.
  *

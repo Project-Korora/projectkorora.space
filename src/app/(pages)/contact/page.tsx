@@ -1,9 +1,6 @@
 import PageContainer from "../../components/PageContainer";
 import PageHeader from "../../components/PageHeader";
-import Button from "../../components/Button";
 import ContactForm from "../../components/ContactForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * The contact page for Project Kororā.

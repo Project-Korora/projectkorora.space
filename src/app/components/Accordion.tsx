@@ -18,11 +18,12 @@ function Accordion({
     hideMobileDefault,
     ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> & AccordionProps) {
-    const isMobile = window?.innerWidth < 768;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
     {
         /* cannot destructure normally due to multiple | single typing */
     }
     if (isMobile && hideMobileDefault) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { defaultValue, ...remaining } = props;
         return <AccordionPrimitive.Root data-slot="accordion" {...remaining} />;
     }
