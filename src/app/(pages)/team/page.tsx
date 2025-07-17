@@ -97,8 +97,8 @@ function TeamInfo({
 export default function TeamPage() {
     return (
         <div className="min-h-screen">
-            <div className="container mx-auto px-4 py-12">
-                <div className="text-center mb-8">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-8 pt-12">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 text-light">
                         Meet the teams
                     </h1>
