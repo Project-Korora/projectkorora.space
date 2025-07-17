@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.4.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.3.0...v1.4.0) (2025-07-17)
+
+
+### Features
+
+* **accordion:** add prop to hide defaults on mobile views ([6c2e720](https://github.com/Project-Korora/projectkorora.space/commit/6c2e72082eb15124eaf1bfe236d6c4f4e15d6da1))
+* enhance mobile visuals ([2149da6](https://github.com/Project-Korora/projectkorora.space/commit/2149da63c6d20d5428a4f06cbf2f99a6706a55b5))
+* implement mobile menu transitional animation ([717695b](https://github.com/Project-Korora/projectkorora.space/commit/717695b50b1b1620a42cf7046e72879832ccea41))
+* Merge pull request [#80](https://github.com/Project-Korora/projectkorora.space/issues/80) from Project-Korora/dyno-bytes/mobile_improvements ([2149da6](https://github.com/Project-Korora/projectkorora.space/commit/2149da63c6d20d5428a4f06cbf2f99a6706a55b5))
+* **nav:** implement mobile menu open/close anims ([f852c9a](https://github.com/Project-Korora/projectkorora.space/commit/f852c9a9fc4d7a6c04d9403e973ce57a7e5c4bdc))
+
+
+### Bug Fixes
+
+* **teams:** replace excessive mobile padding ([e07049a](https://github.com/Project-Korora/projectkorora.space/commit/e07049a9ba7d3fa24a602384e644fd7bf734c58d))
+
 ## [1.3.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.2.0...v1.3.0) (2025-07-15)
 
 
