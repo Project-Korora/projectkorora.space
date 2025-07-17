@@ -191,6 +191,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto; /* Enable vertical scrolling on body */
+    margin: 0px;
 }
 
 /* Fixed background using pseudo-element - works on mobile */

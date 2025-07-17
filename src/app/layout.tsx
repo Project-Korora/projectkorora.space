@@ -7,7 +7,8 @@ import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LoadingScreen from "./components/LoadingScreen";
-import { ProposalAccessProvider } from "./components/ProposalAccessProvider";
+
+import Image from "next/image";
 
 // Font Awesome configuration
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -126,14 +127,11 @@ export default function RootLayout({
                     aria-hidden="true"
                 >
                     {/* Fallback for unsupported browsers */}
-                    <img
+                    <Image
                         src="/background.jpg"
                         alt="Background"
+                        fill
                         style={{
-                            position: "fixed",
-                            inset: 0,
-                            width: "100vw",
-                            height: "var(--device-height)",
                             objectFit: "cover",
                             pointerEvents: "none",
                         }}
@@ -143,32 +141,36 @@ export default function RootLayout({
 
                 {/* Poster image after video ends */}
                 {videoEnded && (
-                    <img
-                        src="/background.jpg"
-                        alt="Background"
+                    <div
                         style={{
                             position: "fixed",
                             inset: 0,
                             width: "100vw",
                             height: "var(--device-height)",
-                            objectFit: "cover",
                             pointerEvents: "none",
                         }}
-                        aria-hidden="true"
-                    />
+                    >
+                        <Image
+                            src="/background.jpg"
+                            alt="Background"
+                            fill
+                            style={{
+                                objectFit: "cover",
+                            }}
+                            aria-hidden="true"
+                        />
+                    </div>
                 )}
 
                 {/* Content layers - top layer */}
                 {isLoading && <LoadingScreen />}
-                <ProposalAccessProvider>
-                    <div className="relative z-10 flex flex-col h-device">
-                        <Navigation />
-                        <main className="flex-1 pt-16 pointer-events-auto">
-                            {children}
-                        </main>
-                        <Footer />
-                    </div>
-                </ProposalAccessProvider>
+                <div className="relative z-10 flex flex-col h-device">
+                    <Navigation />
+                    <main className="flex-1 pt-16 pointer-events-auto">
+                        {children}
+                    </main>
+                    <Footer />
+                </div>
             </body>
         </html>
     );

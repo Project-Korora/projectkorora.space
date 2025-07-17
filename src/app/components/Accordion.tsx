@@ -6,23 +6,36 @@ import { ChevronDownIcon } from "lucide-react";
 import clsx from "clsx";
 
 interface AccordionProps {
-    hideMobileDefault?: boolean
+    hideMobileDefault?: boolean;
 }
 
+/**
+ * Root accordion component that manages the state and structure of accordion items
+ * @param {React.ComponentProps<typeof AccordionPrimitive.Root>} props - All props from AccordionPrimitive.Root component
+ * @returns {JSX.Element} Accordion root element with proper data attributes
+ */
 function Accordion({
     hideMobileDefault,
     ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> & AccordionProps) {
-    const isMobile = window?.innerWidth < 768
-    {/* cannot destructure normally due to multiple | single typing */}
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    {
+        /* cannot destructure normally due to multiple | single typing */
+    }
     if (isMobile && hideMobileDefault) {
-        const {defaultValue, ...remaining} = props
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { defaultValue, ...remaining } = props;
         return <AccordionPrimitive.Root data-slot="accordion" {...remaining} />;
     }
 
     return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
 }
 
+/**
+ * Individual accordion item component with consistent styling
+ * @param {React.ComponentProps<typeof AccordionPrimitive.Item>} props - Component props including className and all AccordionPrimitive.Item props
+ * @returns {JSX.Element} Styled accordion item with border and spacing
+ */
 function AccordionItem({
     className,
     ...props
@@ -36,6 +49,11 @@ function AccordionItem({
     );
 }
 
+/**
+ * Clickable trigger for accordion items with chevron icon and hover states
+ * @param {React.ComponentProps<typeof AccordionPrimitive.Trigger>} props - Component props including className, children, and all AccordionPrimitive.Trigger props
+ * @returns {JSX.Element} Styled accordion trigger with animation and accessibility features
+ */
 function AccordionTrigger({
     className,
     children,
@@ -63,6 +81,11 @@ function AccordionTrigger({
     );
 }
 
+/**
+ * Collapsible content area for accordion items with smooth animations
+ * @param {React.ComponentProps<typeof AccordionPrimitive.Content>} props - Component props including className, children, and all AccordionPrimitive.Content props
+ * @returns {JSX.Element} Animated accordion content with proper spacing and text styling
+ */
 function AccordionContent({
     className,
     children,

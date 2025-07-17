@@ -4,6 +4,13 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 
+/**
+ * Props for the MarkdownContent component.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.file - The filename of the markdown file to load.
+ * @param {string} [props.className=""] - Additional CSS classes to apply to the container.
+ */
 interface MarkdownContentProps {
     file: string;
     className?: string;
@@ -65,9 +72,9 @@ const markdownComponents: Components = {
  * with custom styling that matches the project's design system. It includes
  * support for GitHub Flavored Markdown features.
  *
- * @param file - The filename of the markdown file to load (e.g., "about.md")
- * @param className - Additional CSS classes to apply to the container
- * @returns The rendered markdown content with custom styling
+ * @param {string} file - The filename of the markdown file to load (e.g., "about.md")
+ * @param {string} className - Additional CSS classes to apply to the container
+ * @returns {Promise<JSX.Element>} The rendered markdown content with custom styling
  *
  * @example
  * ```tsx

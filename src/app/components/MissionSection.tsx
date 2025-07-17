@@ -13,7 +13,7 @@ import { faSatellite } from "@fortawesome/free-solid-svg-icons";
  */
 export default function MissionSection() {
     return (
-        <section className="py-20 relative">
+        <section id="mission" className="py-20 relative">
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -43,21 +43,24 @@ export default function MissionSection() {
                                 first comprehensive student-led CubeSat
                                 initiative, designed to develop our
                                 nation&apos;s space economy through innovative
-                                electric propulsion systems and advanced
-                                satellite technology.
+                                Hall-effect thruster technology and advanced
+                                satellite systems.
                             </p>
                         </div>
 
                         <div className="space-y-4">
                             <h3 className="text-2xl font-semibold text-light">
-                                Educational Excellence
+                                Community & Accessibility
                             </h3>
                             <p className="text-light/80 leading-relaxed">
                                 Based at Te Herenga Waka—Victoria University of
-                                Wellington, our project provides hands-on
-                                experience in aerospace engineering, fostering
-                                the next generation of space industry
-                                professionals in Aotearoa.
+                                Wellington, our project creates an inclusive
+                                ecosystem where students from all
+                                backgrounds—STEM, law, design, and arts—can
+                                explore space technology. Through open-source
+                                platforms and workshops, we lower barriers to
+                                entry while fostering the next generation of
+                                space professionals in Aotearoa.
                             </p>
                         </div>
                     </div>

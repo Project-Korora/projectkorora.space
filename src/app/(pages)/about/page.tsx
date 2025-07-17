@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import PageContainer from "../../components/PageContainer";
 import PageHeader from "../../components/PageHeader";
 import MarkdownContent from "../../components/MarkdownContent";
+import Card from "@/app/components/Card";
+import Image from "next/image";
 
 export const metadata: Metadata = {
     title: "About Project Kororā",
@@ -23,92 +25,108 @@ export default async function AboutPage() {
             name: "Zhen Hong Chai",
             team: "Attitude Determination & Mission Design",
             title: "Co-Founder and Leader",
-            image: "/images/team/zac.jpg",
+            image: "/images/teamleads/zhen.jpg",
         },
         {
             name: "Alex Fausett",
             team: "Mechanical & Thermal",
             title: "Co-Founder and Leader",
-            image: "/images/team/alex_f.jpg",
+            image: "/images/teamleads/alex_f.jpg",
         },
         {
             name: "Fyfa Main",
             team: "Software",
             title: "Leader",
-            image: "/images/team/fyfa.jpg",
+            image: "/images/teamleads/fyfa.jpg",
         },
         {
             name: "Reuben Wilson",
             team: "Communications",
             title: "Leader",
-            image: "/images/team/reuben.jpg",
+            image: "/images/teamleads/reuben.jpg",
         },
         {
             name: "Kai Bennett",
             team: "Avionics",
             title: "Leader",
-            image: "/images/team/kai.jpg",
+            image: "/images/teamleads/kai.jpg",
         },
         {
             name: "Mario Pankusz",
             team: "Power Systems",
             title: "Leader",
-            image: "/images/team/mario.jpg",
+            image: "/images/teamleads/mario.jpg",
         },
         {
             name: "Ben Van Der Weerd",
             team: "Incident Response",
             title: "Leader",
-            image: "/images/team/placeholder.jpg",
+            image: "/images/teamleads/ben.jpg",
         },
         {
             name: "Alex McKeown",
             team: "Design",
             title: "Leader",
-            image: "/images/team/placeholder.jpg",
+            image: "/images/teamleads/alex_m.jpg",
         },
         {
-            name: "Arunan and Ivy Hampton",
-            team: "Law, Policy and Finance team",
+            name: "Arunan",
+            team: "Law, Policy and Finance",
             title: "Leader",
-            image: "/images/team/placeholder.jpg",
+            image: "/images/teamleads/arunan.jpg",
         },
     ];
 
     return (
         <PageContainer>
-            <PageHeader title="About Project Kororā" description="" />
+            <PageHeader title="About Project Kororā" />
 
-            <div className="bg-dark/40 backdrop-blur shadow-md text-light space-y-12 p-10 sm:p-12 lg:p-16 mt-10 mx-auto max-w-6xl rounded">
-                {/* About Project Kororā content */}
-                <div className="max-w-4xl mx-auto mb-12">
-                    <MarkdownContent file="about.md" />
-                </div>
+            {/* Mission Overview */}
+            <Card color="dark">
+                <MarkdownContent file="missionOverview.md" />
+            </Card>
 
-                {/* Leadership Team */}
-                <div className="space-y-10 mt-15">
-                    <h2 className="text-3xl font-bold text-light mb-8">
-                        Leadership Team
-                    </h2>
+            {/* Full Team Photo Section */}
+            <Card color="dark" className="!p-0 overflow-hidden">
+                <Image
+                    src="/images/fullteam.jpg"
+                    alt="Project Kororā Full Team Photo"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-cover"
+                />
+            </Card>
+
+            {/* Our Name */}
+            <Card color="dark">
+                <MarkdownContent file="ourName.md" />
+            </Card>
+
+            {/* Leadership Team */}
+            <Card color="dark">
+                <h2 className="text-3xl font-bold mb-8">Leadership Team</h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {teamMembers.map((member, index) => (
                         <div key={index} className="flex items-center gap-6">
-                            <img
+                            <Image
                                 src={member.image}
                                 alt={member.name}
-                                className="w-30 h-30 rounded object-cover border border-light/20"
+                                width={120}
+                                height={120}
+                                className="w-30 h-30 rounded-full object-cover border border-light/20 flex-shrink-0"
                             />
                             <div>
-                                <h3 className="text-xl font-semibold text-light">
+                                <h3 className="text-xl font-semibold ">
                                     {member.name}
                                 </h3>
-                                <p className="text-light/70">
+                                <p className="/70">
                                     {member.title} of the {member.team} team
                                 </p>
                             </div>
                         </div>
                     ))}
                 </div>
-            </div>
+            </Card>
         </PageContainer>
     );
 }

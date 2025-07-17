@@ -39,22 +39,8 @@ const FORM_CONFIG: FormConfig = {
         process.env.PUBLIC_ACCESS_KEY || "753b8080-3081-4116-9c3e-597313a5addf",
     hcaptchaSiteKey: "50b2fe65-b00b-4b9e-ad62-3ba471098be2",
     settings: {
-        from_name: "Project Kororā",
-        subject: "New Contact Message from Project Kororā Website",
-    },
-};
-
-// hCaptcha Custom Theme to match Project Kororā design system
-// Note: This requires the custom=true parameter and may need account feature enabled
-const HCAPTCHA_CUSTOM_THEME = {
-    palette: {
-        primary: {
-            main: "#00bcd4", // Cyan primary color to match design
-        },
-        text: {
-            heading: "#ffffff", // White headings for dark theme
-            body: "#e5e5e5", // Light gray body text
-        },
+        from_name: "Project Korora",
+        subject: "New Message from Project Korora Website",
     },
 };
 
@@ -84,6 +70,7 @@ const INPUT_NORMAL_CLASSES =
 
 /**
  * Error message component for form validation
+ * @returns {JSX.Element} JSX element displaying an error message with icon
  */
 const ErrorMessage = ({ message }: { message: string }) => (
     <div className="flex items-center space-x-2 text-red-400">
@@ -94,6 +81,7 @@ const ErrorMessage = ({ message }: { message: string }) => (
 
 /**
  * Contact form component with hCaptcha integration
+ * @returns {JSX.Element} JSX element containing the complete contact form with validation and captcha
  */
 export default function Contact() {
     // Note: To enable hCaptcha custom themes, you need to:
@@ -147,7 +135,7 @@ export default function Contact() {
             {/* Form Header */}
             <div className="text-center space-y-2">
                 <h2 className="text-2xl font-bold text-light">
-                    Send us a message
+                    Have a question or want to get involved?
                 </h2>
                 <p className="text-light/70">
                     We&apos;d love to hear from you. Get in touch and we&apos;ll
@@ -260,7 +248,7 @@ export default function Contact() {
                             onVerify={onCaptchaVerify}
                             onExpire={onCaptchaExpire}
                             reCaptchaCompat={false}
-                            theme={HCAPTCHA_CUSTOM_THEME}
+                            theme="dark"
                         />
                     </div>
 

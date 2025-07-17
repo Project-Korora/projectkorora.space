@@ -8,6 +8,7 @@ import {
     Scale,
     Palette,
     LucideProps,
+    AlertCircle,
 } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
@@ -17,13 +18,15 @@ export type TeamType = {
         Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
     >;
     description: string;
+    photo: string;
     sections: { header: string; body: string }[];
 };
 
 const teams: TeamType[] = [
     {
-        name: "Software Team",
+        name: "Software Team (40+ members)",
         icon: Code,
+        photo: "/images/software.jpg",
         description:
             "Develops all onboard software and digital infrastructure using the PyCubed open-source platform to build robust, fault-tolerant systems.",
         sections: [
@@ -42,28 +45,9 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Mission Design / Mission Control",
-        icon: MapPin,
-        description:
-            "Ensures overall mission feasibility and efficiency through trajectory planning, space environment analysis, and attitude control.",
-        sections: [
-            {
-                header: "Trajectory Planning and Analysis",
-                body: "Focuses on determining the satellite's orbital path using simulation tools such as GMAT. Ensures that trajectory designs meet mission constraints related to power, time, and propellant availability.",
-            },
-            {
-                header: "Space Environment Assessment",
-                body: "Conducts analysis of space weather phenomena such as solar radiation and geomagnetic disturbances to evaluate their impact on satellite performance, orientation, and subsystem longevity.",
-            },
-            {
-                header: "Attitude Determination and Control Modelling",
-                body: "Develops algorithms and models to maintain satellite orientation throughout the mission. Supports the selection and integration of appropriate sensors and actuators in collaboration with avionics and mechanical systems.",
-            },
-        ],
-    },
-    {
-        name: "Mechanical Team",
+        name: "Mechanical Team (19 members)",
         icon: Rocket,
+        photo: "/images/mechanical.jpg",
         description:
             "Responsible for the CubeSat's physical structure and propulsion system, ensuring durability and thermal resilience.",
         sections: [
@@ -78,8 +62,9 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Power Team",
+        name: "Power Team (10 members)",
         icon: Zap,
+        photo: "/images/power-systems.jpg",
         description:
             "Ensures Kororā can collect, store, and manage power through battery management and solar panel systems.",
         sections: [
@@ -98,8 +83,9 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Communications Team",
+        name: "Communications Team (9 members)",
         icon: Radio,
+        photo: "/images/communication.jpg",
         description:
             "Enables reliable data transmission between the Kororā CubeSat and Earth through comprehensive uplink and downlink architecture.",
         sections: [
@@ -118,8 +104,9 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Avionics Team",
+        name: "Avionics Team (12 members)",
         icon: Cpu,
+        photo: "/images/avionics.jpg",
         description:
             "Connects the CubeSat's sensors, controllers, and feedback systems for autonomous decision-making capabilities.",
         sections: [
@@ -138,8 +125,22 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Law & Policy Team",
+        name: "Incident Response Team (11 members)",
+        icon: AlertCircle,
+        photo: "/images/incident-response.jpg",
+        description:
+            "Responsible for responding to incidents and emergencies that may occur during the mission.",
+        sections: [
+            {
+                header: "Incident Response",
+                body: "Responsible for responding to incidents and emergencies that may occur during the mission.",
+            },
+        ],
+    },
+    {
+        name: "Law & Policy Team (9 members)",
         icon: Scale,
+        photo: "/images/law.jpg",
         description:
             "Safeguards the legal and ethical foundation of the mission through policy compliance and governance.",
         sections: [
@@ -158,8 +159,9 @@ const teams: TeamType[] = [
         ],
     },
     {
-        name: "Design & Marketing Team",
+        name: "Design & Marketing Team (8 members)",
         icon: Palette,
+        photo: "/images/fullteam.jpg",
         description:
             "Communicates Project Kororā to the world through visuals, social media, and public-facing assets.",
         sections: [
@@ -176,7 +178,30 @@ const teams: TeamType[] = [
                 body: "Manages social media, event coverage, and external communications to promote the mission, raise public awareness, and support community and stakeholder engagement.",
             },
         ],
+    
     },
+    {
+        name: "Mission Design / Mission Control (16 members)",
+        icon: MapPin,
+        photo: "/images/fullteam.jpg",
+        description:
+            "Ensures overall mission feasibility and efficiency through trajectory planning, space environment analysis, and attitude control.",
+        sections: [
+            {
+                header: "Trajectory Planning and Analysis",
+                body: "Focuses on determining the satellite's orbital path using simulation tools such as GMAT. Ensures that trajectory designs meet mission constraints related to power, time, and propellant availability.",
+            },
+            {
+                header: "Space Environment Assessment",
+                body: "Conducts analysis of space weather phenomena such as solar radiation and geomagnetic disturbances to evaluate their impact on satellite performance, orientation, and subsystem longevity.",
+            },
+            {
+                header: "Attitude Determination and Control Modelling",
+                body: "Develops algorithms and models to maintain satellite orientation throughout the mission. Supports the selection and integration of appropriate sensors and actuators in collaboration with avionics and mechanical systems.",
+            },
+        ],
+    },
+    
 ];
 
 export default teams;

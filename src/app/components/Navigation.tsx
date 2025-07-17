@@ -5,21 +5,17 @@ import Logo from "./Logo";
 import NavLink from "./NavLink";
 import MobileMenuButton from "./MobileMenuButton";
 import SocialIcons from "./SocialIcons";
-import { useProposalAccess } from "./ProposalAccessProvider";
 
 interface NavigationItem {
     name: string;
     href: string;
-    requiresAccess?: boolean;
 }
 
-const baseNavigationItems: NavigationItem[] = [
+const navigationItems: NavigationItem[] = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Team", href: "/team" },
-    { name: "Proposal", href: "/proposal", requiresAccess: true },
     { name: "Contact", href: "/contact" },
-    { name: "Theme", href: "/theme" },
 ];
 
 /**
@@ -36,12 +32,6 @@ const baseNavigationItems: NavigationItem[] = [
  */
 export default function Navigation() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { hasAccess } = useProposalAccess();
-
-    // Filter navigation items based on access
-    const navigationItems = baseNavigationItems.filter(
-        (item) => !item.requiresAccess || hasAccess
-    );
 
     // Close mobile menu when window is resized to desktop size
     useEffect(() => {
@@ -131,7 +121,9 @@ export default function Navigation() {
                                             : "opacity-0 transform -translate-x-4"
                                     }`}
                                     style={{
-                                        transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : "0ms",
+                                        transitionDelay: isMobileMenuOpen
+                                            ? `${index * 50}ms`
+                                            : "0ms",
                                     }}
                                 >
                                     <NavLink
@@ -153,7 +145,11 @@ export default function Navigation() {
                                         : "opacity-0 transform translate-y-2"
                                 }`}
                                 style={{
-                                    transitionDelay: isMobileMenuOpen ? `${navigationItems.length * 50 + 100}ms` : "0ms",
+                                    transitionDelay: isMobileMenuOpen
+                                        ? `${
+                                              navigationItems.length * 50 + 100
+                                          }ms`
+                                        : "0ms",
                                 }}
                             >
                                 <SocialIcons variant="mobile" size="sm" />

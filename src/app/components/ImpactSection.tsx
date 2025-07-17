@@ -47,12 +47,59 @@ function AnimatedStat({ number, label, suffix = "", description }: StatProps) {
         return () => observer.disconnect();
     }, []);
 
+    // Function to get the correct ordinal suffix for a number
+    const getOrdinalSuffix = (num: number): string => {
+        const j = num % 10;
+        const k = num % 100;
+        if (j == 1 && k != 11) {
+            return "st";
+        }
+        if (j == 2 && k != 12) {
+            return "nd";
+        }
+        if (j == 3 && k != 13) {
+            return "rd";
+        }
+        return "th";
+    };
+
     useEffect(() => {
         if (isVisible) {
-            // Simple animation for non-numeric values
-            if (isNaN(parseInt(number))) {
+            // Check if this is an ordinal number (number + ordinal suffix like "st", "nd", "rd", "th")
+            // OR if it's the "New Zealand CubeSat" statistic which should animate as ordinal
+            const isOrdinal =
+                (suffix && ["st", "nd", "rd", "th"].includes(suffix)) ||
+                label.includes("New Zealand CubeSat");
+
+            // Check if this is a text animation (like "HET")
+            const isTextAnimation =
+                isNaN(parseInt(number)) && number.length > 1;
+
+            // Simple animation for single character non-numeric values
+            if (isNaN(parseInt(number)) && !isTextAnimation) {
                 setDisplayNumber(number);
                 return;
+            }
+
+            // Text animation (letter by letter)
+            if (isTextAnimation) {
+                const duration = 2000;
+                const letterDelay = duration / number.length;
+                let currentLetterIndex = 0;
+
+                const timer = setInterval(() => {
+                    currentLetterIndex++;
+                    if (currentLetterIndex >= number.length) {
+                        setDisplayNumber(number);
+                        clearInterval(timer);
+                    } else {
+                        setDisplayNumber(
+                            number.substring(0, currentLetterIndex + 1)
+                        );
+                    }
+                }, letterDelay);
+
+                return () => clearInterval(timer);
             }
 
             const target = parseInt(number);
@@ -64,23 +111,43 @@ function AnimatedStat({ number, label, suffix = "", description }: StatProps) {
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
-                    setDisplayNumber(number);
+                    // At the end, show the final result with ordinal suffix if needed
+                    if (isOrdinal && !suffix) {
+                        setDisplayNumber(
+                            number + getOrdinalSuffix(parseInt(number))
+                        );
+                    } else {
+                        setDisplayNumber(number);
+                    }
                     clearInterval(timer);
                 } else {
-                    setDisplayNumber(Math.floor(current).toString());
+                    const currentNum = Math.floor(current);
+                    if (isOrdinal && currentNum > 0) {
+                        // For ordinal numbers, display the current number with its correct suffix
+                        setDisplayNumber(
+                            currentNum + getOrdinalSuffix(currentNum)
+                        );
+                    } else {
+                        setDisplayNumber(currentNum.toString());
+                    }
                 }
             }, duration / steps);
 
             return () => clearInterval(timer);
         }
-    }, [isVisible, number]);
+    }, [isVisible, number, suffix, label]);
+
+    // Check if this is an ordinal number for display logic
+    const isOrdinalDisplay =
+        (suffix && ["st", "nd", "rd", "th"].includes(suffix)) ||
+        label.includes("New Zealand CubeSat");
 
     return (
         <div ref={ref} className="text-center">
             <div className="text-4xl md:text-6xl font-bold text-light mb-2">
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                     {displayNumber}
-                    {suffix}
+                    {!isOrdinalDisplay && suffix}
                 </span>
             </div>
             <div className="text-lg font-semibold text-light mb-2">{label}</div>
@@ -103,14 +170,14 @@ function AnimatedStat({ number, label, suffix = "", description }: StatProps) {
 export default function ImpactSection() {
     const stats = [
         {
-            number: "1st",
-            label: "Student CubeSat",
-            description:
-                "New Zealand's pioneering student-led satellite initiative",
+            number: "3",
+            label: "New Zealand CubeSat",
+            suffix: "",
+            description: "A pioneering student-led satellite initiative",
         },
         {
             number: "3",
-            label: "U CubeSat",
+            label: "CubeSat",
             suffix: "U",
             description: "Compact satellite platform maximizing functionality",
         },
@@ -118,12 +185,13 @@ export default function ImpactSection() {
             number: "100",
             label: "Students Involved",
             suffix: "+",
-            description: "Multidisciplinary team of engineering students",
+            description:
+                "Multidisciplinary team from STEM, law, design, and arts",
         },
         {
-            number: "EP",
+            number: "HET",
             label: "Propulsion System",
-            description: "Advanced electric propulsion technology",
+            description: "Miniature Hall-effect thruster technology",
         },
     ];
 

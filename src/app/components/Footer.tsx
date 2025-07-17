@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 /**
  * The footer component for the application.
  *
@@ -16,14 +14,8 @@ export default function Footer() {
 
             <footer className="bg-black/40 backdrop-blur-xl border-t border-white/10 py-8">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                        {/* Copyright */}
-                        <p className="text-white/60 text-sm">
-                            © {new Date().getFullYear()} Project Kororā. All
-                            rights reserved.
-                        </p>
-
-                        {/* Links */}
+                    <div className="flex flex-col items-center gap-6">
+                        {/* Links 
                         <div className="flex flex-wrap justify-center gap-6">
                             <Link
                                 href="/privacy"
@@ -44,6 +36,13 @@ export default function Footer() {
                                 Accessibility
                             </Link>
                         </div>
+                        */}
+
+                        {/* Copyright */}
+                        <p className="text-white/60 text-sm text-center">
+                            © {new Date().getFullYear()} Project Kororā. All
+                            rights reserved.
+                        </p>
                     </div>
                 </div>
             </footer>

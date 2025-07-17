@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
-import { useProposalAccess } from "./ProposalAccessProvider";
 import OrbitingSatellite from "./Satellite";
 
 /**
@@ -18,7 +17,6 @@ import OrbitingSatellite from "./Satellite";
  */
 export default function HeroSection() {
     const heroContentRef = useRef<HTMLDivElement>(null);
-    const { hasAccess } = useProposalAccess();
 
     // Simplified parallax with better mobile performance
     useEffect(() => {
@@ -83,7 +81,7 @@ export default function HeroSection() {
                     New Zealand CubeSat with
                     <span className="text-primary font-semibold">
                         {" "}
-                        electric propulsion systems
+                        Hall-effect thruster technology
                     </span>
                 </p>
 
@@ -91,7 +89,15 @@ export default function HeroSection() {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                     <Button
-                        href="/about"
+                        onClick={() => {
+                            const missionSection =
+                                document.getElementById("mission");
+                            if (missionSection) {
+                                missionSection.scrollIntoView({
+                                    behavior: "smooth",
+                                });
+                            }
+                        }}
                         gradientColors={["secondary", "primary"]}
                         size="lg"
                         className="group transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-secondary/20"
@@ -99,18 +105,13 @@ export default function HeroSection() {
                         <span className="flex items-center">
                             Explore Our Mission
                             <FontAwesomeIcon
-                                icon={faArrowRight}
+                                icon={faArrowDown}
                                 className="ml-2 group-hover:translate-x-1 transition-transform"
                                 size="lg"
                                 fixedWidth
                             />
                         </span>
                     </Button>
-                    {hasAccess && (
-                        <Button href="/proposal" variant="outline" size="lg">
-                            View Our Proposal
-                        </Button>
-                    )}
                 </div>
             </div>
         </section>

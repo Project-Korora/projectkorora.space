@@ -6,6 +6,11 @@ interface ScrollerProps {
     delay?: number;
 }
 
+/**
+ * Auto-scrolling carousel component that advances slides at regular intervals
+ * @param {number} delay - Time in milliseconds between automatic slide transitions (default: 4000ms)
+ * @returns {null} null - This component renders no UI, only manages auto-scroll behavior
+ */
 export default function CarouselScroller({ delay = 4000 }: ScrollerProps) {
     const { interacted, carouselApi } = useCarousel();
 
