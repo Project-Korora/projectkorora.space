@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 import OrbitingSatellite from "./Satellite";
 
@@ -89,7 +89,15 @@ export default function HeroSection() {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                     <Button
-                        href="/about"
+                        onClick={() => {
+                            const missionSection =
+                                document.getElementById("mission");
+                            if (missionSection) {
+                                missionSection.scrollIntoView({
+                                    behavior: "smooth",
+                                });
+                            }
+                        }}
                         gradientColors={["secondary", "primary"]}
                         size="lg"
                         className="group transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-secondary/20"
@@ -97,7 +105,7 @@ export default function HeroSection() {
                         <span className="flex items-center">
                             Explore Our Mission
                             <FontAwesomeIcon
-                                icon={faArrowRight}
+                                icon={faArrowDown}
                                 className="ml-2 group-hover:translate-x-1 transition-transform"
                                 size="lg"
                                 fixedWidth

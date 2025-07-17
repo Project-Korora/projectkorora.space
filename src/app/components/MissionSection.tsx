@@ -13,7 +13,7 @@ import { faSatellite } from "@fortawesome/free-solid-svg-icons";
  */
 export default function MissionSection() {
     return (
-        <section className="py-20 relative">
+        <section id="mission" className="py-20 relative">
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">

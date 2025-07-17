@@ -67,7 +67,7 @@ export default async function AboutPage() {
             name: "Alex McKeown",
             team: "Design",
             title: "Leader",
-            image: "/images/teamleads/placeholder.jpg",
+            image: "/images/teamleads/alex_m.jpg",
         },
         {
             name: "Arunan",
@@ -79,7 +79,7 @@ export default async function AboutPage() {
 
     return (
         <PageContainer>
-            <PageHeader title="About Project Kororā" description="" />
+            <PageHeader title="About Project Kororā" />
 
             {/* Mission Overview */}
             <Card color="dark">
