@@ -5,19 +5,16 @@ import Logo from "./Logo";
 import NavLink from "./NavLink";
 import MobileMenuButton from "./MobileMenuButton";
 import SocialIcons from "./SocialIcons";
-import { useProposalAccess } from "./ProposalAccessProvider";
 
 interface NavigationItem {
     name: string;
     href: string;
-    requiresAccess?: boolean;
 }
 
 const baseNavigationItems: NavigationItem[] = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Team", href: "/team" },
-    { name: "Proposal", href: "/proposal", requiresAccess: true },
     { name: "Contact", href: "/contact" },
 ];
 
@@ -35,12 +32,6 @@ const baseNavigationItems: NavigationItem[] = [
  */
 export default function Navigation() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { hasAccess } = useProposalAccess();
-
-    // Filter navigation items based on access
-    const navigationItems = baseNavigationItems.filter(
-        (item) => !item.requiresAccess || hasAccess
-    );
 
     // Close mobile menu when window is resized to desktop size
     useEffect(() => {
@@ -89,7 +80,7 @@ export default function Navigation() {
 
                         {/* Desktop Navigation */}
                         <div className="hidden min-[1000px]:flex items-center">
-                            {navigationItems.map((item) => (
+                            {baseNavigationItems.map((item) => (
                                 <NavLink key={item.href} href={item.href}>
                                     {item.name}
                                 </NavLink>
@@ -118,7 +109,7 @@ export default function Navigation() {
                             aria-label="Mobile navigation menu"
                         >
                             <div className="bg-dark/50 backdrop-blur-lg border border-light/10 rounded-lg mt-2 px-2 pt-2 pb-3 space-y-1 mb-3">
-                                {navigationItems.map((item) => (
+                                {baseNavigationItems.map((item) => (
                                     <NavLink
                                         key={item.href}
                                         href={item.href}

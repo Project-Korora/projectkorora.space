@@ -135,7 +135,7 @@ export default function Contact() {
             {/* Form Header */}
             <div className="text-center space-y-2">
                 <h2 className="text-2xl font-bold text-light">
-                    Send us a message
+                    Have a question or want to get involved?
                 </h2>
                 <p className="text-light/70">
                     We&apos;d love to hear from you. Get in touch and we&apos;ll
