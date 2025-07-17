@@ -112,16 +112,29 @@ export default function Navigation() {
                     </div>
 
                     {/* Mobile Navigation Menu */}
-                    {isMobileMenuOpen && (
-                        <div
-                            className="min-[1000px]:hidden"
-                            role="menu"
-                            aria-label="Mobile navigation menu"
-                        >
-                            <div className="bg-dark/50 backdrop-blur-lg border border-light/10 rounded-lg mt-2 px-2 pt-2 pb-3 space-y-1 mb-3">
-                                {navigationItems.map((item) => (
+                    <div
+                        className={`min-[1000px]:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+                            isMobileMenuOpen
+                                ? "max-h-[500px] opacity-100 transform translate-y-0 "
+                                : "max-h-0 opacity-0 transform -translate-y-2 "
+                        }`}
+                        role="menu"
+                        aria-label="Mobile navigation menu"
+                    >
+                        <div className="max-h-[500px] overflow-y-auto bg-dark/50 backdrop-blur-lg border border-light/10 rounded-lg mt-2 px-2 pt-2 pb-3 space-y-1 mb-3">
+                            {navigationItems.map((item, index) => (
+                                <div
+                                    key={item.href}
+                                    className={`transition-all duration-300 ease-in-out ${
+                                        isMobileMenuOpen
+                                            ? "opacity-100 transform translate-x-0"
+                                            : "opacity-0 transform -translate-x-4"
+                                    }`}
+                                    style={{
+                                        transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : "0ms",
+                                    }}
+                                >
                                     <NavLink
-                                        key={item.href}
                                         href={item.href}
                                         onClick={closeMobileMenu}
                                         className="block text-base font-medium"
@@ -129,15 +142,24 @@ export default function Navigation() {
                                     >
                                         {item.name}
                                     </NavLink>
-                                ))}
-
-                                {/* Mobile Social Icons */}
-                                <div className="pt-4 mt-4 border-t border-light/10">
-                                    <SocialIcons variant="mobile" size="sm" />
                                 </div>
+                            ))}
+
+                            {/* Mobile Social Icons */}
+                            <div
+                                className={`pt-4 mt-4 border-t border-light/10 transition-all duration-300 ease-in-out ${
+                                    isMobileMenuOpen
+                                        ? "opacity-100 transform translate-y-0"
+                                        : "opacity-0 transform translate-y-2"
+                                }`}
+                                style={{
+                                    transitionDelay: isMobileMenuOpen ? `${navigationItems.length * 50 + 100}ms` : "0ms",
+                                }}
+                            >
+                                <SocialIcons variant="mobile" size="sm" />
                             </div>
                         </div>
-                    )}
+                    </div>
                 </div>
             </nav>
         </header>
