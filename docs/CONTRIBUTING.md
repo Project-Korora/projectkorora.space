@@ -154,7 +154,7 @@ Follow this 5-step loop for every contribution:
     **Alternative with --fill** (uses your latest commit message):
 
     ```bash
-     v
+    gh pr create --base main --head gitUsername/featureName --draft --fill
     ```
 
 4.  **Keep your branch up-to-date** (merge from `main`):
