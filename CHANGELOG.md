@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.5.1](https://github.com/Project-Korora/projectkorora.space/compare/v1.5.0...v1.5.1) (2025-07-18)
+
+
+### Bug Fixes
+
+* hide playback controls for background video on iOS Safari ([8deb42e](https://github.com/Project-Korora/projectkorora.space/commit/8deb42e5347d4a0b915f761e4a081e4ca8391e5a))
+* Merge pull request [#85](https://github.com/Project-Korora/projectkorora.space/issues/85) from Project-Korora/galengreen/bugs ([7941971](https://github.com/Project-Korora/projectkorora.space/commit/794197157629dacf4ad064dd2b1688be46807f5b))
+* update API key in ContactForm component ([3a5c685](https://github.com/Project-Korora/projectkorora.space/commit/3a5c68516eab5c6c445385d0d726a718a8ae4238))
+* update image dimensions and styling in TeamInfo component ([28aa176](https://github.com/Project-Korora/projectkorora.space/commit/28aa176208e192deb7da5e41afb889fced5b6f75))
+
 ## [1.5.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.4.0...v1.5.0) (2025-07-17)
 
 
