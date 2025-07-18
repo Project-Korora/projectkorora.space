@@ -219,3 +219,14 @@ body::before {
         height: 100vh;
     }
 }
+
+/* Fix iOS Safari background video play button */
+video[aria-hidden="true"]::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
+video[aria-hidden="true"]::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+    -webkit-appearance: none;
+}
