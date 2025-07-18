@@ -9,14 +9,11 @@ import Card from "@/app/components/Card";
 import { Users } from "lucide-react";
 import PageContainer from "@/app/components/PageContainer";
 import PageHeader from "@/app/components/PageHeader";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/app/components/Accordion";
-import CarouselScroller from "@/app/components/CarouselScroller";
 import Image from "next/image";
+
+import { CarouselDots } from "@/app/components/CarouselDots";
+import TeamAccordion from "@/app/components/TeamAccordion";
+import clsx from "clsx";
 
 /**
  * The team page for Project Kororā.
@@ -41,13 +38,23 @@ const advisors = [
  * @param {number} props.index - The index of the team.
  * @returns {JSX.Element} The rendered team info component.
  */
-function TeamInfo({ team, index }: { team: TeamType; index: number }) {
+function TeamInfo({
+    team,
+    index,
+    mobile,
+}: {
+    team: TeamType;
+    index: number;
+    mobile?: boolean;
+}) {
+    const {icon: TeamIcon, ...remTeam} = team
     return (
-        <Card key={index} color="dark" className="!mt-0">
+        // override team padding for spacing on mobile 
+        <Card key={index} color="dark" className={clsx("!mt-0", mobile ? "h-full !pb-0 !pr-10 !pl-10 !pt-10" : "")}>
             <div className="space-y-6">
                 <div className="flex items-center gap-3">
                     <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-lg shadow-sm">
-                        <team.icon className="h-6 w-6 text-white" />
+                        <TeamIcon className="h-6 w-6 text-white" />
                     </div>
                     <div>
                         <h3 className="text-xl font-bold">{team.name}</h3>
@@ -65,23 +72,8 @@ function TeamInfo({ team, index }: { team: TeamType; index: number }) {
                 </div>
 
                 <p className="leading-relaxed">{team.description}</p>
-                <Accordion type="single" collapsible className="w-full">
-                    {team.sections.map((section, index) => {
-                        return (
-                            <AccordionItem
-                                key={index}
-                                value={`item-${index + 1}`}
-                            >
-                                <AccordionTrigger>
-                                    {section.header}
-                                </AccordionTrigger>
-                                <AccordionContent className="flex flex-col gap-4 text-balance">
-                                    <p>{section.body}</p>
-                                </AccordionContent>
-                            </AccordionItem>
-                        );
-                    })}
-                </Accordion>
+
+                <TeamAccordion team={remTeam} slideIndex={index} mobile={mobile}/>
             </div>
         </Card>
     );
@@ -113,28 +105,16 @@ export default function TeamPage() {
                         the New Zealand space ecosystem
                     </p>
                 </div>
-                <div className="hidden md:grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 ">
                     {advisors.map((advisor, index) => (
                         <div key={index} className="bg-white/10 rounded-lg p-4">
                             <p className="font-medium">{advisor}</p>
                         </div>
                     ))}
                 </div>
-                <Carousel className="md:hidden" doLoop={true} showHint={false}>
-                    <CarouselDiv>
-                        {advisors.map((advisor, index) => (
-                            <CarouselElement key={index}>
-                                <div
-                                    key={index}
-                                    className="bg-white/10 rounded-lg p-4"
-                                >
-                                    <p className="font-medium">{advisor}</p>
-                                </div>
-                            </CarouselElement>
-                        ))}
-                    </CarouselDiv>
-                    <CarouselScroller />
-                </Carousel>
+                
+                      
+                   
             </Card>
 
             <div className="hidden md:grid md:grid-cols-2 gap-5">
@@ -143,14 +123,17 @@ export default function TeamPage() {
                 ))}
             </div>
 
-            <Carousel className="md:hidden">
+            <Carousel className="md:hidden">   
                 <CarouselDiv>
-                    {teamList.map((team, index) => (
-                        <CarouselElement key={index}>
-                            <TeamInfo team={team} index={index} />
-                        </CarouselElement>
-                    ))}
+                    {teamList.map((team, index) => {
+                        return (
+                            <CarouselElement key={index}>
+                                <TeamInfo team={team} index={index} mobile />
+                            </CarouselElement>
+                        );
+                    })}
                 </CarouselDiv>
+                <CarouselDots />
             </Carousel>
         </PageContainer>
     );
