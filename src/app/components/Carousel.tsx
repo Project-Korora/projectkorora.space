@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { SwipeHint } from "./SwipeHint";
 
 type CarouselContextProps = {
     carouselRef: ReturnType<typeof useEmblaCarousel>[0];
@@ -42,7 +41,6 @@ function useCarousel() {
 function Carousel({
     className = "",
     children,
-    showHint = true,
     doLoop = false,
     ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
@@ -88,9 +86,6 @@ function Carousel({
                 {...props}
             >
                 {/* render a hint indicating swipe ability  */}
-                {!interacted && showHint && (
-                    <SwipeHint size="lg" className="z-50" />
-                )}
                 {children}
             </div>
         </carouselContext.Provider>
