@@ -114,6 +114,7 @@ export default function RootLayout({
                     autoPlay
                     muted
                     playsInline
+                    controls={false}
                     preload="auto"
                     onEnded={() => setVideoEnded(true)}
                     style={{
