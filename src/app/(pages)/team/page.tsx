@@ -61,13 +61,13 @@ function TeamInfo({
                     </div>
                 </div>
 
-                <div className="w-full h-48 rounded-lg overflow-hidden">
+                <div className="w-full rounded-lg overflow-hidden">
                     <Image
                         src={team.photo}
                         alt={`${team.name} team photo`}
                         width={600}
-                        height={300}
-                        className="w-full h-full object-cover"
+                        height={400}
+                        className="w-full h-auto object-contain"
                     />
                 </div>
 

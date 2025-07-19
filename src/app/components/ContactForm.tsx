@@ -36,7 +36,7 @@ interface FormConfig {
 // Constants
 const FORM_CONFIG: FormConfig = {
     apiKey:
-        process.env.PUBLIC_ACCESS_KEY || "753b8080-3081-4116-9c3e-597313a5addf",
+        process.env.PUBLIC_ACCESS_KEY || "4ba88094-3991-4f1d-8d37-290a2efd0dba",
     hcaptchaSiteKey: "50b2fe65-b00b-4b9e-ad62-3ba471098be2",
     settings: {
         from_name: "Project Korora",

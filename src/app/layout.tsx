@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -36,7 +36,7 @@ const geistMono = Geist_Mono({
  *
  * This component sets up the global fonts, body styling, and the main
  * page structure including the navigation and footer. It also includes the
- * background image that persists across all pages.
+ * background video with iOS autoplay detection and static image fallback.
  *
  * @param {object} props - The properties for the component.
  * @param {React.ReactNode} props.children - The child components to be rendered within the layout.
@@ -49,6 +49,10 @@ export default function RootLayout({
 }>) {
     const [isLoading, setIsLoading] = useState(true);
     const [videoEnded, setVideoEnded] = useState(false);
+    const [autoplayFailed, setAutoplayFailed] = useState(false);
+    const [autoplayDetected, setAutoplayDetected] = useState(false);
+    const [fallbackImageLoaded, setFallbackImageLoaded] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
     const pathname = usePathname();
 
     /* ① lock --device-height to physical screen size once */
@@ -58,10 +62,42 @@ export default function RootLayout({
         const cssPx = `${window.screen.height}px`;
         document.documentElement.style.setProperty("--device-height", cssPx);
 
-        const handleLoad = () => setIsLoading(false);
+        // Preload fallback image on iOS to prevent glitchy loading
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if (isIOS) {
+            const img = document.createElement("img");
+            img.src = "/background.jpg";
+            img.onload = () => {
+                // Image is preloaded and cached, but we'll still wait for the actual Image component onLoad
+                console.log("Fallback image preloaded");
+            };
+        }
+    }, []);
+
+    // Handle loading state - wait for autoplay detection and fallback image on iOS
+    useEffect(() => {
+        const handleLoad = () => {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+            if (!isIOS) {
+                // Non-iOS: hide loading immediately
+                setIsLoading(false);
+            } else if (autoplayDetected) {
+                // iOS: wait for autoplay detection
+                if (autoplayFailed) {
+                    // If autoplay failed, also wait for fallback image to load
+                    if (fallbackImageLoaded) {
+                        setIsLoading(false);
+                    }
+                } else {
+                    // Autoplay succeeded, can hide loading
+                    setIsLoading(false);
+                }
+            }
+        };
 
         if (document.readyState === "complete") {
-            setIsLoading(false);
+            handleLoad();
         } else {
             window.addEventListener("load", handleLoad);
         }
@@ -69,7 +105,7 @@ export default function RootLayout({
         return () => {
             window.removeEventListener("load", handleLoad);
         };
-    }, []);
+    }, [autoplayDetected, autoplayFailed, fallbackImageLoaded]);
 
     // Reset scroll position on page navigation
     useEffect(() => {
@@ -78,6 +114,48 @@ export default function RootLayout({
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }, [pathname]);
+
+    // Autoplay detection for iOS battery saver mode handling
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        // Wait for video to be ready
+        const handleCanPlay = async () => {
+            try {
+                // Attempt to play the video - this returns a promise
+                const playPromise = video.play();
+
+                if (playPromise !== undefined) {
+                    await playPromise;
+                    // If we get here, autoplay succeeded
+                    setAutoplayFailed(false);
+                }
+            } catch {
+                // Autoplay was prevented (likely due to iOS Low Power Mode)
+                console.log(
+                    "Video autoplay prevented, falling back to static image"
+                );
+                setAutoplayFailed(true);
+                // Pause the video to ensure it's in a stopped state
+                video.pause();
+            } finally {
+                // Mark autoplay detection as complete
+                setAutoplayDetected(true);
+            }
+        };
+
+        // Check if video is already ready
+        if (video.readyState >= 3) {
+            handleCanPlay();
+        } else {
+            video.addEventListener("canplay", handleCanPlay, { once: true });
+        }
+
+        return () => {
+            video.removeEventListener("canplay", handleCanPlay);
+        };
+    }, []);
 
     return (
         <html lang="en">
@@ -107,40 +185,44 @@ export default function RootLayout({
                     font-sans antialiased flex flex-col h-device    /* ② use it here */
                 `}
             >
-                {/* Background video */}
-                <video
-                    src="/Background.mp4"
-                    poster="/background.jpg"
-                    autoPlay
-                    muted
-                    playsInline
-                    preload="auto"
-                    onEnded={() => setVideoEnded(true)}
-                    style={{
-                        position: "fixed",
-                        inset: 0,
-                        width: "100vw",
-                        height: "var(--device-height)",
-                        objectFit: "cover",
-                        pointerEvents: "none",
-                    }}
-                    aria-hidden="true"
-                >
-                    {/* Fallback for unsupported browsers */}
-                    <Image
-                        src="/background.jpg"
-                        alt="Background"
-                        fill
+                {/* Background video - only show when autoplay works */}
+                {!autoplayFailed && (
+                    <video
+                        ref={videoRef}
+                        src="/Background.mp4"
+                        poster="/background.jpg"
+                        autoPlay
+                        muted
+                        playsInline
+                        controls={false}
+                        preload="auto"
+                        onEnded={() => setVideoEnded(true)}
                         style={{
+                            position: "fixed",
+                            inset: 0,
+                            width: "100vw",
+                            height: "var(--device-height)",
                             objectFit: "cover",
                             pointerEvents: "none",
                         }}
                         aria-hidden="true"
-                    />
-                </video>
+                    >
+                        {/* Fallback for unsupported browsers */}
+                        <Image
+                            src="/background.jpg"
+                            alt="Background"
+                            fill
+                            style={{
+                                objectFit: "cover",
+                                pointerEvents: "none",
+                            }}
+                            aria-hidden="true"
+                        />
+                    </video>
+                )}
 
-                {/* Poster image after video ends */}
-                {videoEnded && (
+                {/* Static background image fallback for when autoplay fails or video ends */}
+                {(autoplayFailed || videoEnded) && (
                     <div
                         style={{
                             position: "fixed",
@@ -148,15 +230,18 @@ export default function RootLayout({
                             width: "100vw",
                             height: "var(--device-height)",
                             pointerEvents: "none",
+                            zIndex: 1,
                         }}
                     >
                         <Image
                             src="/background.jpg"
                             alt="Background"
                             fill
+                            priority
                             style={{
                                 objectFit: "cover",
                             }}
+                            onLoad={() => setFallbackImageLoaded(true)}
                             aria-hidden="true"
                         />
                     </div>
