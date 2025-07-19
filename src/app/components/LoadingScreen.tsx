@@ -4,13 +4,19 @@ import React from "react";
 
 /**
  * A loading screen component that displays a circular spinner.
+ * Uses device height instead of viewport height for full screen coverage.
  *
  * @returns {JSX.Element} The rendered loading screen.
  */
 export default function LoadingScreen() {
     return (
         <div
-            className="fixed inset-0 z-[10000] flex items-center justify-center bg-black"
+            className="fixed z-[10000] flex items-center justify-center bg-black"
+            style={{
+                inset: 0,
+                width: "100vw",
+                height: "var(--device-height)",
+            }}
             role="status"
             aria-live="polite"
         >
