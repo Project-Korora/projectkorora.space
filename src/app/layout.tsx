@@ -97,7 +97,7 @@ export default function RootLayout({
                     // If we get here, autoplay succeeded
                     setAutoplayFailed(false);
                 }
-            } catch (error) {
+            } catch {
                 // Autoplay was prevented (likely due to iOS Low Power Mode)
                 console.log(
                     "Video autoplay prevented, falling back to static image"
