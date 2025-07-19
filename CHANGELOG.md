@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.5.2](https://github.com/Project-Korora/projectkorora.space/compare/v1.5.1...v1.5.2) (2025-07-19)
+
+
+### Bug Fixes
+
+* enhance background video handling in layout component ([4e94d26](https://github.com/Project-Korora/projectkorora.space/commit/4e94d263b6a440c748f00eb7ff48e625dc30e16a))
+* Merge pull request [#87](https://github.com/Project-Korora/projectkorora.space/issues/87) from Project-Korora/galengreen/bugs ([9b53ed3](https://github.com/Project-Korora/projectkorora.space/commit/9b53ed3fa2049e5010ff31ca9a011d2614a99ef2))
+* simplify error handling in video autoplay logic ([25fb0b6](https://github.com/Project-Korora/projectkorora.space/commit/25fb0b68b9aef767861ea2a38480169bbb548c32))
+
 ## [1.5.1](https://github.com/Project-Korora/projectkorora.space/compare/v1.5.0...v1.5.1) (2025-07-18)
 
 
