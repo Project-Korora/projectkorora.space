@@ -50,6 +50,8 @@ export default function RootLayout({
     const [isLoading, setIsLoading] = useState(true);
     const [videoEnded, setVideoEnded] = useState(false);
     const [autoplayFailed, setAutoplayFailed] = useState(false);
+    const [autoplayDetected, setAutoplayDetected] = useState(false);
+    const [fallbackImageLoaded, setFallbackImageLoaded] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
     const pathname = usePathname();
 
@@ -60,10 +62,42 @@ export default function RootLayout({
         const cssPx = `${window.screen.height}px`;
         document.documentElement.style.setProperty("--device-height", cssPx);
 
-        const handleLoad = () => setIsLoading(false);
+        // Preload fallback image on iOS to prevent glitchy loading
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if (isIOS) {
+            const img = document.createElement("img");
+            img.src = "/background.jpg";
+            img.onload = () => {
+                // Image is preloaded and cached, but we'll still wait for the actual Image component onLoad
+                console.log("Fallback image preloaded");
+            };
+        }
+    }, []);
+
+    // Handle loading state - wait for autoplay detection and fallback image on iOS
+    useEffect(() => {
+        const handleLoad = () => {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+            if (!isIOS) {
+                // Non-iOS: hide loading immediately
+                setIsLoading(false);
+            } else if (autoplayDetected) {
+                // iOS: wait for autoplay detection
+                if (autoplayFailed) {
+                    // If autoplay failed, also wait for fallback image to load
+                    if (fallbackImageLoaded) {
+                        setIsLoading(false);
+                    }
+                } else {
+                    // Autoplay succeeded, can hide loading
+                    setIsLoading(false);
+                }
+            }
+        };
 
         if (document.readyState === "complete") {
-            setIsLoading(false);
+            handleLoad();
         } else {
             window.addEventListener("load", handleLoad);
         }
@@ -71,7 +105,7 @@ export default function RootLayout({
         return () => {
             window.removeEventListener("load", handleLoad);
         };
-    }, []);
+    }, [autoplayDetected, autoplayFailed, fallbackImageLoaded]);
 
     // Reset scroll position on page navigation
     useEffect(() => {
@@ -105,6 +139,9 @@ export default function RootLayout({
                 setAutoplayFailed(true);
                 // Pause the video to ensure it's in a stopped state
                 video.pause();
+            } finally {
+                // Mark autoplay detection as complete
+                setAutoplayDetected(true);
             }
         };
 
@@ -193,15 +230,18 @@ export default function RootLayout({
                             width: "100vw",
                             height: "var(--device-height)",
                             pointerEvents: "none",
+                            zIndex: 1,
                         }}
                     >
                         <Image
                             src="/background.jpg"
                             alt="Background"
                             fill
+                            priority
                             style={{
                                 objectFit: "cover",
                             }}
+                            onLoad={() => setFallbackImageLoaded(true)}
                             aria-hidden="true"
                         />
                     </div>
