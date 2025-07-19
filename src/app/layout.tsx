@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -36,7 +36,7 @@ const geistMono = Geist_Mono({
  *
  * This component sets up the global fonts, body styling, and the main
  * page structure including the navigation and footer. It also includes the
- * background image that persists across all pages.
+ * background video with iOS autoplay detection and static image fallback.
  *
  * @param {object} props - The properties for the component.
  * @param {React.ReactNode} props.children - The child components to be rendered within the layout.
@@ -49,6 +49,8 @@ export default function RootLayout({
 }>) {
     const [isLoading, setIsLoading] = useState(true);
     const [videoEnded, setVideoEnded] = useState(false);
+    const [autoplayFailed, setAutoplayFailed] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
     const pathname = usePathname();
 
     /* ① lock --device-height to physical screen size once */
@@ -79,6 +81,45 @@ export default function RootLayout({
         document.documentElement.scrollTop = 0;
     }, [pathname]);
 
+    // Autoplay detection for iOS battery saver mode handling
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        // Wait for video to be ready
+        const handleCanPlay = async () => {
+            try {
+                // Attempt to play the video - this returns a promise
+                const playPromise = video.play();
+
+                if (playPromise !== undefined) {
+                    await playPromise;
+                    // If we get here, autoplay succeeded
+                    setAutoplayFailed(false);
+                }
+            } catch (error) {
+                // Autoplay was prevented (likely due to iOS Low Power Mode)
+                console.log(
+                    "Video autoplay prevented, falling back to static image"
+                );
+                setAutoplayFailed(true);
+                // Pause the video to ensure it's in a stopped state
+                video.pause();
+            }
+        };
+
+        // Check if video is already ready
+        if (video.readyState >= 3) {
+            handleCanPlay();
+        } else {
+            video.addEventListener("canplay", handleCanPlay, { once: true });
+        }
+
+        return () => {
+            video.removeEventListener("canplay", handleCanPlay);
+        };
+    }, []);
+
     return (
         <html lang="en">
             <head>
@@ -107,41 +148,44 @@ export default function RootLayout({
                     font-sans antialiased flex flex-col h-device    /* ② use it here */
                 `}
             >
-                {/* Background video */}
-                <video
-                    src="/Background.mp4"
-                    poster="/background.jpg"
-                    autoPlay
-                    muted
-                    playsInline
-                    controls={false}
-                    preload="auto"
-                    onEnded={() => setVideoEnded(true)}
-                    style={{
-                        position: "fixed",
-                        inset: 0,
-                        width: "100vw",
-                        height: "var(--device-height)",
-                        objectFit: "cover",
-                        pointerEvents: "none",
-                    }}
-                    aria-hidden="true"
-                >
-                    {/* Fallback for unsupported browsers */}
-                    <Image
-                        src="/background.jpg"
-                        alt="Background"
-                        fill
+                {/* Background video - only show when autoplay works */}
+                {!autoplayFailed && (
+                    <video
+                        ref={videoRef}
+                        src="/Background.mp4"
+                        poster="/background.jpg"
+                        autoPlay
+                        muted
+                        playsInline
+                        controls={false}
+                        preload="auto"
+                        onEnded={() => setVideoEnded(true)}
                         style={{
+                            position: "fixed",
+                            inset: 0,
+                            width: "100vw",
+                            height: "var(--device-height)",
                             objectFit: "cover",
                             pointerEvents: "none",
                         }}
                         aria-hidden="true"
-                    />
-                </video>
+                    >
+                        {/* Fallback for unsupported browsers */}
+                        <Image
+                            src="/background.jpg"
+                            alt="Background"
+                            fill
+                            style={{
+                                objectFit: "cover",
+                                pointerEvents: "none",
+                            }}
+                            aria-hidden="true"
+                        />
+                    </video>
+                )}
 
-                {/* Poster image after video ends */}
-                {videoEnded && (
+                {/* Static background image fallback for when autoplay fails or video ends */}
+                {(autoplayFailed || videoEnded) && (
                     <div
                         style={{
                             position: "fixed",
