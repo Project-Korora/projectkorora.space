@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.5.2](https://github.com/Project-Korora/projectkorora.space/compare/v1.5.1...v1.5.2) (2025-07-19)
+
+
+### Bug Fixes
+
+* enhance background video handling in layout component ([4e94d26](https://github.com/Project-Korora/projectkorora.space/commit/4e94d263b6a440c748f00eb7ff48e625dc30e16a))
+* Merge pull request [#87](https://github.com/Project-Korora/projectkorora.space/issues/87) from Project-Korora/galengreen/bugs ([9b53ed3](https://github.com/Project-Korora/projectkorora.space/commit/9b53ed3fa2049e5010ff31ca9a011d2614a99ef2))
+* simplify error handling in video autoplay logic ([25fb0b6](https://github.com/Project-Korora/projectkorora.space/commit/25fb0b68b9aef767861ea2a38480169bbb548c32))
+
+## [1.5.1](https://github.com/Project-Korora/projectkorora.space/compare/v1.5.0...v1.5.1) (2025-07-18)
+
+
+### Bug Fixes
+
+* hide playback controls for background video on iOS Safari ([8deb42e](https://github.com/Project-Korora/projectkorora.space/commit/8deb42e5347d4a0b915f761e4a081e4ca8391e5a))
+* Merge pull request [#85](https://github.com/Project-Korora/projectkorora.space/issues/85) from Project-Korora/galengreen/bugs ([7941971](https://github.com/Project-Korora/projectkorora.space/commit/794197157629dacf4ad064dd2b1688be46807f5b))
+* update API key in ContactForm component ([3a5c685](https://github.com/Project-Korora/projectkorora.space/commit/3a5c68516eab5c6c445385d0d726a718a8ae4238))
+* update image dimensions and styling in TeamInfo component ([28aa176](https://github.com/Project-Korora/projectkorora.space/commit/28aa176208e192deb7da5e41afb889fced5b6f75))
+
+## [1.5.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.4.0...v1.5.0) (2025-07-17)
+
+
+### Features
+
+* Merge pull request [#83](https://github.com/Project-Korora/projectkorora.space/issues/83) from Project-Korora/feat--galengreen/design ([f81fa23](https://github.com/Project-Korora/projectkorora.space/commit/f81fa238c18c9bed4b9a7d904a7f94289ab57f03))
+
+
+### Bug Fixes
+
+* update contributing guidelines for PR creation command ([8ada83e](https://github.com/Project-Korora/projectkorora.space/commit/8ada83e53864dac657b437248572081914d47e12))
+
 ## [1.4.0](https://github.com/Project-Korora/projectkorora.space/compare/v1.3.0...v1.4.0) (2025-07-17)
 
 
