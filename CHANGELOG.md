@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.3](https://github.com/Project-Korora/projectkorora.space/compare/v1.5.2...v1.5.3) (2025-07-19)
+
+
+### Bug Fixes
+
+* improve loading state management for video autoplay in layout component ([f8049a9](https://github.com/Project-Korora/projectkorora.space/commit/f8049a966e09bfc64376ad31da143657b7479211))
+* Merge pull request [#89](https://github.com/Project-Korora/projectkorora.space/issues/89) from Project-Korora/galengreen/bugs ([43f4884](https://github.com/Project-Korora/projectkorora.space/commit/43f48841a6e672099a43af887066291bc70739ac))
+
 ## [1.5.2](https://github.com/Project-Korora/projectkorora.space/compare/v1.5.1...v1.5.2) (2025-07-19)
 
 
