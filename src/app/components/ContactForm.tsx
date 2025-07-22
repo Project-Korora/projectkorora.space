@@ -21,7 +21,7 @@ export default function Contact() {
             <div className="space-y-6">
                 <div className="flex justify-center">
                     <a
-                        href="mailto:hello@projectkorora.org?subject=Inquiry%20from%20Website"
+                        href="mailto:projectkorora@gmail.com?subject=Inquiry%20from%20Website"
                         aria-label="Send email to Project Korora"
                         className="inline-block w-full sm:w-auto"
                     >
