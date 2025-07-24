@@ -1,9 +1,3 @@
-import {
-    Carousel,
-    CarouselDiv,
-    CarouselElement,
-} from "@/app/components/Carousel";
-
 import teamList, { TeamType } from "@/data/teamData";
 import Card from "@/app/components/Card";
 import { Users } from "lucide-react";
@@ -15,7 +9,6 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/app/components/Accordion";
-import CarouselScroller from "@/app/components/CarouselScroller";
 import Image from "next/image";
 
 /**
@@ -120,21 +113,14 @@ export default function TeamPage() {
                         </div>
                     ))}
                 </div>
-                <Carousel className="md:hidden" doLoop={true} showHint={false}>
-                    <CarouselDiv>
-                        {advisors.map((advisor, index) => (
-                            <CarouselElement key={index}>
-                                <div
-                                    key={index}
-                                    className="bg-white/10 rounded-lg p-4"
-                                >
-                                    <p className="font-medium">{advisor}</p>
-                                </div>
-                            </CarouselElement>
-                        ))}
-                    </CarouselDiv>
-                    <CarouselScroller />
-                </Carousel>
+    
+                <div className= "grid grid-cols-1 gap-2 md:hidden">
+                    {advisors.map((advisor, index) => (
+                        <div key={index} className="bg-white/10 rounded-lg p-4">
+                            <p className="font-medium">{advisor}</p>
+                        </div>
+                    ))}
+                </div>
             </Card>
 
             <div className="hidden md:grid md:grid-cols-2 gap-5">
@@ -143,15 +129,14 @@ export default function TeamPage() {
                 ))}
             </div>
 
-            <Carousel className="md:hidden">
-                <CarouselDiv>
-                    {teamList.map((team, index) => (
-                        <CarouselElement key={index}>
-                            <TeamInfo team={team} index={index} />
-                        </CarouselElement>
-                    ))}
-                </CarouselDiv>
-            </Carousel>
+   
+             <div className="md:hidden grid grid-cols-1 gap-3">
+                {teamList.map((team, index) => (
+                        <TeamInfo team={team} index={index} key={index} />
+                ))}
+            </div>
+         
+         
         </PageContainer>
     );
 }
